@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Check Even or Odd</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: bisque;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            /* Ensures full-height centering */
+        }
+
+        .box {
+            background-color: aquamarine;
+            width: 500px;
+            height: 300px;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            text-align: center;
+            border-radius: 10px;
+            /* Optional: Adds rounded corners */
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+            /* Optional: Adds shadow */
+        }
+
+
+        h1 {
+            /* background-color: aquamarine; */
+            margin: 20px;
+            padding: 20;
+            box-shadow: 5px 8px 15px rgba(42, 86, 85, 0.2);        
+        }
+
+        p {
+            margin: 20px;
+            padding: 20;
+            box-shadow: 5px 8px 15px rgba(42, 86, 85, 0.2);        
+        }
+
+        .box:hover {
+            transform: scale(1.2);
+            box-shadow: 5px 8px 15px rgba(42, 86, 85, 0.2);        
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="box">
+        <h1>Check if a Number is Even or Odd</h1>
+        <p id="num"></p>
+        <p id="result"></p>
+    </div>
+
+    <script>
+        var userInput = prompt("Please enter a number:");
+
+        var number = +userInput; // Convert input to a number
+
+        if (Number.isNaN(number)) {
+            document.getElementById("num").innerHTML = "⚠️ This is not a valid number! Please enter numbers only.";
+        } else {
+            document.getElementById("num").innerHTML = `Entered Number: ${number}`;
+
+            if (number % 2 === 0) {
+                document.getElementById("result").innerHTML = `${number} is Even ✅`;
+            } else {
+                document.getElementById("result").innerHTML = `${number} is Odd 🔴`;
+            }
+        }
+    </script>
+
+</body>
+
+</html>
