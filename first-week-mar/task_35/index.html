@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>task-35</title>
+</head>
+
+<body>
+    <h1>Section Array Questions:</h1> <br>
+    <h2>Pass by Reference</h2> <br>
+    <h3>Q > 35 :  Check if two variables referencing the same array are equal after modifying one.?</h3>
+
+    <script>
+        let arrA = [10, 20, 30];
+        let arrB = arrA;
+
+        arrB[1] = 50;
+        console.log(arrA);
+        console.log(arrB);
+
+        console.log( "Yes arrA = arrB : ",arrA === arrB); // checking...
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>task-32</title>
+</head>
+
+<body>
+    <h1>Section Array Questions:</h1> <br>
+    <h2>Pass by Reference</h2> <br>
+    <h3>Q > 32 : Create a function that adds an element to an array and check if the original array changes.?</h3>
+
+    <script>
+        let arr1 = [1, 2, 3];
+        console.log(arr1);
+
+        function addElement(arr) {
+            arr.push(5);
+        }
+        addElement(arr1);
+        console.log(arr1); // Output: [1, 2, 3, 4, 5]
+    </script>
+</body>
+
+</html>
