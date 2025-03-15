@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task - 01</title>
+</head>
+
+<body>
+    <h1>Task 01</h1>
+    <h2>Basic Calculator</h2>
+    <p>Create a function that takes two numbers and performs basic arithemetic operations [ Additon, Subtraction,
+        Multiplication and Division ] based on the operation selected.</p>
+    <h2>Requirements:</h2>
+    <p>function naem: Calculator</p>
+    <p>parameters: num1 and num2</p>
+    <p>operation could be 'add', 'subtract', 'multiply', 'divide'</p>
+    <p>output: the result of the selected operation</p>
+
+    <script>
+        function calculator() {
+            let num1 = +prompt("inter first Number : ");
+            let sign = prompt("Inter operator ('+', '-', '*'), '/'  ");
+            let num2 = +prompt("inter second Number : ");
+
+            if (sign === '+') {
+                console.log('The addition is = ', num1 + num2);
+            }
+
+            else if (sign === '-') {
+                console.log('The subtraction is = ', num1 - num2);
+            }
+
+            else if (sign === '*') {
+                console.log('The multiplication is = ', num1 * num2);
+            }
+
+            else if (sign === '/') {
+                console.log('The divition is = ', num1 / num2);
+            }
+
+            else {
+                console.log("Please inter right input");
+                alert("Inter only numbers and operation signs :🙄")
+            }
+            let again = confirm("Do you want to try again:");
+
+            if (again) {
+                calculator()
+            }
+            console.log("Thanks for using our service!")
+            return
+        }
+
+        calculator()
+    </script>
+</body>
+
+</html>
