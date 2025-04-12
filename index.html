@@ -5,247 +5,334 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <title>Completed Tasks</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>My Code Vault | Rafi Ullah</title>
     <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --light-bg: #f8f9fa;
+        }
+
         body {
-            font-family: Arial, sans-serif;
-            background-color: #c0baba;
-            margin: 20px;
-            text-align: center;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--light-bg);
+            color: var(--primary-color);
         }
 
-        .container {
-            max-width: 600px;
-            margin: auto;
+        .main-title {
+            text-align: center;
+            margin: 30px 0;
+            color: var(--secondary-color);
+            font-weight: 700;
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, var(--primary-color), #1a252f);
+            color: white;
+            padding: 60px 0 40px;
+            margin-bottom: 40px;
+        }
+
+        .section-card {
             background: white;
-            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+
+        .task-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .task-btn {
+            padding: 12px 8px;
             border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background: var(--light-bg);
+            border: 1px solid rgba(0, 0, 0, 0.1);
             text-align: center;
-            margin-top: 10%;
-            margin-bottom: 10%;
+            transition: all 0.2s ease;
+            text-decoration: none !important;
+            color: var(--primary-color) !important;
+            font-size: 0.9rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 70px;
         }
 
-        .Introduction {
-            text-align: left;
+        .task-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            background: var(--secondary-color);
+            color: white !important;
         }
 
-        h1 {
-            color: #333;
-            font-weight: 600;
+        .task-btn .task-number {
+            font-size: 0.7rem;
+            opacity: 0.8;
+            margin-top: 5px;
         }
 
-        ul {
-            list-style-type: none;
-            padding: 0;
+        .section-title {
+            border-left: 4px solid var(--secondary-color);
+            padding-left: 15px;
+            margin: 30px 0;
         }
 
-        li {
-            background: #ddd;
-            margin: 5px 0;
-            padding: 10px;
-            border-radius: 4px;
-            font-weight: 600;
-        }
-
-        li a {
-            text-decoration: none;
-            color: blueviolet;
-        }
-
-        ul li:hover {
-            background-color: aquamarine;
-        }
-
-        .accordion-button {
-            font-weight: bold;
-        }
-
-        .line {
-            height: 5px;
-            background-color: lightblue;
-            margin: 20px;
+        .week-card {
+            margin-bottom: 25px;
             border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid rgba(0, 0, 0, 0.1);
         }
 
+        .week-header {
+            background: var(--light-bg);
+            padding: 15px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.2s ease;
+        }
+
+        .week-header:hover {
+            background: #e9ecef;
+        }
+
+        .week-header.collapsed .collapse-icon {
+            transform: rotate(0deg);
+        }
+
+        .collapse-icon {
+            transition: transform 0.2s ease;
+            transform: rotate(180deg);
+        }
+
+        .badge-custom {
+            background: var(--accent-color);
+            color: white;
+        }
+
+        .btn-add-new {
+            background: var(--accent-color);
+            color: white;
+            margin-top: 15px;
+        }
+
+        .btn-add-new:hover {
+            background: #c0392b;
+            color: white;
+        }
     </style>
 </head>
 
 <body>
-    <div class="container Introduction">
-        <h1>Introduction</h1>
-        <ul>
-            <li><b>Name : </b> Rafi Ullah</li>
-            <li><b>Batch : </b> 3</li>
-            <li><b>Course : </b> Web and Mobile App Development</li>
-            <li><b>ID : </b> WMA-323009</li>
-            <li><b>Institute : </b> SMIT Saylani Peshawar</li>
-            <li><b>Sir : </b> Muhammad Osama</li>
-        </ul>
+    <!-- Main Title -->
+    
+    <!-- Hero Section -->
+    <div class="hero-section">
+        <h1 class="main-title">My Code Vault</h1>
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-3 text-center mb-4">
+                    <img src="assets/images/my-pic.webp" alt="Profile" class="img-fluid rounded-circle" width="160">
+                </div>
+                <div class="col-md-9">
+                    <h1 class="display-4 mb-3">Rafi Ullah</h1>
+                    <div class="row">
+                        <div class="col-md-4 mb-2">
+                            <p class="mb-1"><i class="fas fa-id-badge me-2"></i>WMA-323009</p>
+                            <p class="mb-1"><i class="fas fa-calendar-alt me-2"></i>Batch 3</p>
+                        </div>
+                        <div class="col-md-4 mb-2">
+                            <p class="mb-1"><i class="fas fa-university me-2"></i>SMIT Peshawar</p>
+                            <p class="mb-1"><i class="fas fa-book me-2"></i>Web & Mobile Development</p>
+                        </div>
+                        <div class="col-md-4 mb-2">
+                            <p class="mb-1"><i class="fas fa-chalkboard-teacher me-2"></i>Muhammad Osama</p>
+                            <p class="mb-1"><i class="fas fa-star me-2"></i>Saylani Welfare</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <div class="container mt-5">
-        <h1 class="text-center mb-4">My Completed Tasks</h1>
-        <div class="line">
-
+    <div class="container">
+        <!-- Projects Section -->
+        <div class="section-card">
+            <div class="d-flex justify-content-between align-items-center">
+                <h3 class="section-title">Projects Showcase</h3>
+                <button class="btn btn-sm btn-add-new">
+                    <i class="fas fa-plus me-1"></i> Add Project
+                </button>
+            </div>
+            <div class="task-grid">
+                <a href="ageFinder/age_finder.html" class="task-btn">
+                    Age Finder
+                    <span class="task-number">Project 1</span>
+                </a>
+                <a href="calculaterFunction/index.html" class="task-btn">
+                    Calculator
+                    <span class="task-number">Project 2</span>
+                </a>
+                <a href="checkNumberEvenOdd/index.html" class="task-btn">
+                    Even/Odd
+                    <span class="task-number">Project 3</span>
+                </a>
+                <a href="Temprature/index.html" class="task-btn">
+                    Temperature
+                    <span class="task-number">Project 4</span>
+                </a>
+                <a href="UnitsConverter/index.html" class="task-btn">
+                    Units
+                    <span class="task-number">Project 5</span>
+                </a>
+            </div>
         </div>
 
-        <!-- February 2025 -->
-        <h3>February 2025</h3>
-        <div class="accordion" id="tasksAccordionFeb">
-            <div class="accordion-item">
-                <h2 class="accordion-header" id="headingFeb4">
-                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#collapseFeb4" aria-expanded="true" aria-controls="collapseFeb4">
-                        Week 4
-                    </button>
-                </h2>
-                <div id="collapseFeb4" class="accordion-collapse collapse show" aria-labelledby="headingFeb4"
-                    data-bs-parent="#tasksAccordionFeb">
-                    <div class="accordion-body">
-                        <ul class="list-group">
-                            <li class="list-group-item"><a href="ageFinder/age_finder.html">Task 1: Age Finder</a></li>
-                            <li class="list-group-item"><a href="calculaterFunction/index.html">Task 2: Calculator</a></li>
-                            <li class="list-group-item"><a href="checkNumberEvenOdd/index.html">Task 3: Check Even/Odd</a></li>
-                            <li class="list-group-item"><a href="Temprature/index.html">Task 4: Temperature App</a></li>
-                            <li class="list-group-item"><a href="UnitsConverter/index.html">Task 5: Units Converter</a></li>
-                        </ul>
+        <!-- Assignments Section -->
+        <div class="section-card">
+            <div class="d-flex justify-content-between align-items-center">
+                <h3 class="section-title">Assignments Repository</h3>
+                <button class="btn btn-sm btn-add-new">
+                    <i class="fas fa-plus me-1"></i> Add Assignment
+                </button>
+            </div>
+            
+            <!-- March 2025 - Week 1 -->
+            <div class="week-card">
+                <div class="week-header collapsed" data-bs-toggle="collapse" data-bs-target="#week1">
+                    <h5 class="mb-0">March 2025 - Week 1</h5>
+                    <div>
+                        <span class="badge bg-info">40 Tasks</span>
+                        <i class="fas fa-chevron-down collapse-icon ms-2"></i>
                     </div>
                 </div>
-            </div>
-            <div class="line">
-
-            </div>
-        </div>
-
-        <!-- March 2025 -->
-        <h3 class="mt-4">March 2025</h3>
-        <div class="accordion" id="tasksAccordionMar">
-            <!-- Week 1 -->
-            <div class="accordion-item">
-                <h2 class="accordion-header" id="headingMar1">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#collapseMar1" aria-expanded="false" aria-controls="collapseMar1">
-                        Week 1
-                    </button>
-                </h2>
-                <div id="collapseMar1" class="accordion-collapse collapse" aria-labelledby="headingMar1"
-                    data-bs-parent="#tasksAccordionMar">
-                    <div class="accordion-body">
-                        <ul class="list-group">
-                            <li class="list-group-item"><a href="first-week-mar/task_01/index.html">Task 1: Completed</a></li>
-                            <li class="list-group-item"><a href="first-week-mar/task_02/index.html">Task 2: Completed</a></li>
-                            <li class="list-group-item"><a href="first-week-mar/task_03/index.html">Task 3: Completed</a></li>
-                            <li class="list-group-item"><a href="first-week-mar/task_04/index.html">Task 4: Completed</a></li>
-                            <li class="list-group-item"><a href="first-week-mar/task_05/index.html">Task 5: Completed</a></li>
-                            <li class="list-group-item"><a href="first-week-mar/task_06/index.html">Task 6: Completed</a></li>
-                            <li class="list-group-item"><a href="first-week-mar/task_07/index.html">Task 7: Completed</a></li>
-                            <li class="list-group-item"><a href="first-week-mar/task_08/index.html">Task 8: Completed</a></li>
-                            <li class="list-group-item"><a href="first-week-mar/task_09/index.html">Task 9: Completed</a></li>
-                            <li class="list-group-item"><a href="first-week-mar/task_10/index.html">Task 10: Completed</a></li>
-                            <li class="list-group-item"><a href="first-week-mar/task_11/index.html">Task 11: Completed</a></li>
-                            <li class="list-group-item"><a href="first-week-mar/task_12/index.html">Task 12: Completed</a></li>
-                            <li class="list-group-item"><a href="first-week-mar/task_13/index.html">Task 13: Completed</a></li>
-                            <li class="list-group-item"><a href="first-week-mar/task_14/index.html">Task 14: Completed</a></li>
-                            <li class="list-group-item"><a href="first-week-mar/task_15/index.html">Task 15: Completed</a></li>
-                            <li class="list-group-item"><a href="first-week-mar/task_16/index.html">Task 16: Completed</a></li>
-                            <li class="list-group-item"><a href="first-week-mar/task_17/index.html">Task 17: Completed</a></li>
-                            <li class="list-group-item"><a href="first-week-mar/task_18/index.html">Task 18: Completed</a></li>
-                            <li class="list-group-item"><a href="first-week-mar/task_19/index.html">Task 19: Completed</a></li>
-                            <li class="list-group-item"><a href="first-week-mar/task_20/index.html">Task 20: Completed</a></li>
-                            <li class="list-group-item"><a href="first-week-mar/task_21/index.html">Task 21: Completed</a></li>
-                            <li class="list-group-item"><a href="first-week-mar/task_22/index.html">Task 22: Completed</a></li>
-                            <li class="list-group-item"><a href="first-week-mar/task_23/index.html">Task 23: Completed</a></li>
-                            <li class="list-group-item"><a href="first-week-mar/task_24/index.html">Task 24: Completed</a></li>
-                            <li class="list-group-item"><a href="first-week-mar/task_25/index.html">Task 25: Completed</a></li>
-                            <li class="list-group-item"><a href="first-week-mar/task_26/index.html">Task 26: Completed</a></li>
-                            <li class="list-group-item"><a href="first-week-mar/task_27/index.html">Task 27: Completed</a></li>
-                            <li class="list-group-item"><a href="first-week-mar/task_28/index.html">Task 28: Completed</a></li>
-                            <li class="list-group-item"><a href="first-week-mar/task_29/index.html">Task 29: Completed</a></li>
-                            <li class="list-group-item"><a href="first-week-mar/task_30/index.html">Task 30: Completed</a></li>
-                            <li class="list-group-item"><a href="first-week-mar/task_31/index.html">Task 31: Completed</a></li>
-                            <li class="list-group-item"><a href="first-week-mar/task_32/index.html">Task 32: Completed</a></li>
-                            <li class="list-group-item"><a href="first-week-mar/task_33/index.html">Task 33: Completed</a></li>
-                            <li class="list-group-item"><a href="first-week-mar/task_34/index.html">Task 34: Completed</a></li>
-                            <li class="list-group-item"><a href="first-week-mar/task_35/index.html">Task 35: Completed</a></li>
-                            <li class="list-group-item"><a href="first-week-mar/task_36/index.html">Task 36: Completed</a></li>
-                            <li class="list-group-item"><a href="first-week-mar/task_37/index.html">Task 37: Completed</a></li>
-                            <li class="list-group-item"><a href="first-week-mar/task_38/index.html">Task 38: Completed</a></li>
-                            <li class="list-group-item"><a href="first-week-mar/task_39/index.html">Task 39: Completed</a></li>
-                            <li class="list-group-item"><a href="first-week-mar/task_40/index.html">Task 40: Completed</a></li>
-                        </ul>
+                <div class="collapse" id="week1">
+                    <div class="p-3">
+                        <div class="task-grid">
+                            <a href="first-week-mar/task_01/index.html" class="task-btn">Task 1</a>
+                            <a href="first-week-mar/task_02/index.html" class="task-btn">Task 2</a>
+                            <a href="first-week-mar/task_03/index.html" class="task-btn">Task 3</a>
+                            <a href="first-week-mar/task_04/index.html" class="task-btn">Task 4</a>
+                            <a href="first-week-mar/task_05/index.html" class="task-btn">Task 5</a>
+                            <a href="first-week-mar/task_06/index.html" class="task-btn">Task 6</a>
+                            <a href="first-week-mar/task_07/index.html" class="task-btn">Task 7</a>
+                            <a href="first-week-mar/task_08/index.html" class="task-btn">Task 8</a>
+                            <a href="first-week-mar/task_09/index.html" class="task-btn">Task 9</a>
+                            <a href="first-week-mar/task_10/index.html" class="task-btn">Task 10</a>
+                            <a href="first-week-mar/task_11/index.html" class="task-btn">Task 11</a>
+                            <a href="first-week-mar/task_12/index.html" class="task-btn">Task 12</a>
+                            <a href="first-week-mar/task_13/index.html" class="task-btn">Task 13</a>
+                            <a href="first-week-mar/task_14/index.html" class="task-btn">Task 14</a>
+                            <a href="first-week-mar/task_15/index.html" class="task-btn">Task 15</a>
+                            <a href="first-week-mar/task_16/index.html" class="task-btn">Task 16</a>
+                            <a href="first-week-mar/task_17/index.html" class="task-btn">Task 17</a>
+                            <a href="first-week-mar/task_18/index.html" class="task-btn">Task 18</a>
+                            <a href="first-week-mar/task_19/index.html" class="task-btn">Task 19</a>
+                            <a href="first-week-mar/task_20/index.html" class="task-btn">Task 20</a>
+                            <a href="first-week-mar/task_21/index.html" class="task-btn">Task 21</a>
+                            <a href="first-week-mar/task_22/index.html" class="task-btn">Task 22</a>
+                            <a href="first-week-mar/task_23/index.html" class="task-btn">Task 23</a>
+                            <a href="first-week-mar/task_24/index.html" class="task-btn">Task 24</a>
+                            <a href="first-week-mar/task_25/index.html" class="task-btn">Task 25</a>
+                            <a href="first-week-mar/task_26/index.html" class="task-btn">Task 26</a>
+                            <a href="first-week-mar/task_27/index.html" class="task-btn">Task 27</a>
+                            <a href="first-week-mar/task_28/index.html" class="task-btn">Task 28</a>
+                            <a href="first-week-mar/task_29/index.html" class="task-btn">Task 29</a>
+                            <a href="first-week-mar/task_30/index.html" class="task-btn">Task 30</a>
+                            <a href="first-week-mar/task_31/index.html" class="task-btn">Task 31</a>
+                            <a href="first-week-mar/task_32/index.html" class="task-btn">Task 32</a>
+                            <a href="first-week-mar/task_33/index.html" class="task-btn">Task 33</a>
+                            <a href="first-week-mar/task_34/index.html" class="task-btn">Task 34</a>
+                            <a href="first-week-mar/task_35/index.html" class="task-btn">Task 35</a>
+                            <a href="first-week-mar/task_36/index.html" class="task-btn">Task 36</a>
+                            <a href="first-week-mar/task_37/index.html" class="task-btn">Task 37</a>
+                            <a href="first-week-mar/task_38/index.html" class="task-btn">Task 38</a>
+                            <a href="first-week-mar/task_39/index.html" class="task-btn">Task 39</a>
+                            <a href="first-week-mar/task_40/index.html" class="task-btn">Task 40</a>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Week 2 -->
-            <div class="accordion-item">
-                <h2 class="accordion-header" id="headingMar2">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#collapseMar2" aria-expanded="false" aria-controls="collapseMar2">
-                        Week 2
-                    </button>
-                </h2>
-                <div id="collapseMar2" class="accordion-collapse collapse" aria-labelledby="headingMar2"
-                    data-bs-parent="#tasksAccordionMar">
-                    <div class="accordion-body">
-                        <ul class="list-group">
-                            <li class="list-group-item"><a href="second-week-mar/task_01.html">Task 1: Completed</a></li>
-                            <li class="list-group-item">Task 2: Not assigned</li>
-                            <li class="list-group-item">Task 3: Not assigned</li>
-                        </ul>
+            <!-- March 2025 - Week 2 -->
+            <div class="week-card">
+                <div class="week-header collapsed" data-bs-toggle="collapse" data-bs-target="#week2">
+                    <h5 class="mb-0">March 2025 - Week 2</h5>
+                    <div>
+                        <span class="badge bg-warning">3 Tasks</span>
+                        <i class="fas fa-chevron-down collapse-icon ms-2"></i>
                     </div>
                 </div>
-            </div>
-
-            <!-- Week 3 -->
-            <div class="accordion-item">
-                <h2 class="accordion-header" id="headingMar3">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#collapseMar3" aria-expanded="false" aria-controls="collapseMar3">
-                        Week 3
-                    </button>
-                </h2>
-                <div id="collapseMar3" class="accordion-collapse collapse" aria-labelledby="headingMar3"
-                    data-bs-parent="#tasksAccordionMar">
-                    <div class="accordion-body">
-                        <ul class="list-group">
-                            <li class="list-group-item">Task 1: Not assigned</li>
-                            <li class="list-group-item">Task 2: Not assigned</li>
-                            <li class="list-group-item">Task 3: Not assigned</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Week 4 -->
-            <div class="accordion-item">
-                <h2 class="accordion-header" id="headingMar4">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#collapseMar4" aria-expanded="false" aria-controls="collapseMar4">
-                        Week 4
-                    </button>
-                </h2>
-                <div id="collapseMar4" class="accordion-collapse collapse" aria-labelledby="headingMar4"
-                    data-bs-parent="#tasksAccordionMar">
-                    <div class="accordion-body">
-                        <ul class="list-group">
-                            <li class="list-group-item">Task 1: Not assigned</li>
-                            <li class="list-group-item">Task 2: Not assigned</li>
-                            <li class="list-group-item">Task 3: Not assigned</li>
-                        </ul>
+                <div class="collapse" id="week2">
+                    <div class="p-3">
+                        <div class="task-grid">
+                            <a href="second-week-mar/task_01.html" class="task-btn">Task 1</a>
+                            <button class="task-btn" disabled>Task 2</button>
+                            <button class="task-btn" disabled>Task 3</button>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="line">
-
+        <!-- Practice Section -->
+        <div class="section-card">
+            <div class="d-flex justify-content-between align-items-center">
+                <h3 class="section-title">Practice Zone</h3>
+                <button class="btn btn-sm btn-add-new">
+                    <i class="fas fa-plus me-1"></i> Add Practice
+                </button>
+            </div>
+            <div class="task-grid">
+                <a href="practice/js-basics.html" class="task-btn">
+                    JS Basics
+                    <span class="task-number">Practice 1</span>
+                </a>
+                <a href="practice/css-challenges.html" class="task-btn">
+                    CSS
+                    <span class="task-number">Practice 2</span>
+                </a>
+                <a href="practice/responsive-design.html" class="task-btn">
+                    Responsive
+                    <span class="task-number">Practice 3</span>
+                </a>
+            </div>
         </div>
-
     </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4 mt-5">
+        <div class="container text-center">
+            <div class="mb-3">
+                <a href="#" class="text-white mx-3"><i class="fab fa-github fa-lg"></i></a>
+                <a href="#" class="text-white mx-3"><i class="fab fa-codepen fa-lg"></i></a>
+                <a href="#" class="text-white mx-3"><i class="fab fa-linkedin fa-lg"></i></a>
+            </div>
+            <p>&copy; 2024 My Code Vault. All rights reserved.<br>
+            SMIT Web & Mobile Development - Batch 3</p>
+        </div>
+    </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Simple script to handle adding new items
+        document.querySelectorAll('.btn-add-new').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const section = this.closest('.section-card').querySelector('h3').textContent;
+                alert(`"Add New" functionality for ${section} would be implemented here with backend integration`);
+            });
+        });
+    </script>
 </body>
-
 </html>
