@@ -1,0 +1,149 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #8a8787;
+    color: #333;
+
+}
+
+h1, h2 {
+    text-align: center;
+    margin: 20px 0;
+}
+
+
+.sidebar-form-left {
+    margin-left: 30px;
+    width: 25%;
+    float: left;
+    padding: 10px;
+    background-color: #f4f4f4;
+    height: 90vh;
+    overflow-y: auto;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+    /* padding: 10px; */
+}
+
+form input {
+    /* margin: 10px; */
+    /* padding: 10px; */
+    height: 35px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    width: 90%;
+    background-color: #fff;
+    transition: border-color 0.3s;
+
+}
+
+select {
+    height: 35px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    width: 90%;
+    background-color: #fff;
+    transition: border-color 0.3s;
+
+}
+
+label {
+    margin: 7px;
+    font-size: large;
+}
+
+.submit {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 20px;
+}
+.submit:hover {
+    background-color: #45a049;
+}
+
+
+.sidebar-form-right {
+    margin-right: 30px;
+    width: 70%;
+    float: right;
+    padding: 10px;
+    background-color: #f4f4f4;
+    height: 90vh;
+    overflow-y: auto;
+}
+.sidebar-form-right table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid #ccc;
+    margin-top: 20px;
+
+}
+.sidebar-form-right th, .sidebar-form-right td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
+}
+.sidebar-form-right th {
+    background-color: #f2f2f2;
+}
+.sidebar-form-right tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+.sidebar-form-right tr:hover {
+    background-color: #f1f1f1;
+}
+
+
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .sidebar-form-left, .sidebar-form-right {
+        width: 100%;
+        float: none;
+        margin: 0;
+        padding: 10px;
+    }
+    form {
+        margin: 0;
+    }
+}
+/* Responsive Styles for smaller screens */
+@media (max-width: 480px) {
+    .sidebar-form-left, .sidebar-form-right {
+        width: 100%;
+        float: none;
+        margin: 0;
+        padding: 10px;
+    }
+    form {
+        margin: 0;
+    }
+}
+/* Responsive Styles for tablet screens */
+@media (max-width: 768px) {
+    .sidebar-form-left, .sidebar-form-right {
+        width: 100%;
+        float: none;
+        margin: 0;
+        padding: 10px;
+    }
+    form {
+        margin: 0;
+    }
+}

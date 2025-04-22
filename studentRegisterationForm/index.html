@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Students Registeration Form</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="additional-styles.css">
+    <script src="script.js" defer></script>
+    <script src="additional-script.js" defer></script>
+</head>
+
+<body>
+    <main>
+        <header>
+            <h1>Students Registration</h1>
+        </header>
+
+        <section id="registration-form" class="sidebar-form-left">
+            <h2>Register Here</h2>
+            <form action="submit.php" method="POST" id="studentForm">
+                <label for="first-name">First Name:</label>
+                <input type="text" id="first-name" name="first-name" required>
+
+                <label for="last">Last Name:</label>
+                <input type="text" id="last" name="last" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="phone">Phone:</label>
+                <input type="tel" id="phone" name="phone" required>
+
+                <label for="age">Age:</label>
+                <input type="number" id="age" name="age" required>
+
+                <label for="adress">Address:</label>
+                <input type="text" id="adress" name="adress" required>
+
+                <label for="gender">Gender</label>
+                <select>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                </select>
+
+                <label for="student-id">Student ID:</label>
+                <input type="text" id="student-id" name="student-id" required>
+
+                <label for="course">Course:</label>
+                <select id="course" name="course">
+                    <option value="web-development">Web Development</option>
+                    <option value="data-science">Data Science</option>
+                    <option value="graphic-design">Graphic Design</option>
+                </select>
+
+                <button class="submit" type="submit">Register</button>
+            </form>
+        </section>
+
+
+        <section id="student-list" class="sidebar-form-right">
+            <h2>Registered Students</h2>
+            <table id="student-table">
+                <thead>
+                    <tr>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Age</th>
+                        <th>Gender</th>
+                        <th>Student ID</th>
+                        <th>Course</th>
+                        <th>Address</th>
+                    </tr>
+
+                </thead>
+                <tbody>
+
+                    <tr>
+                        <td>Rafi</td>
+                        <td>Ullah</td>
+                        <td>rafi.ullah@example.com</td>
+                        <td>(+92) 336 50 91 321</td>
+                        <td>17</td>
+                        <td>Dhoda Kohat</td>
+                        <td>Male</td>
+                        <td>12345</td>
+                        <td>Web Development</td>
+                    </tr>
+                    <tr>
+                        <td>Israr</td>
+                        <td>Ahmed</td>
+                        <td>israr.ahmed@example.com</td>
+                        <td>(92+) 654-321099</td>
+                        <td>18</td>
+                        <td>Peshawaer</td>
+                        <td>Male</td>
+                        <td>12346</td>
+                        <td>Web Development</td>
+                    </tr>
+
+                    <tr>
+                        <td>Muhammad</td>
+                        <td>Haris</td>
+                        <td>haris.khan@example.com</td>
+                        <td>(+92) 456-9877890</td>
+                        <td>19</td>
+                        <td>123 Main St</td>
+                        <td>Male</td>
+                        <td>12345</td>
+                        <td>Web Development</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+</body>
+
+</html>
