@@ -39,11 +39,10 @@
                 <label for="adress">Address:</label>
                 <input type="text" id="adress" name="adress" required>
 
-                <label for="gender">Gender</label>
-                <select>
-                    <option value="male">Male</option>
-                    <option value="female">Female</option>
-                </select>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+                <div id="password-strength"></div>
+
 
                 <label for="student-id">Student ID:</label>
                 <input type="text" id="student-id" name="student-id" required>
@@ -70,50 +69,18 @@
                         <th>Email</th>
                         <th>Phone</th>
                         <th>Age</th>
-                        <th>Gender</th>
+                        <th>Password</th>
                         <th>Student ID</th>
                         <th>Course</th>
                         <th>Address</th>
                     </tr>
 
                 </thead>
+
                 <tbody>
-
-                    <tr>
-                        <td>Rafi</td>
-                        <td>Ullah</td>
-                        <td>rafi.ullah@example.com</td>
-                        <td>(+92) 336 50 91 321</td>
-                        <td>17</td>
-                        <td>Dhoda Kohat</td>
-                        <td>Male</td>
-                        <td>12345</td>
-                        <td>Web Development</td>
-                    </tr>
-                    <tr>
-                        <td>Israr</td>
-                        <td>Ahmed</td>
-                        <td>israr.ahmed@example.com</td>
-                        <td>(92+) 654-321099</td>
-                        <td>18</td>
-                        <td>Peshawaer</td>
-                        <td>Male</td>
-                        <td>12346</td>
-                        <td>Web Development</td>
-                    </tr>
-
-                    <tr>
-                        <td>Muhammad</td>
-                        <td>Haris</td>
-                        <td>haris.khan@example.com</td>
-                        <td>(+92) 456-9877890</td>
-                        <td>19</td>
-                        <td>123 Main St</td>
-                        <td>Male</td>
-                        <td>12345</td>
-                        <td>Web Development</td>
-                    </tr>
+                    <!-- New rows will be added here by JS -->
                 </tbody>
+
             </table>
         </section>
     </main>
