@@ -22,7 +22,7 @@ h1, h2 {
     width: 25%;
     float: left;
     padding: 10px;
-    background-color: #6e9ba4;
+    background-color: #f4f4f4a4;
     height: 90vh;
     overflow-y: auto;
 }
@@ -42,7 +42,7 @@ form input {
     border-radius: 5px;
     font-size: 16px;
     width: 90%;
-    background-color: #73c1ee;
+    background-color: #fff;
     transition: border-color 0.3s;
 
 }
@@ -53,7 +53,7 @@ select {
     border-radius: 5px;
     font-size: 16px;
     width: 90%;
-    background-color: #73c1ee;
+    background-color: #fff;
     transition: border-color 0.3s;
 
 }
@@ -65,7 +65,7 @@ label {
 }
 
 .submit {
-    background-color: #4CAF50;
+    background-color: #7d7d7d;
     color: white;
     padding: 10px 20px;
     border: none;
@@ -75,7 +75,8 @@ label {
     margin: 20px;
 }
 .submit:hover {
-    background-color: #45a049;
+    background-color: #d0d0d0;
+    box-shadow: #5f5d5d 3px 3px 5px;
 }
 
 
@@ -84,7 +85,7 @@ label {
     width: 70%;
     float: right;
     padding: 10px;
-    background-color: #6e9ba4;
+    background-color: #f4f4f4;
     height: 90vh;
     overflow-y: auto;
 }
@@ -101,13 +102,13 @@ label {
     text-align: left;
 }
 .sidebar-form-right th {
-    background-color: #67c15d;
+    background-color: #f2f2f2;
 }
 .sidebar-form-right tr:nth-child(even) {
-    background-color: #3eafbc;
+    background-color: #f9f9f9;
 }
 .sidebar-form-right tr:hover {
-    background-color: #498086;
+    background-color: #f1f1f1;
 }
 
 
