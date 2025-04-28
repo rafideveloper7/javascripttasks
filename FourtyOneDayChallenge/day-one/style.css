@@ -1,0 +1,151 @@
+/* Universal Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-image: url('https://i.pinimg.com/736x/79/fd/d1/79fdd17253b569a417e980a99aecd978.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    color: #45ccd6;
+    overflow: hidden;
+}
+
+/* Main container */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    min-height: 100vh;
+    padding: 20px;
+    gap: 80px;
+    /* border: #2d3436 2px solid; */
+}
+
+/* Header Section */
+.header {
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 36px;
+    color: #2d3436;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.header h3 {
+    font-size: 28px;
+    color: #2d3436;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Card Section */
+.card {
+    padding: 40px;
+    width: 700px;
+    max-width: 90%;
+    height: 300px;
+    border-radius: 15px;
+    backdrop-filter: blur(8px);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    border: #2d3436 2px solid;
+    backdrop-filter: blur(3px);
+}
+
+#message {
+    font-size: 24px;
+    font-weight: bold;
+    color: #2d3436;
+    opacity: 0;
+    animation: fadeIn 1s forwards;
+    backdrop-filter: blur(5px);
+    animation-delay: 0.5s;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    text-align: center;
+}
+
+p {
+    font-size: 18px;
+    color: #2d3436;
+    opacity: 0;
+    animation: fadeIn 1s forwards;
+    animation-delay: 0.5s;
+}
+
+#vibeBtn {
+    padding: 15px 30px;
+    font-size: 18px;
+    background-color: #00b894;
+    border: none;
+    color: #fff;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    font-weight: bold;
+}
+
+#vibeBtn:hover {
+    background-color: #0984e3;
+    transform: translateY(-5px);
+}
+
+
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .card {
+        width: 80%;
+        padding: 30px;
+    }
+    #message {
+        font-size: 20px;
+    }
+    #vibeBtn {
+        font-size: 16px;
+        padding: 10px 20px;
+    }
+   
+}
+
+@media (max-width: 480px) {
+    .card {
+        width: 90%;
+        padding: 20px;
+    }
+    #message {
+        font-size: 18px;
+    }
+    #vibeBtn {
+        font-size: 14px;
+        padding: 10px 20px;
+    }
+
+}

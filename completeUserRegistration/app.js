@@ -22,7 +22,7 @@ function registerUser(e) {
         return;
     }
 
-    const newUser = { fullName, email, password };
+    const newUser = { fullName: fullName, email: email, password: password };
     users.push(newUser);
 
     localStorage.setItem("users", JSON.stringify(users));
