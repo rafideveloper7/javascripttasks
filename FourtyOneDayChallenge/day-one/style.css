@@ -72,7 +72,7 @@ body {
 #message {
     font-size: 24px;
     font-weight: bold;
-    color: #2d3436;
+    color: #ffffff;
     opacity: 0;
     animation: fadeIn 1s forwards;
     backdrop-filter: blur(5px);
