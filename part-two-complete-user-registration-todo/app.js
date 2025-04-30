@@ -48,7 +48,7 @@ function loginUser(e) {
     }
 
     localStorage.setItem("currentUser", JSON.stringify(user));
-    window.location.href = "../home-page/index.html";
+    window.location.href = "../index.html";
 }
 
 // Display Name
