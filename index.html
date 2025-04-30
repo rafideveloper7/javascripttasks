@@ -7,136 +7,12 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <title>My Code Vault | Rafi Ullah</title>
-    <style>
-        :root {
-            --primary-color: #2c3e50;
-            --secondary-color: #3498db;
-            --accent-color: #e74c3c;
-            --light-bg: #f8f9fa;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--light-bg);
-            color: var(--primary-color);
-        }
-
-        .main-title {
-            text-align: center;
-            margin: 30px 0;
-            color: var(--secondary-color);
-            font-weight: 700;
-        }
-
-        .hero-section {
-            background: linear-gradient(135deg, var(--primary-color), #1a252f);
-            color: white;
-            padding: 60px 0 40px;
-            margin-bottom: 40px;
-        }
-
-        .section-card {
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-            padding: 30px;
-            margin-bottom: 30px;
-        }
-
-        .task-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-            gap: 10px;
-            margin-top: 20px;
-        }
-
-        .task-btn {
-            padding: 12px 8px;
-            border-radius: 8px;
-            background: var(--light-bg);
-            border: 1px solid rgba(0, 0, 0, 0.1);
-            text-align: center;
-            transition: all 0.2s ease;
-            text-decoration: none !important;
-            color: var(--primary-color) !important;
-            font-size: 0.9rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 70px;
-        }
-
-        .task-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
-            background: var(--secondary-color);
-            color: white !important;
-        }
-
-        .task-btn .task-number {
-            font-size: 0.7rem;
-            opacity: 0.8;
-            margin-top: 5px;
-        }
-
-        .section-title {
-            border-left: 4px solid var(--secondary-color);
-            padding-left: 15px;
-            margin: 30px 0;
-        }
-
-        .week-card {
-            margin-bottom: 25px;
-            border-radius: 10px;
-            overflow: hidden;
-            border: 1px solid rgba(0, 0, 0, 0.1);
-        }
-
-        .week-header {
-            background: var(--light-bg);
-            padding: 15px;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            transition: background 0.2s ease;
-        }
-
-        .week-header:hover {
-            background: #e9ecef;
-        }
-
-        .week-header.collapsed .collapse-icon {
-            transform: rotate(0deg);
-        }
-
-        .collapse-icon {
-            transition: transform 0.2s ease;
-            transform: rotate(180deg);
-        }
-
-        .badge-custom {
-            background: var(--accent-color);
-            color: white;
-        }
-
-        .btn-add-new {
-            background: var(--accent-color);
-            color: white;
-            margin-top: 15px;
-        }
-
-        .btn-add-new:hover {
-            background: #c0392b;
-            color: white;
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
     <!-- Main Title -->
-    
+
     <!-- Hero Section -->
     <div class="hero-section">
         <h1 class="main-title">My Code Vault</h1>
@@ -167,12 +43,12 @@
     </div>
 
     <div class="container">
-        <!-- Projects Section -->
+        <!-- Random Projects Section -->
         <div class="section-card">
             <div class="d-flex justify-content-between align-items-center">
-                <h3 class="section-title">Projects Showcase</h3>
-                <button class="btn btn-sm btn-add-new">
-                    <i class="fas fa-plus me-1"></i> Add Project
+                <h3 class="section-title">Random Projects Showcase</h3>
+                <button class="btn btn-sm btn-add-random">
+                    update soon
                 </button>
             </div>
             <div class="task-grid">
@@ -196,7 +72,7 @@
                     Units
                     <span class="task-number">Project 5</span>
                 </a>
-                
+
             </div>
         </div>
 
@@ -204,8 +80,8 @@
         <div class="section-card">
             <div class="d-flex justify-content-between align-items-center">
                 <h3 class="section-title">41 Days Projects Challenge</h3>
-                <button class="btn btn-sm btn-add-new">
-                    <i class="fas fa-plus me-1"></i> Add Project
+                <button class="btn btn-sm btn-add-daily">
+                    update daily
                 </button>
             </div>
             <div class="task-grid">
@@ -222,7 +98,7 @@
                     <span class="task-number">Project 3</span>
                 </a> -->
             </div>
-            </div>
+        </div>
 
 
 
@@ -232,10 +108,10 @@
             <div class="d-flex justify-content-between align-items-center">
                 <h3 class="section-title">Assignments Repository</h3>
                 <button class="btn btn-sm btn-add-new">
-                    <i class="fas fa-plus me-1"></i> Add Assignment
+                    Soon Adding Assignmentd
                 </button>
             </div>
-            
+
             <!-- March 2025 - Week 1 -->
             <div class="week-card">
                 <div class="week-header collapsed" data-bs-toggle="collapse" data-bs-target="#week1">
@@ -315,21 +191,43 @@
 
             <!-- April 2025 - Week 3 -->
             <div class="week-card">
-                <div class="week-header collapsed" data-bs-toggle="collapse" data-bs-target="#week2">
+                <div class="week-header collapsed" data-bs-toggle="collapse" data-bs-target="#week3">
                     <h5 class="mb-0">April 2025 - Week 3</h5>
                     <div>
                         <span class="badge bg-primary">2 Tasks</span>
                         <i class="fas fa-chevron-down collapse-icon ms-2"></i>
                     </div>
                 </div>
-                <div class="collapse" id="week2">
+                <div class="collapse" id="week3">
                     <div class="p-3">
                         <div class="task-grid">
-                            <a href="DOM/SimpleWeatherapp/index.html" class="task-btn">Task 1 <br /> Simple weather app</a>
-                            <a href="studentRegisterationForm/index.html" class="task-btn" disabled>Task 2 <br>student register</a>
-                            <a href="completeUserRegistration/index.html" class="task-btn" disabled>Task 3 <br>student register <br> with <br> localStorage</a>
+                            <a href="DOM/SimpleWeatherapp/index.html" class="task-btn">Task 1 <br /> Simple weather
+                                app</a>
+                            <a href="studentRegisterationForm/index.html" class="task-btn" disabled>Task 2 <br>student
+                                register</a>
+                            <a href="completeUserRegistration/index.html" class="task-btn" disabled>Task 3 <br>student
+                                register <br> with <br> localStorage</a>
                             <button class="task-btn" disabled>Task 3</button>
                             <button class="task-btn" disabled>Task 4</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- April 2025 - Week 4 -->
+            <div class="week-card">
+                <div class="week-header collapsed" data-bs-toggle="collapse" data-bs-target="#week4">
+                    <h5 class="mb-0">April 2025 - Week 4</h5>
+                    <div>
+                        <span class="badge bg-primary">1 Task</span>
+                        <i class="fas fa-chevron-down collapse-icon ms-2"></i>
+                    </div>
+                </div>
+                <div class="collapse" id="week4">
+                    <div class="p-3">
+                        <div class="task-grid">
+                            <a href="part-two-complete-user-registration-todo/index.html" class="task-btn">Task 1 <br /> Simple Todo with localStorage & login
+                                app</a>
                         </div>
                     </div>
                 </div>
@@ -341,7 +239,7 @@
             <div class="d-flex justify-content-between align-items-center">
                 <h3 class="section-title">Practice Zone</h3>
                 <button class="btn btn-sm btn-add-new">
-                    <i class="fas fa-plus me-1"></i> Add Practice
+                    Update soon
                 </button>
             </div>
             <div class="task-grid">
@@ -365,12 +263,14 @@
     <footer class="bg-dark text-white py-4 mt-5">
         <div class="container text-center">
             <div class="mb-3">
-                <a href="https://github.com/rafideveloper7" class="text-white mx-3"><i class="fab fa-github fa-lg"></i></a>
+                <a href="https://github.com/rafideveloper7" class="text-white mx-3"><i
+                        class="fab fa-github fa-lg"></i></a>
                 <a href="rafideveloper7@gmail.com" class="text-white mx-3"><i class="fa-solid fa-envelope"></i></a>
-                <a href="https://www.linkedin.com/in/rafi-ullah-38b522339/" class="text-white mx-3"><i class="fab fa-linkedin fa-lg"></i></a>
+                <a href="https://www.linkedin.com/in/rafi-ullah-38b522339/" class="text-white mx-3"><i
+                        class="fab fa-linkedin fa-lg"></i></a>
             </div>
             <p>&copy; 2025 My Code Vault. All rights reserved.<br>
-            SMIT Web & Mobile Development - Batch 3</p>
+                SMIT Web & Mobile Development - Batch 3</p>
         </div>
     </footer>
 
@@ -378,11 +278,12 @@
     <script>
         // Simple script to handle adding new items
         document.querySelectorAll('.btn-add-new').forEach(btn => {
-            btn.addEventListener('click', function() {
+            btn.addEventListener('click', function () {
                 const section = this.closest('.section-card').querySelector('h3').textContent;
                 alert(`"Add New" functionality for ${section} would be implemented here with backend integration`);
             });
         });
     </script>
 </body>
+
 </html>
