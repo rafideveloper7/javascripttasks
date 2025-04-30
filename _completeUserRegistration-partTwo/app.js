@@ -74,52 +74,75 @@ function logout() {
 
 // Todo List Functionality
 
-// Wait for DOM to be fully loaded
 document.addEventListener("DOMContentLoaded", function () {
     const addTaskButton = document.getElementById("addTaskButton");
     const taskInput = document.getElementById("todoInput");
     const taskList = document.getElementById("todoList");
 
-    function addTodo() {
-        const taskText = taskInput.value.trim();
+    // Get the logged-in user
+    const currentUser = JSON.parse(localStorage.getItem("currentUser"));
 
-        if (taskText === "") {
+    // If no user is logged in, send to login page
+    if (!currentUser) {
+        window.location.href = "../login-page/index.html";
+        return;
+    }
+
+    // Create a unique key using user's email
+    const storageKey = "tasks_" + currentUser.email;
+
+    // Get existing tasks from localStorage (or empty array if none)
+    let tasks = JSON.parse(localStorage.getItem(storageKey)) || [];
+
+    // Show tasks on page
+    function showTasks() {
+        taskList.innerHTML = ""; // Clear list first
+
+        tasks.forEach(function (task, index) {
+            const li = document.createElement("li");
+            li.textContent = task;
+            li.className = "list-group-item d-flex justify-content-between";
+
+            const deleteBtn = document.createElement("button");
+            deleteBtn.textContent = "Delete";
+            deleteBtn.className = "btn btn-sm btn-danger";
+
+            // Remove task when delete button clicked
+            deleteBtn.addEventListener("click", function () {
+                tasks.splice(index, 1); // remove from array
+                localStorage.setItem(storageKey, JSON.stringify(tasks)); // save updated tasks
+                showTasks(); // refresh list
+            });
+
+            li.appendChild(deleteBtn);
+            taskList.appendChild(li);
+        });
+    }
+
+    // Add task function
+    function addTask() {
+        const newTask = taskInput.value.trim();
+
+        if (newTask === "") {
             alert("Please enter a task.");
             return;
         }
 
-        // Create list item
-        const taskItem = document.createElement("li");
-        taskItem.classList.add("list-group-item", "d-flex", "justify-content-between", "align-items-center");
-        taskItem.textContent = taskText;
-
-        // Create delete button
-        const deleteButton = document.createElement("button");
-        deleteButton.textContent = "Delete";
-        deleteButton.classList.add("btn", "btn-sm", "btn-danger");
-
-        // Delete task on button click
-        deleteButton.addEventListener("click", function () {
-            taskList.removeChild(taskItem);
-        });
-
-        // Add delete button to list item
-        taskItem.appendChild(deleteButton);
-        taskList.appendChild(taskItem);
-
-        // Clear the input
-        taskInput.value = "";
+        tasks.push(newTask); // add to array
+        localStorage.setItem(storageKey, JSON.stringify(tasks)); // save to localStorage
+        taskInput.value = ""; // clear input
+        showTasks(); // show updated list
     }
 
-    // Add event listeners
-    addTaskButton.addEventListener("click", addTodo);
+    // Add click and Enter key events
+    addTaskButton.addEventListener("click", addTask);
     taskInput.addEventListener("keypress", function (e) {
         if (e.key === "Enter") {
-            addTodo();
+            addTask();
         }
     });
+
+    // Show saved tasks when page loads
+    showTasks();
 });
-
-
-
 
