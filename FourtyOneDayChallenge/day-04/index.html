@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Digital Clock</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+  <div class="bubbles">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
+  <div class="clock-container">
+    <h1>Digital Clock ⏰</h1>
+    <div id="clock">00:00:00</div>
+    <div id="date">
+      <span id="day">day</span>,
+      <span id="month">month</span>
+      <span id="year">year</span>
+    </div>
+    <button onclick="toggleFormat()">Switch to 24 Hour</button>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+
+</html>
