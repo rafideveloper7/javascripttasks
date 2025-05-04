@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Page</title>
+    <!-- css  -->
+    <link rel="stylesheet" href="../css/styles.css" type="text/css">
+    <!-- bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq"
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+    <div class="container vh-100 d-flex justify-content-center align-items-center">
+        <div class="card card-width  border-1 border-primary shadow-lg">
+            <div class="card-header text-center">
+                <h2>Register</h2>
+                <p>Register to get full access!</p>
+            </div>
+            <form class="card-body" id="registration-form">
+                <div class="mb-3">
+                    <label for="fullname" class="form-label fs-4">Full Name</label>
+                    <input type="text" class="form-control" name="fullname" id="fullname" />
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label fs-4">Email address</label>
+                    <input type="email" class="form-control fs-4" name="email" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label fs-4">Password</label>
+                    <input type="password" class="form-control" name="password" id="exampleInputPassword1">
+                </div>
+
+                <input type="submit" class="btn btn-primary w-100 fs-4">
+            </form>
+
+            <div class="card-footer text-center">
+                <p>Don't have an account? <a href="../index.html" class="text-decoration-none  fs-5">Register</a></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/register.js"></script>
+</body>
+
+</html>
