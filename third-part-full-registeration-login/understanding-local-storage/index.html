@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Local Storage Example</title>
+</head>
+<body>
+    <h1>Welcome!</h1>
+    <div id="greeting"></div>
+    <label for="nameInput">Enter your name: </label>
+    <input type="text" id="nameInput">
+    <button onclick="saveName()">Save Name</button>
+    <button onclick="displayName()">Show Name</button>
+    <button onclick="clearName()">Clear Name</button>
+
+    <script>
+        // Yahan hum Local Storage se related code likhenge
+
+        // 1. Data Save Karna (Function: saveName)
+        function saveName() {
+            // Get the name entered by the user from the input box
+            let name = document.getElementById("nameInput").value;
+
+            // Local Storage mein data ko 'key' aur 'value' ke pair mein save karte hain
+            // Yahan 'userName' hamara 'key' hai aur 'name' (jo user ne enter kiya) 'value' hai
+            localStorage.setItem('userName', name);
+
+            // User ko thoda batane ke liye ki save ho gaya
+            alert('Name saved!');
+        }
+
+        // 2. Data Display Karna (Function: displayName)
+        function displayName() {
+            // Local Storage se 'userName' naam ki 'key' se value nikalte hain
+            let savedName = localStorage.getItem('userName');
+
+            // Agar koi naam save hai toh usko greeting wale div mein dikhao
+            if (savedName) {
+                document.getElementById("greeting").innerText = 'Hello, ' + savedName + '!';
+            } else {
+                document.getElementById("greeting").innerText = 'Please enter your name.';
+            }
+        }
+
+        // Jab page load ho toh dekho kya koi naam pehle se save hai
+        window.onload = displayName;
+
+        // 3. Data Clear Karna (Function: clearName)
+        function clearName() {
+            // 'userName' naam ki key se saved data ko Local Storage se hata do
+            localStorage.removeItem('userName');
+
+            // Greeting ko reset kar do aur user ko batao
+            document.getElementById("greeting").innerText = 'Name cleared.';
+            document.getElementById("nameInput").value = ''; // Input box bhi khali kar do
+            alert('Name cleared!');
+        }
+    </script>
+</body>
+</html>
