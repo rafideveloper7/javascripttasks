@@ -1,59 +1,274 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Local Storage Example</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>📝 To-Do App Code Explained A–Z</title>
+  <style>
+    /* ─────────────────────────────────────────────────────────────
+       GLOBAL RESET & BODY
+    ───────────────────────────────────────────────────────────── */
+    * { margin:0; padding:0; box-sizing:border-box }
+    body {
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      background: #28292b;
+      color: #333;
+      line-height: 1.6;
+      padding: 20px;
+    }
+    h1 { text-align:center; color:#005f97; margin-bottom:10px }
+    p.subtitle {
+      text-align:center;
+      margin-bottom:40px;
+      color:#555;
+    }
+
+    /* ─────────────────────────────────────────────────────────────
+       CONTAINER FOR EXPLANATION BLOCKS
+    ───────────────────────────────────────────────────────────── */
+    .explanation {
+      max-width:800px;
+      margin:0 auto;
+    }
+    .code-block {
+      background:#4e485e;
+      color: #e8f4ff;
+      border-left:4px solid #005f97;
+      padding:20px;
+      margin-bottom:25px;
+      box-shadow:0 4px 6px rgba(0,0,0,0.1);
+      border-radius:4px;
+    }
+    .code-block h2 {
+      font-size:1.3rem;
+      color:#dac8c8;
+      margin-bottom:10px;
+    }
+    .code-block pre {
+      background:#6a6b6b;
+      padding:12px;
+      overflow-x:auto;
+      border-radius:4px;
+      margin-bottom:12px;
+    }
+    .code-block p {
+      margin-bottom:8px;
+    }
+    .code-block p.tip {
+      background:#182531;
+      border-left:3px solid #0077cc;
+      padding:8px 12px;
+      border-radius:3px;
+    }
+    footer {
+      text-align:center;
+      margin-top:50px;
+      color:#777;
+      font-size:0.9rem;
+    }
+  </style>
 </head>
 <body>
-    <h1>Welcome!</h1>
-    <div id="greeting"></div>
-    <label for="nameInput">Enter your name: </label>
-    <input type="text" id="nameInput">
-    <button onclick="saveName()">Save Name</button>
-    <button onclick="displayName()">Show Name</button>
-    <button onclick="clearName()">Clear Name</button>
 
-    <script>
-        // Yahan hum Local Storage se related code likhenge
+  <h1>JavaScript To-Do App: Code Explained A→Z</h1>
+  <p class="subtitle">Every line, every function, every tip—straight up.</p>
 
-        // 1. Data Save Karna (Function: saveName)
-        function saveName() {
-            // Get the name entered by the user from the input box
-            let name = document.getElementById("nameInput").value;
+  <div class="explanation" id="explanation"></div>
 
-            // Local Storage mein data ko 'key' aur 'value' ke pair mein save karte hain
-            // Yahan 'userName' hamara 'key' hai aur 'name' (jo user ne enter kiya) 'value' hai
-            localStorage.setItem('userName', name);
+  <footer>Made with 💻 &amp; ☕ by Rafi Ullah</footer>
 
-            // User ko thoda batane ke liye ki save ho gaya
-            alert('Name saved!');
-        }
+  <script>
+    // ─────────────────────────────────────────────────────────────
+    // Explanation Data: title, code, explanation, reason, tip
+    // ─────────────────────────────────────────────────────────────
+    const explanationData = [
+      {
+        title: "1. Grabbing the Form & Inputs",
+        code: `const todoForm  = document.getElementById("todo-form");
+const inputText  = document.getElementById("input-text");
+const addTaskBtn = document.getElementById("add-task");`,
+        explanation: "Fetches the form element and the text input where the user types tasks, plus the add-task button, so we can hook into user actions.",
+        reason: "These references let us listen for form submissions and read the task text.",
+        tip: "Cache DOM queries in constants to avoid repeated lookups and boost performance."
+      },
+      {
+        title: "2. Grabbing User & Task List Elements",
+        code: `const usernameDisplay = document.getElementById("username");
+const logoutBtn       = document.getElementById("logout-btn");
+const userInfoAlert   = document.getElementById("alert-to-userInfo");
+const taskList        = document.getElementById("task-list");`,
+        explanation: "Gets the UI spots for showing the user’s name, a logout button, an alert trigger, and the list (UL) that will hold tasks.",
+        reason: "Allows us to dynamically update the username, log out, show user info, and render tasks.",
+        tip: "Use semantic IDs that read like English to make your code self-documenting."
+      },
+      {
+        title: "3. Load Current User from localStorage",
+        code: `const currentUser = JSON.parse(localStorage.getItem("currentUser")) || {};
+usernameDisplay.innerText = currentUser.fullName || "Guest";
+const usermail = currentUser.email;`,
+        explanation: "Pulls the logged-in user’s object from localStorage (if it exists), then displays their full name or ‘Guest’, and stores their email.",
+        reason: "Keeps user data persistent between page loads and shows who’s logged in.",
+        tip: "Guard JSON.parse with a fallback (`|| {}`) to avoid errors if nothing’s stored."
+      },
+      {
+        title: "4. Load Existing Todos (or Start Fresh)",
+        code: `let userToDos = JSON.parse(localStorage.getItem("userTodos")) || [];`,
+        explanation: "Retrieves the saved array of tasks from localStorage or initializes an empty array if none are found.",
+        reason: "Ensures tasks persist across reloads and sessions.",
+        tip: "Always `JSON.stringify`/`JSON.parse` when storing arrays/objects in localStorage."
+      },
+      {
+        title: "5. Save Todos Helper",
+        code: `function saveTodos() {
+  localStorage.setItem("userTodos", JSON.stringify(userToDos));
+}`,
+        explanation: "Encapsulates the logic to write our in-memory `userToDos` array back into localStorage.",
+        reason: "Keeps save logic DRY—call `saveTodos()` whenever tasks change.",
+        tip: "Having a single save function simplifies future changes (e.g., if you switch to an API)."
+      },
+      {
+        title: "6. Style a Task Item",
+        code: `function styleListItem(listItem) {
+  listItem.style.cssText = \`
+    width:100%;
+    color:darkblue;
+    font-size:24px;
+    background-color:lightblue;
+    margin:10px 0;
+    padding:10px;
+    border:1px solid #ccc;
+    border-radius:8px;
+    list-style:none;
+    box-shadow:0 4px 10px rgba(0,0,0,0.3);
+    display:flex;
+    justify-content:space-between;
+    align-items:center;\`;
+}`,
+        explanation: "A helper that applies inline CSS to each `<li>` so every task looks consistent.",
+        reason: "Centralizes styling logic—update here, and all list items update.",
+        tip: "For larger projects, prefer CSS classes over inline styles for maintainability."
+      },
+      {
+        title: "7. Auth Check & Redirect",
+        code: `if (!currentUser.email) {
+  window.location.href = "../index.html";
+}`,
+        explanation: "If there’s no logged-in user email, send the visitor back to the login page.",
+        reason: "Prevents unauthorized access to the tasks page.",
+        tip: "Front-end redirects are UX helpers—always enforce auth on your server too."
+      },
+      {
+        title: "8. Render Saved Todos",
+        code: `userToDos.forEach(todo => {
+  const li = document.createElement('li');
+  li.textContent = todo;
+  styleListItem(li);
+  // ...add edit/delete buttons...
+  taskList.appendChild(li);
+});`,
+        explanation: "Loops through each saved task and builds an `<li>` with text and buttons, then appends it to the UL.",
+        reason: "Restores the task list UI on page load.",
+        tip: "If your list grows huge, consider virtual scrolling or pagination to keep performance smooth."
+      },
+      {
+        title: "9. Edit & Delete Button Logic",
+        code: `// Edit
+editBtn.addEventListener('click', () => {
+  const newText = prompt("Edit your task:", oldText);
+  if (newText?.trim()) {
+    taskNode.nodeValue = newText.trim();
+    updateTodosInLocalStorage();
+  }
+});
+// Delete
+deleteBtn.addEventListener('click', () => {
+  listItem.remove();
+  updateTodosInLocalStorage();
+});`,
+        explanation: "Adds click handlers that let users modify or remove tasks instantly, then syncs changes to storage.",
+        reason: "Provides dynamic interactivity without page reloads.",
+        tip: "Use optional chaining (`?.`) to guard against undefined nodes in modern JS."
+      },
+      {
+        title: "10. Show User Info Popup",
+        code: `userInfoAlert.addEventListener('click', () => {
+  alert(\`Name: \${usernameDisplay.innerText}\\nEmail: \${usermail}\`);
+});`,
+        explanation: "When the info icon is clicked, pops up a native alert showing the user’s name and email.",
+        reason: "Gives a quick, no-extra-UI way to view profile details.",
+        tip: "Swap `alert` for a custom modal for a smoother, styled experience."
+      },
+      {
+        title: "11. Logout Function",
+        code: `logoutBtn.addEventListener("click", () => {
+  localStorage.removeItem("currentUser");
+  window.location.href = "../index.html";
+});`,
+        explanation: "Clears the current user from localStorage and redirects to login, effectively logging out.",
+        reason: "Simple client-side logout to reset session data.",
+        tip: "Also clear any user-specific data (like `userTodos`) if you don’t want cross-user leakage."
+      },
+      {
+        title: "12. Handle Form Submit → Add Task",
+        code: `todoForm.addEventListener('submit', e => {
+  e.preventDefault();
+  const text = inputText.value.trim();
+  if (!text) return alert("Please add a task!");
+  if (text.length > 15)
+    return alert(\`Max 15 chars—you entered \${text.length}.\`);
+  addTaskToList(text);
+  inputText.value = "";
+});`,
+        explanation: "Intercepts the form’s submit event, validates the input, then calls the function to add the task.",
+        reason: "Prevents page reload and ensures clean, valid task entries.",
+        tip: "Keep validation logic clear—consider moving complex checks into helpers or regex."
+      },
+      {
+        title: "13. addTaskToList() Function",
+        code: `function addTaskToList(task) {
+  console.log("Adding:", task);
+  const li = document.createElement('li');
+  styleListItem(li);
+  li.appendChild(document.createTextNode(task));
+  // ...create buttons...
+  userToDos.push(task);
+  saveTodos();
+}`,
+        explanation: "Creates a new `<li>`, styles it, adds text & buttons, pushes to the array, and saves.",
+        reason: "Encapsulates all steps for adding a fresh task in one place.",
+        tip: "If this grows, break out button creation into its own helper functions."
+      },
+      {
+        title: "14. updateTodosInLocalStorage() Helper",
+        code: `function updateTodosInLocalStorage() {
+  const arr = Array.from(taskList.children)
+    .map(li => li.firstChild.nodeValue.trim());
+  userToDos = arr;
+  saveTodos();
+}`,
+        explanation: "Reads the current DOM list items, rebuilds the `userToDos` array, and writes it to storage.",
+        reason: "Keeps the in-memory array and localStorage in sync after edits/deletes.",
+        tip: "Always mirror your UI state and data state to avoid bugs when reloading."
+      }
+    ];
 
-        // 2. Data Display Karna (Function: displayName)
-        function displayName() {
-            // Local Storage se 'userName' naam ki 'key' se value nikalte hain
-            let savedName = localStorage.getItem('userName');
+    // ─────────────────────────────────────────────────────────────
+    // Render all blocks into the page
+    // ─────────────────────────────────────────────────────────────
+    const container = document.getElementById("explanation");
+    explanationData.forEach(item => {
+      const block = document.createElement("div");
+      block.className = "code-block";
+      block.innerHTML = `
+        <h2>${item.title}</h2>
+        <pre><code>${item.code}</code></pre>
+        <p><strong>Explanation:</strong> ${item.explanation}</p>
+        <p><strong>Why:</strong> ${item.reason}</p>
+        <p class="tip"><strong>Tip:</strong> ${item.tip}</p>
+      `;
+      container.appendChild(block);
+    });
+  </script>
 
-            // Agar koi naam save hai toh usko greeting wale div mein dikhao
-            if (savedName) {
-                document.getElementById("greeting").innerText = 'Hello, ' + savedName + '!';
-            } else {
-                document.getElementById("greeting").innerText = 'Please enter your name.';
-            }
-        }
-
-        // Jab page load ho toh dekho kya koi naam pehle se save hai
-        window.onload = displayName;
-
-        // 3. Data Clear Karna (Function: clearName)
-        function clearName() {
-            // 'userName' naam ki key se saved data ko Local Storage se hata do
-            localStorage.removeItem('userName');
-
-            // Greeting ko reset kar do aur user ko batao
-            document.getElementById("greeting").innerText = 'Name cleared.';
-            document.getElementById("nameInput").value = ''; // Input box bhi khali kar do
-            alert('Name cleared!');
-        }
-    </script>
 </body>
 </html>
