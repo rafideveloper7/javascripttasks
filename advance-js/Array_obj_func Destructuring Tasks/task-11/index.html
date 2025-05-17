@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>task - 11</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f5f5;
+            text-align: center;
+        }
+
+        .code-box {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 90%;
+            max-width: 500px;
+            margin: 20px auto;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #333;
+            background-color: #d3d3d3;
+            font-family: monospace;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: left;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Function Parameter Destructuring - Task 11</h1>
+    <h2>11. Destructure in Function Parameters (Object)
+    </h2>
+    <p>Create a function that accepts an object and destructures name and role.
+    </p>
+
+    <div class="code-box">
+        <div class="code">
+            <code>
+            // 11. Destructure in Function Parameters (Object) <br />
+            // Create a function that accepts an object and destructures name and role. <br />
+                <br />
+            function greet(user) { <br />
+            // Destructure inside parameters or body <br />
+            const {name, role} = user; // i think similar to obj destructuring <br />
+            console.log(`🚀 Your name : ${name} and Your role is : ${role}`) <br />
+            } <br />
+            <br />
+            greet({ name: "M Osama", role: "Teacher" }); <br />
+            </code>
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+
+</html>

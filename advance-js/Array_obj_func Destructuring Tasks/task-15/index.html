@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>task - 15</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f5f5;
+            text-align: center;
+        }
+
+        .code-box {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 90%;
+            max-width: 500px;
+            margin: 20px auto;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #333;
+            background-color: #d3d3d3;
+            font-family: monospace;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: left;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Function Parameter Destructuring - Task 15</h1>
+    <h2>15. Destructure Object with Array Property</h2>
+    <p>Destructure skills from the object and get the first skill.</p>
+
+    <div class="code-box">
+        <div class="code">
+            <code>
+            // 15. Destructure Object with Array Property <br />
+            // Destructure skills from the object and get the first skill. <br />
+            <br />
+            const developer = { <br />
+            name: "Ali", <br />
+            skills: ["JavaScript", "React", "Node"] <br />
+            }; <br />
+            <br />
+            // here destructuring array from obj <br />
+            const {skills} = developer; <br />
+            <br />
+            // bahi skills ko nekal do array say <br />
+            const [firstSkill, secondSkill, thirdSkill] = skills; <br />
+            <br />
+            // and consoling first skill <br />
+            console.log("🚀 ~ first skill is : ", firstSkill) <br />
+            <br />
+            <br />
+            <br />
+            // Note 📝 <br />
+            // i use shortcut command for console thats why in all tasks shows similar like > "🚀 ~ first skill is : " <br />
+            etc
+            // command is ctrl + Alt + l <br />
+            </code>
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+
+</html

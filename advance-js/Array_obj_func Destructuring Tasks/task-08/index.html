@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>task - 08</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f5f5;
+            text-align: center;
+        }
+
+        .code-box {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 90%;
+            max-width: 500px;
+            margin: 20px auto;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #333;
+            background-color: #d3d3d3;
+            font-family: monospace;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: left;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Array Destructuring Tasks - Task 08</h1>
+    <h2>8. Default Values in Object Destructuring
+    </h2>
+    <p>Destructure title and rating with default value 5.
+    </p>
+
+    <div class="code-box">
+        <div class="code">
+            <code>
+            // 8. Default Values in Object Destructuring
+            // Destructure title and rating with default value 5.
+
+            const book = { title: "JavaScript Basics" };
+
+            const {title, rating = 5} = book; // added new value in book object rating
+            console.log(`🚀 ~ title : ${title}`)
+            console.log(`🚀 ~ rating : ${rating}`)
+            </code>
+
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+
+</html>

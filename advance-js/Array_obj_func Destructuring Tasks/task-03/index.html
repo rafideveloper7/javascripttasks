@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>task - 03</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f5f5;
+            text-align: center;
+        }
+
+        .code-box {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 90%;
+            max-width: 500px;
+            margin: 20px auto;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #333;
+            background-color: #d3d3d3;
+            font-family: monospace;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: left;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Array Destructuring Tasks - Task 03</h1>
+    <h2>Destructuring with Default Values</h2>
+    <p>Destructure three values from colors, provide default if a value is missing.</p>
+    <div class="code-box">
+        <div class="code">
+            <code>
+                // 3. Destructuring with Default Values <br />
+                // Destructure three values from colors, provide default if a value is missing. <br /> <br />
+                
+                
+                const colors = []; // agar ye empty hua tho defaults colors show honge , second and third and if value exist <br />
+                it will shows <br /><br />
+                const [first, second = "green", third = "yellow", fourth = "blue"] = colors; <br /><br />
+                
+                console.log("First:", colors[0]); // red <br />
+                console.log("Second:", second); // green (default) <br />
+                console.log("Third:", third); // yellow (default) <br />
+                console.log("Fourth:", fourth); // yellow (blue) <br />
+            </code>
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+
+</html>

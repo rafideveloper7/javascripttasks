@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>task - 14</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f5f5;
+            text-align: center;
+        }
+
+        .code-box {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 90%;
+            max-width: 500px;
+            margin: 20px auto;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #333;
+            background-color: #d3d3d3;
+            font-family: monospace;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: left;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Function Parameter Destructuring - Task 14</h1>
+    <h2>14. Destructure from Array of Objects</h2>
+    <p>Destructure the title of the first two posts.</p>
+
+    <div class="code-box">
+        <div class="code">
+            <code>
+            // 14. Destructure from Array of Objects <br />
+            // Destructure the title of the first two posts. <br />
+                <br />
+            const posts = [ <br />
+            { id: 1, title: "Hello" }, <br />
+            { id: 2, title: "World" }, <br />
+            // { id: 3, title: "of" }, <br />
+            // { id: 4, title: "coding" } <br />
+            ]; <br />
+                <br />
+            // here pehle 1st obj ke then 2nd obj ke title ko target karega <br />
+            const [{ title: firstTitle }, {title: secondTitle } /*, {title: tirdTitle }, {title: fourthTitle }*/] = <br />
+            posts; <br />
+                <br />
+            console.log("🚀 ~ firstTitle:", firstTitle) <br />
+            console.log("🚀 ~ secondTitle:", secondTitle) <br />
+            // console.log("🚀 ~ tirdTitle:", tirdTitle) <br />
+            // console.log("🚀 ~ fourthTitle:", fourthTitle) <br />
+                </code>
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+
+</html

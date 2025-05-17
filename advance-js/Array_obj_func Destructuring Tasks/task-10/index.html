@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>task - 10</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f5f5;
+            text-align: center;
+        }
+
+        .code-box {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 90%;
+            max-width: 500px;
+            margin: 20px auto;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #333;
+            background-color: #d3d3d3;
+            font-family: monospace;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: left;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Array Destructuring Tasks - Task 10</h1>
+    <h2>10. Partial Object Destructuring
+    </h2>
+    <p>Destructure only brand and model from the object.
+    </p>
+
+    <div class="code-box">
+        <div class="code">
+            <code>
+            // 10. Partial Object Destructuring <br />
+            // Destructure only brand and model from the object. <br />
+            <br />
+            const laptop = { <br />
+            brand: "Dell", <br />
+            model: "XPS 13", <br />
+            price: 250000, <br />
+            color: "Silver" <br />
+            }; <br />
+            // Your code here <br />
+            <br />
+            const {brand, model} = laptop; <br />
+            const {fisrtValue, secondValue} = laptop; <br />
+            console.log(`🚀 ~ brand : ${brand} and ~ modal : ${model}`) <br />
+            <br />
+            // can;t use other name to call obj data like array <br />
+            // console.log(`🚀 ~ brand : ${fisrtValue} and ~ modal : ${secondValue}`); <br />
+            </code>
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+
+</html>
