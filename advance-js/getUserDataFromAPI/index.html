@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get User Data From API</title>
+    <link rel="stylesheet" href="styles.css" type="text/css">
+</head>
+<body>
+    <div class="container">
+        <h1>Get User DAta From API</h1>
+
+        <form id="form" class="search-form">
+            <input id="search-input" class="search" type="search" placeholder="user ID">
+            <button id="search-button" type="submit">search </button>
+        </form>
+
+        <div class="userData">
+            <h2>User Info :</h2>
+            <ul id="user-info">
+                <!-- data like ID:, Name:, Email: -->
+            </ul>
+        </div>
+        <!-- show user posts that how many post user have -->
+        <div class="get-post">
+            <h2>Posts :</h2>
+            <div id="user-posts">
+                <!-- post will shows here -->
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

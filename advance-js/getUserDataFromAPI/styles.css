@@ -1,0 +1,201 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+    color: #222;
+    min-height: 100vh;
+    line-height: 1.7;
+}
+
+.container {
+    max-width: 700px;
+    margin: 40px auto;
+    padding: 32px 24px;
+    background: #fff;
+    border-radius: 18px;
+    box-shadow: 0 6px 32px rgba(0, 0, 0, 0.08);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.container h1 {
+    text-align: center;
+    margin-bottom: 28px;
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #2563eb;
+    letter-spacing: 1px;
+}
+
+form {
+    display: flex;
+    gap: 14px;
+    justify-content: center;
+    margin-bottom: 28px;
+    width: 100%;
+    max-width: 600px;
+}
+
+form input[type="search"] {
+    padding: 12px 16px;
+    border: 1.5px solid #cbd5e1;
+    border-radius: 8px;
+    width: 260px;
+    font-size: 1rem;
+    background: #f1f5f9;
+    transition: border-color 0.2s;
+}
+
+form input[type="search"]:focus {
+    border-color: #2563eb;
+    outline: none;
+}
+
+form button {
+    padding: 12px 28px;
+    background: linear-gradient(90deg, #2563eb 60%, #38bdf8 100%);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(56, 189, 248, 0.08);
+    transition: background 0.2s, transform 0.1s;
+}
+
+form button:hover {
+    background: linear-gradient(90deg, #1d4ed8 60%, #0ea5e9 100%);
+    transform: translateY(-2px) scale(1.03);
+}
+
+.userData{
+    width: 100%;
+    background: #f9fafb;
+    border: 1.5px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 20px 18px;
+    margin-bottom: 24px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+}
+.get-post {
+    background: #f9fafb;
+    border: 1.5px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 20px 18px;
+    margin-bottom: 24px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+}
+
+
+.userData ul,
+.get-post ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.userData ul li {
+    border-bottom: 1px solid #e5e7eb;
+    padding: 10px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 1.1rem;
+    color: #374151;
+    transition: background 0.15s;
+}
+.get-post ul li {
+    border-bottom: 1px solid #e5e7eb;
+    padding: 10px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 1.1rem;
+    color: #374151;
+    background-color: #8bc1da;
+    transition: background 0.15s;
+}
+
+.get-post ul li span {
+    color: #fff;
+    font-weight: 600;
+    font-size: 1rem;
+    margin: 0 10px;
+    border-right: 3px solid #fff;
+    padding: 0 10px;
+    text-align: left;
+} 
+
+ .userData ul li:hover,
+.get-post ul li:hover {
+    background: #a6abb0;
+    border-radius: 6px;
+}
+
+
+.post-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 10px 0;
+    font-size: 1.1rem;
+    color: #374151;
+    transition: background 0.15s;
+}
+
+.post-card {
+    height: auto;
+    width: 100%;
+    max-width: 600px;
+    background: #f9fafb;
+    border: 1.5px solid #bec1c5;
+    border-radius: 12px;
+    padding: 20px 18px;
+    margin: 10px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+}
+
+.post-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #2563eb;
+    margin-bottom: 10px;
+}
+
+.post-body {
+    font-size: 1rem;
+    color: #374151;
+    margin-bottom: 10px;
+}
+
+@media (max-width: 600px) {
+    .container {
+        padding: 16px 12px;
+        margin: 20px auto;
+        max-width: 85%;
+        gap: 10px;
+
+    }
+
+    .container h1 {
+        font-size: 1.8rem;
+        margin-bottom: 20px;
+    }
+
+    form {
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+        justify-content: center;
+    }
+}
