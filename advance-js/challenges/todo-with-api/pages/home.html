@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | Todo Premium</title>
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Mobile Header -->
+    <div class="mobile-header">
+        <div class="mobile-logo">TodoPremium</div>
+        <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="user-profile">
+            <div class="avatar" id="userAvatar">JD</div>
+            <h3 id="username">John Doe</h3>
+            <p id="userEmail">john@example.com</p>
+        </div>
+        
+        <nav class="sidebar-nav">
+            <ul>
+                <li class="active">
+                    <i class="fas fa-tasks"></i>
+                    <span>My Tasks</span>
+                </li>
+                <li>
+                    <i class="fas fa-calendar-alt"></i>
+                    <span>Calendar</span>
+                </li>
+                <li>
+                    <i class="fas fa-cog"></i>
+                    <span>Settings</span>
+                </li>
+            </ul>
+        </nav>
+        
+        <button id="logout" class="logout-btn">
+            <i class="fas fa-sign-out-alt"></i>
+            <span>Logout</span>
+        </button>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <header class="content-header">
+            <h1>Today's Tasks</h1>
+            <div class="date-display" id="currentDate"></div>
+        </header>
+        
+        <div class="todo-container">
+            <div class="add-todo">
+                <input type="text" id="newTodo" placeholder="Add new task...">
+                <button id="addTodoBtn">
+                    <i class="fas fa-plus"></i>
+                </button>
+            </div>
+            
+            <div class="todo-stats">
+                <div class="stat-card">
+                    <span class="stat-number" id="totalTasks">0</span>
+                    <span class="stat-label">Total</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number" id="completedTasks">0</span>
+                    <span class="stat-label">Completed</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number" id="pendingTasks">0</span>
+                    <span class="stat-label">Pending</span>
+                </div>
+            </div>
+            
+            <ul class="todo-list" id="todos"></ul>
+        </div>
+    </main>
+
+    <script src="../js/dashboard.js"></script>
+</body>
+</html>

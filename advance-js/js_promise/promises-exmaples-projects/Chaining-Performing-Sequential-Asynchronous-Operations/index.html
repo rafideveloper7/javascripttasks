@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Understanding JavaScript Promises</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Base Styles */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6; /* Light gray background */
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column; /* Stack h1 and main-container */
+            align-items: center;
+            justify-content: center;
+            padding: 1rem; /* p-4 */
+        }
+
+        /* Global H1 Styling */
+        h1 {
+            color: #0055ff;
+            font-size: 2.5rem; /* Larger font size for main title */
+            font-weight: 700;
+            margin-bottom: 2rem; /* Space below the title */
+            text-align: center;
+        }
+
+        /* Main Container */
+        .main-container {
+            background-color: #ffffff;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* shadow-xl */
+            border-radius: 1rem; /* rounded-2xl */
+            padding: 1.5rem; /* p-6 */
+            width: 100%; /* Ensure it takes full width up to max-width */
+            max-width: 80rem; /* max-w-7xl */
+            display: flex;
+            flex-direction: column;
+            gap: 2rem; /* gap-8 */
+            border: 5px solid #0055ff; /* Added border as per user's previous code */
+        }
+
+        /* Headings */
+        h2 {
+            font-weight: 700; /* font-bold */
+            color: #1f2937; /* text-gray-800 */
+            margin-bottom: 1.5rem; /* mb-6 */
+            text-align: center;
+            font-size: 1.875rem; /* Default size for h2 */
+        }
+
+        h3 {
+            font-weight: 600; /* font-semibold */
+            color: #1f2937; /* text-gray-800 */
+            margin-bottom: 0.75rem; /* mb-3 */
+            font-size: 1.5rem; /* Default size for h3 */
+        }
+
+        /* Code Container */
+        .code-container {
+            background-color: #1f2937; /* bg-gray-800 */
+            color: #ffffff;
+            border-radius: 0.75rem; /* rounded-xl */
+            padding: 1rem; /* p-4 */
+            overflow-x: auto; /* Allow horizontal scrolling for long lines */
+            box-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06); /* shadow-inner */
+            flex-grow: 1; /* Allows it to take available height */
+            display: flex;
+            flex-direction: column;
+        }
+
+        pre {
+            font-size: 0.875rem; /* text-sm */
+            line-height: 1.625; /* leading-relaxed */
+            white-space: pre-wrap; /* Ensures long lines wrap */
+            word-break: break-word; /* Breaks long words to prevent overflow */
+            flex-grow: 1; /* Allows pre to fill available space */
+        }
+
+        /* Custom scrollbar for code block */
+        pre::-webkit-scrollbar {
+            height: 8px;
+            width: 8px;
+        }
+        pre::-webkit-scrollbar-track {
+            background: #e2e8f0; /* Light gray track */
+            border-radius: 10px;
+        }
+        pre::-webkit-scrollbar-thumb {
+            background: #94a3b8; /* Gray thumb */
+            border-radius: 10px;
+        }
+        pre::-webkit-scrollbar-thumb:hover {
+            background: #64748b; /* Darker gray on hover */
+        }
+
+        /* Explanation Section */
+        .explanation-content {
+            color: #374151; /* text-gray-700 */
+            line-height: 1.625; /* leading-relaxed */
+            flex-grow: 1;
+        }
+
+        .explanation-content p {
+            margin-bottom: 1rem; /* mb-4 */
+        }
+
+        .explanation-content ul {
+            list-style-type: disc;
+            margin-left: 1.25rem; /* Equivalent to list-inside */
+            margin-bottom: 1rem; /* mb-4 */
+            padding-left: 0; /* Reset default padding */
+        }
+
+        .explanation-content ul ul {
+            list-style-type: circle;
+            margin-left: 1.5rem; /* ml-4 */
+        }
+
+        .explanation-content ul li {
+            margin-bottom: 0.5rem; /* space-y-2 */
+        }
+
+        /* Strong tag colors */
+        .explanation-content strong {
+            font-weight: 600; /* Ensure strong is bold */
+        }
+        .explanation-content .text-blue-600 { color: #2563eb; }
+        .explanation-content .text-green-600 { color: #16a34a; }
+        .explanation-content .text-red-600 { color: #dc2626; }
+        .explanation-content .text-purple-600 { color: #9333ea; }
+        .explanation-content .text-yellow-600 { color: #eab308; }
+        .explanation-content .text-indigo-600 { color: #4f46e5; }
+        .explanation-content .text-teal-600 { color: #0d9488; }
+        .explanation-content .text-gray-600 { color: #4b5563; }
+        .explanation-content .text-orange-600 { color: #f97316; }
+
+
+        /* Responsive Adjustments (sm breakpoint) */
+        @media (min-width: 640px) { /* sm: */
+            body {
+                padding: 1.5rem; /* sm:p-6 */
+            }
+            .main-container {
+                padding: 2rem; /* sm:p-8 */
+                gap: 2.5rem; /* sm:gap-10 - adjusted for consistency */
+            }
+            h2 {
+                font-size: 2.25rem; /* sm:text-4xl */
+            }
+            h3 {
+                font-size: 1.875rem; /* sm:text-3xl */
+            }
+            .code-container {
+                padding: 1.5rem; /* sm:p-6 */
+            }
+            pre {
+                font-size: 0.95rem; /* sm:text-base */
+            }
+        }
+
+        /* Responsive Adjustments (lg breakpoint) */
+        @media (min-width: 1024px) { /* lg: */
+            body {
+                padding: 2rem; /* lg:p-8 */
+            }
+            .main-container {
+                flex-direction: row; /* lg:flex-row */
+                gap: 2.5rem; /* lg:gap-10 */
+                padding: 2.5rem; /* lg:p-10 */
+            }
+            .left-section,
+            .right-section {
+                width: 50%; /* lg:w-1/2 */
+                display: flex;
+                flex-direction: column;
+            }
+            h2 {
+                text-align: left; /* lg:text-left */
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1 style="color: #0055ff;">Chaining: Performing Sequential Asynchronous Operations</h1>
+    <div class="main-container">
+
+        <div class="left-section">
+            <h2>The JavaScript Code</h2>
+            <div class="code-container">
+                <pre><code>
+// Function that simulates fetching data from a server
+function fetchData() {
+    return new Promise((resolve, reject) => {
+        const success = true; // Let's simulate a successful fetch for now
+
+        // Simulate a network request delay
+        setTimeout(() => {
+            if (success) {
+                const data = {
+                    id: 1,
+                    name: "Alice",
+                    email: "alice@example.com"
+                };
+                resolve(data); // Data fetched successfully!
+            } else {
+                const error = new Error("Failed to fetch data from the server.");
+                reject(error); // Oh no, something went wrong!
+            }
+        }, 2000); // Simulate a 2-second delay
+    });
+}
+
+console.log("Starting data fetch...");
+
+// Using .then() to handle a successful promise
+fetchData()
+    .then(data => {
+        console.log("Data received successfully:", data);
+    })
+    // Using .catch() to handle a rejected promise (errors)
+    .catch(error => {
+        console.error("Error fetching data:", error.message);
+    })
+    // Using .finally() to execute code regardless of success or failure
+    .finally(() => {
+        console.log("Data fetch attempt completed.");
+    });
+
+console.log("Continuing with other operations..."); // This will run before the data fetch completes
+
+
+// --- Promise Chaining Example ---
+
+// Function that simulates fetching a user by ID
+function getUser(userId) {
+  console.log(`Fetching user with ID: ${userId}...`);
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      if (userId === 123) {
+        resolve({
+          id: 123,
+          name: "Bob",
+          postsUrl: "api/posts/user/123"
+        });
+      } else {
+        reject(new Error(`User with ID ${userId} not found.`));
+      }
+    }, 1000);
+  });
+}
+
+// Function that simulates fetching posts from a URL
+function getPosts(postsUrl) {
+  console.log(`Fetching posts from: ${postsUrl}...`);
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      if (postsUrl === "api/posts/user/123") {
+        resolve([{
+          id: 1,
+          title: "My first post"
+        }, {
+          id: 2,
+          title: "Another great post"
+        }]);
+      } else {
+        reject(new Error(`Invalid posts URL: ${postsUrl}`));
+      }
+    }, 1500);
+  });
+}
+
+// Chaining promises
+getUser(123)
+  .then(user => {
+    console.log("User found:", user.name);
+    return getPosts(user.postsUrl); // Return another promise to chain
+  })
+  .then(posts => {
+    console.log("Posts for user:", posts);
+  })
+  .catch(error => {
+    console.error("Error in chain:", error.message);
+  })
+  .finally(() => {
+    console.log("User and posts fetch process completed.");
+  });
+
+// Example of a rejected promise in the chain
+getUser(999)
+  .then(user => {
+    console.log("User found:", user.name);
+    return getPosts(user.postsUrl);
+  })
+  .then(posts => {
+    console.log("Posts for user:", posts);
+  })
+  .catch(error => {
+    console.error("Error in chain (rejected user):", error.message);
+  });
+                </code></pre>
+            </div>
+        </div>
+
+        <div class="right-section">
+            <h2>Understanding the Code</h2>
+            <div class="explanation-content">
+                <p>This JavaScript code simulates fetching data from a server, much like your web browser retrieves
+                    information from a website. Let's break down how it works, focusing on the concept of **Promises**.
+                </p>
+
+                <h3>The `fetchData` Function: A "Server" in Disguise</h3>
+                <p>Imagine you're asking a server for some information. This `fetchData` function acts like that server:
+                </p>
+                <ul>
+                    <li>
+                        <strong class="text-blue-600">`new Promise((resolve, reject) => { ... });`</strong>: This is the
+                        core. A `Promise` is like a real-life promise – an assurance that something will happen
+                        eventually, either successfully or with an error.
+                        <ul>
+                            <li><strong class="text-green-600">`resolve`</strong>: You call this if the "promise" is
+                                kept (data is fetched successfully). It gives you the good stuff (the data).</li>
+                            <li><strong class="text-red-600">`reject`</strong>: You call this if the "promise" is broken
+                                (an error occurs). It tells you what went wrong.</li>
+                        </ul>
+                    </li>
+                    <li><strong class="text-purple-600">`const success = true;`</strong>: We've set this to `true` to
+                        make it seem like the data fetch always works for now. In a real application, this would depend
+                        on the actual network request.</li>
+                    <li><strong class="text-yellow-600">`setTimeout(() => { ... }, 2000);`</strong>: This simulates the
+                        time it takes to get data from a server. It waits for **2 seconds** before doing anything else.
+                        This is why you'll see "Continuing with other operations..." appear *before* the data arrives.
+                    </li>
+                    <li><strong class="text-indigo-600">`if (success) { ... resolve(data); } else { ... reject(error);
+                                }`</strong>: Inside the 2-second delay:
+                        <ul>
+                            <li>If `success` is `true`, it creates some fake `data` (like a user's ID, name, and email)
+                                and calls `resolve(data)` to say, "Here's the data you asked for!"</li>
+                            <li>If `success` were `false`, it would create an `Error` message and call `reject(error)`
+                                to say, "Oops, I couldn't get the data."</li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <h3>How We Use the "Promise"</h3>
+                <p>After defining our "server," we then try to "fetch" data from it:</p>
+                <ul>
+                    <li><strong class="text-teal-600">`fetchData()`</strong>: This calls our "server" function, which
+                        immediately returns a `Promise`.</li>
+                    <li><strong class="text-green-600">`.then(data => { ... });`</strong>: This is what happens **if the
+                        promise is `resolve`d** (i.e., the data is fetched successfully). The `data` variable will
+                        contain the information from the `resolve` call.</li>
+                    <li><strong class="text-red-600">`.catch(error => { ... });`</strong>: This is what happens **if the
+                        promise is `reject`ed** (i.e., an error occurs). The `error` variable will contain the error
+                        message from the `reject` call.</li>
+                    <li><strong class="text-gray-600">`.finally(() => { ... });`</strong>: This code runs **regardless
+                        of whether the promise was successful or failed**. It's like saying, "No matter what, I want to
+                        do this one last thing."</li>
+                    <li><strong class="text-orange-600">`console.log("Continuing with other operations...");`</strong>:
+                        This is key! Because `fetchData` uses a `Promise` with a `setTimeout`, JavaScript doesn't wait
+                        for the data to arrive. It says, "Okay, I've asked for data, and it will come whenever it comes.
+                        In the meantime, let me do other things!" So, this line runs *immediately* after `fetchData()`
+                        is called, before the 2-second delay is over.</li>
+                </ul>
+
+                <h3>Promise Chaining: Performing Sequential Asynchronous Operations</h3>
+                <p>Often, you'll have asynchronous operations that depend on the result of a previous one. Promises excel at handling this through "chaining."</p>
+                <ul>
+                    <li><strong class="text-blue-600">`getUser(123)`</strong>: This initiates the first promise.</li>
+                    <li><strong class="text-green-600">`.then(user => { ... return getPosts(user.postsUrl); })`</strong>: When `getUser(123)` resolves, its user data is passed to this `.then()` handler. Crucially, we return `getPosts(user.postsUrl)`. When a `.then()` handler returns a new promise, the subsequent `.then()` in the chain will wait for that new promise to resolve before it executes. This is the magic of chaining!</li>
+                    <li><strong class="text-teal-600">`.then(posts => { ... })`</strong>: This `.then()` only executes after `getPosts()` has successfully resolved, and it receives the posts data.</li>
+                    <li><strong class="text-red-600">Single `.catch()`</strong>: A single `.catch()` at the end of the chain can handle errors from anywhere in the preceding chain. If `getUser` rejects, or if `getPosts` rejects, the error will "bubble up" to this `.catch()` handler.</li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>
