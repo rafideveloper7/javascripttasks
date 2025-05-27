@@ -1,0 +1,25 @@
+{
+  "manifest_version": 3,
+  "name": "TIME",
+  "version": "1.4",
+  "description": "Complete Time Tracker with SVG Icons",
+  "action": {
+    "default_popup": "popup/popup.html",
+    "default_title": "Time Tracker",
+    "default_title": "Timer"
+  },
+  
+  "permissions": [
+    "storage",
+    "notifications",
+    "alarms"
+  ],
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "web_accessible_resources": [{
+    "resources": ["assets/icon.svg"],
+    "matches": ["<all_urls>"]
+  }]
+}

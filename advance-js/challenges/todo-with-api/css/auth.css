@@ -1,3 +1,4 @@
+/* Root Variables */
 :root {
     --primary: #43cea2;
     --secondary: #185a9d;
@@ -7,6 +8,7 @@
     --glass: rgba(255, 255, 255, 0.15);
 }
 
+/* Reset and Base Styles */
 * {
     margin: 0;
     padding: 0;
@@ -24,6 +26,7 @@ body {
     overflow: hidden;
 }
 
+/* Auth Container */
 .auth-container {
     position: relative;
     width: 100%;
@@ -34,6 +37,7 @@ body {
     align-items: center;
 }
 
+/* Glass Card Effect */
 .glass-card {
     background: var(--glass);
     backdrop-filter: blur(10px);
@@ -43,10 +47,14 @@ body {
     box-shadow: 0 8px 32px rgba(31, 38, 135, 0.15);
     padding: 40px;
     width: 100%;
-    max-width: 400px;
+    max-width: 450px; /* Slightly wider for better form layout */
     z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
+/* Logo Styling */
 .logo {
     display: flex;
     align-items: center;
@@ -71,9 +79,18 @@ body {
     font-weight: 800;
 }
 
+/* Form Styling */
 .auth-form {
     display: flex;
     flex-direction: column;
+    width: 100%; /* Ensure form takes full width of card */
+}
+
+.auth-form h2 {
+    font-size: 22px;
+    color: var(--text);
+    text-align: center;
+    margin-bottom: 25px;
 }
 
 .input-group {
@@ -85,12 +102,11 @@ body {
     width: 100%;
     padding: 15px 0;
     font-size: 16px;
-    color: var(--white);
+    color: var(--text); /* Changed to text color for better visibility */
     border: none;
-    border-bottom: 1px solid rgba(0, 94, 0, 0.5);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.3); /* Softer border */
     outline: none;
     background: transparent;
-    color: rgba(0, 0, 0, 0.7);
 }
 
 .input-group label {
@@ -98,7 +114,7 @@ body {
     top: 15px;
     left: 0;
     font-size: 16px;
-    color: rgba(0, 0, 0, 0.7);
+    color: var(--text-light); /* Lighter label color */
     pointer-events: none;
     transition: all 0.3s ease;
 }
@@ -107,8 +123,7 @@ body {
 .input-group input:valid ~ label {
     top: -15px;
     font-size: 12px;
-    color: rgba(0, 0, 0, 0.7);
-    /* color: var(--primary); */
+    color: var(--primary); /* Highlight label on focus/valid */
 }
 
 .underline {
@@ -123,10 +138,9 @@ body {
 
 .input-group input:focus ~ .underline {
     width: 100%;
-    color: rgba(0, 0, 0, 0.7);
-
 }
 
+/* Button Styling */
 .auth-btn {
     display: flex;
     align-items: center;
@@ -142,6 +156,7 @@ body {
     overflow: hidden;
     position: relative;
     transition: all 0.3s ease;
+    margin-top: 20px; /* Spacing below last input group */
 }
 
 .auth-btn svg {
@@ -164,6 +179,25 @@ body {
     transform: translateX(5px);
 }
 
+/* Auth Switch Link */
+.auth-switch {
+    margin-top: 25px;
+    font-size: 14px;
+    color: var(--text-light);
+}
+
+.auth-switch a {
+    color: var(--secondary);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.auth-switch a:hover {
+    color: var(--primary);
+}
+
+/* Background Circles Animation */
 .circles {
     position: absolute;
     top: 0;
@@ -204,6 +238,12 @@ body {
     animation-delay: 4s;
 }
 
+/* You had a circle-1, circle-2, circle-3 in your HTML, but only div:nth-child rules. Let's align them. */
+.circles .circle-1 { left: 10%; }
+.circles .circle-2 { left: 30%; animation-delay: 2s; animation-duration: 12s; }
+.circles .circle-3 { left: 65%; animation-delay: 4s; }
+
+
 @keyframes animate {
     0% {
         transform: translateY(0) rotate(0deg);
@@ -215,9 +255,22 @@ body {
     }
 }
 
+/* Media Queries */
 @media (max-width: 768px) {
     .glass-card {
         margin: 20px;
         padding: 30px;
+        max-width: 90%; /* Adjust max-width for smaller screens */
+    }
+    .auth-form h2 {
+        font-size: 20px;
+    }
+    .input-group input,
+    .input-group label {
+        font-size: 14px;
+    }
+    .auth-btn {
+        padding: 12px 20px;
+        font-size: 14px;
     }
 }
