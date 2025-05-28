@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Practice Quiz App</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+    <div id="hamburger-menu">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+    </div>
+
+    <div id="app-wrapper">
+        <aside id="sidebar">
+            <div id="sidebar-header">
+                <h2><span style="color: var(--primary-color);">Practice</span> <span style="color: var(--accent-color);">Quiz</span></h2>
+            </div>
+            <nav id="sidebar-nav">
+                <ul>
+                    <li><a href="#" id="nav-home" class="active"><i class="fas fa-home"></i> <span>Home</span></a></li>
+                    <li><a href="#" id="nav-quiz"><i class="fas fa-question-circle"></i> <span>Quiz</span></a></li>
+                    <li><a href="#" id="nav-leaderboard"><i class="fas fa-trophy"></i> <span>Leaderboard</span></a></li>
+                    <li><a href="#" id="nav-profile"><i class="fas fa-user"></i> <span>Profile</span></a></li>
+                </ul>
+            </nav>
+            <div id="sidebar-profile">
+                <p>Current User: <span id="user-display" class="font-weight-bold">Guest</span></p>
+                <button id="change-user-btn" class="btn btn-secondary"><i class="fas fa-user-edit"></i> Change User</button>
+            </div>
+        </aside>
+
+        <main id="main-content" class="content-scrollable">
+            <section id="home-section" class="content-card active">
+                <h3 class="text-center">Select or Create Student Profile</h3>
+
+                <div id="current-user-info" class="mb-4 text-center">
+                    <p class="h5">Welcome, <span id="home-user-name" class="text-primary">Guest</span>!</p>
+                    <div class="form-group mt-4">
+                        <label for="question-range">Number of Questions for Quiz:</label>
+                        <input
+                            type="number"
+                            class="form-control"
+                            id="question-range"
+                            min="1"
+                            value="10"
+                        />
+                        <small class="form-text text-muted">
+                            Max: <span id="max-questions-info">10</span> (based on available questions)
+                        </small>
+                    </div>
+                    <button id="proceed-to-quiz-btn" class="btn btn-success mt-3">Start Quiz for Current User</button>
+                </div>
+
+                <hr class="my-4">
+
+                <h4 class="text-center mb-3">Choose Existing Student</h4>
+                <div id="existing-users-list" class="list-group mb-4">
+                    </div>
+                <div id="no-users-message" class="text-center text-muted mb-4 hide">
+                    <p>No students registered yet. Create a new one below!</p>
+                </div>
+
+                <hr class="my-4">
+
+                <h4 class="text-center mb-3">Register New Student (Max 5)</h4>
+                <form id="add-user-form">
+                    <div class="form-group">
+                        <label for="new-username-input">Student Name</label>
+                        <input type="text" class="form-control" id="new-username-input" placeholder="Enter student's name" required />
+                    </div>
+                    <button type="submit" id="add-user-btn" class="btn btn-primary btn-block">Add Student</button>
+                </form>
+            </section>
+
+            <section id="quiz-section" class="content-card">
+                <h3 class="text-center">Quiz Time!</h3>
+                <div id="progress-bar">
+                    <div id="progress"></div>
+                </div>
+                <div class="d-flex justify-content-between quiz-info">
+                    <div>
+                        Question <span id="current-qnum">1</span> /
+                        <span id="total-qnum" class="total-questions">10</span>
+                    </div>
+                    <div>
+                        Questions left: <span id="questions-left">10</span>
+                    </div>
+                </div>
+                <h4 id="question-text"></h4>
+                <ul id="options-list" class="list-unstyled"></ul>
+                <div class="d-flex justify-content-end quiz-nav-buttons">
+                    <button id="quit-btn" class="btn btn-danger mr-3">Quit Quiz</button>
+                    <button id="next-btn" class="btn btn-primary" disabled>Next Question</button>
+                </div>
+            </section>
+
+            <section id="result-section" class="content-card text-center">
+                <h3>Your Results</h3>
+                <p>
+                    Correct: <span id="correct-count"></span> /
+                    <span class="total-questions"></span>
+                </p>
+                <p>
+                    Wrong: <span id="wrong-count"></span> /
+                    <span class="total-questions"></span>
+                </p>
+                <p>
+                    Percentage: <span id="percentage"></span>%
+                </p>
+                <p>
+                    Marks: <span id="marks"></span> /
+                    <span class="total-questions"></span>
+                </p>
+
+                <div id="star-rating"></div>
+
+                <div class="d-flex justify-content-center result-buttons">
+                    <button id="restart-btn" class="btn btn-success mr-3">Restart Quiz</button>
+                    <button id="home-btn" class="btn btn-primary">Back to Home</button>
+                </div>
+            </section>
+
+            <section id="leaderboard-section" class="content-card">
+                <h3 class="text-center">Leaderboard</h3>
+                <ul class="leaderboard-list">
+                    </ul>
+            </section>
+
+            <section id="profile-section" class="content-card">
+                <h3 class="text-center">Your Profile</h3>
+                <div class="profile-info">
+                    <p>Current Student: <strong><span id="profile-username"></span></strong></p>
+                    <p>Total Quizzes Taken: <strong><span id="total-quizzes-taken"></span></strong></p>
+                    <p>Average Score: <strong><span id="average-score"></span>%</strong></p>
+                </div>
+
+                <h4>Quiz History</h4>
+                <ul class="quiz-history-list">
+                    </ul>
+                <button id="delete-profile-btn" class="btn btn-danger mt-4 btn-block"><i class="fas fa-trash-alt"></i> Delete This Profile</button>
+            </section>
+
+        </main>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+
+    <script src="questions.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
