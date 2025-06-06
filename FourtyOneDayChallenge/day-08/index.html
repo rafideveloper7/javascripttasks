@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monthly Expense Tracker</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="app-container">
+        <aside class="sidebar">
+            <nav>
+                <ul>
+                    <li><a href="#" id="nav-daily-entries" class="active"><span>📊</span> Daily Entries</a></li>
+                    <li><a href="#" id="nav-monthly-summary"><span>📈</span> Monthly Summary</a></li>
+                    <li><a href="#" id="nav-categories"><span>🏷️</span> Categories</a></li>
+                    <li><a href="#" id="nav-settings"><span>⚙️</span> Settings</a></li>
+                </ul>
+            </nav>
+            <div class="dark-mode-toggle-container">
+                <button id="dark-mode-toggle">☀️ / 🌙</button>
+            </div>
+        </aside>
+
+        <header class="top-navbar">
+            <h1 class="app-name">Expense Tracker</h1>
+            <div class="current-month">June 2025</div>
+            <div class="quick-summary">
+                <span class="total-spent">Spent: $0.00</span>
+                <span class="budget-left">Budget Left: $0.00</span>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <section id="daily-entries-section" class="content-section active">
+                <h2>Daily Expense Entry</h2>
+                <form id="expense-form">
+                    <div class="form-group">
+                        <label for="expense-date">Date:</label>
+                        <input type="date" id="expense-date" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="expense-amount">Amount:</label>
+                        <input type="number" id="expense-amount" step="0.01" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="expense-category">Category:</label>
+                        <select id="expense-category" required>
+                            <option value="">Select Category</option>
+                            </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="expense-notes">Notes:</label>
+                        <input type="text" id="expense-notes">
+                    </div>
+                    <button type="submit" id="add-expense-btn">Add Expense</button>
+                </form>
+
+                <h3>Expense List</h3>
+                <div class="filter-sort-controls">
+                    <label for="filter-category">Filter by Category:</label>
+                    <select id="filter-category">
+                        <option value="all">All</option>
+                        </select>
+                    <label for="sort-by">Sort by:</label>
+                    <select id="sort-by">
+                        <option value="date-desc">Date (Newest First)</option>
+                        <option value="date-asc">Date (Oldest First)</option>
+                        <option value="amount-desc">Amount (High to Low)</option>
+                        <option value="amount-asc">Amount (Low to High)</option>
+                    </select>
+                </div>
+                <div class="expense-list-container">
+                    <table id="expense-table">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Amount</th>
+                                <th>Category</th>
+                                <th>Notes</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            </tbody>
+                    </table>
+                </div>
+                <div class="daily-totals">
+                    <h4>Daily Total for Current Date: $<span id="current-daily-total">0.00</span></h4>
+                </div>
+            </section>
+
+            <section id="monthly-summary-section" class="content-section">
+                <h2>Monthly Summary</h2>
+                <div class="monthly-summary-details">
+                    <p>Total Spent This Month: $<span id="monthly-total-spent">0.00</span></p>
+                    <p>Budget: $<span id="current-budget">0.00</span></p>
+                    <p>Remaining Budget: $<span id="monthly-budget-left">0.00</span></p>
+                    <p class="budget-warning" id="budget-warning-message"></p>
+                </div>
+                <div class="category-breakdown">
+                    <h3>Category Breakdown</h3>
+                    <canvas id="category-chart"></canvas>
+                    <div id="category-bars"></div>
+                </div>
+                <div class="summary-actions">
+                    <button id="export-report-btn">Export Monthly Report (CSV)</button>
+                    <button id="print-report-btn">Print Monthly Summary</button>
+                </div>
+            </section>
+
+            <section id="categories-section" class="content-section">
+                <h2>Manage Categories</h2>
+                <form id="add-category-form">
+                    <input type="text" id="new-category-name" placeholder="New Category Name" required>
+                    <button type="submit">Add Category</button>
+                </form>
+                <h3>Existing Categories</h3>
+                <ul id="category-list">
+                    </ul>
+            </section>
+
+            <section id="settings-section" class="content-section">
+                <h2>Settings</h2>
+                <div class="form-group">
+                    <label for="monthly-budget-input">Set Monthly Budget:</label>
+                    <input type="number" id="monthly-budget-input" step="0.01" value="0.00">
+                    <button id="save-budget-btn">Save Budget</button>
+                </div>
+                <div class="form-group">
+                    <label for="dark-mode-setting">Dark/Light Mode:</label>
+                    <button id="dark-mode-toggle-settings">Toggle Mode</button>
+                </div>
+                <div class="form-group">
+                    <label>Data Management:</label>
+                    <button id="clear-data-btn" class="danger-button">Clear All Expenses & Settings</button>
+                </div>
+            </section>
+        </main>
+
+        <div class="small-screen-message">
+            <p>This application is designed for large screens like desktops.</p>
+            <p>Please access it from a wider display for the best experience.</p>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <script src="js/utils.js" type="module"></script>
+    <script src="js/charts.js" type="module"></script> <script src="js/main.js" type="module"></script>
+</body>
+</html>

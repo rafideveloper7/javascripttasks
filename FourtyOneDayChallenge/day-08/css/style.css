@@ -1,0 +1,551 @@
+/* CSS Variables for easy tweaking */
+:root {
+    --sidebar-width: 250px;
+    --navbar-height: 60px;
+    --primary-color: #3498db; /* Calm blue */
+    --secondary-color: #2c3e50; /* Darker blue/gray */
+    --accent-color: #e74c3c; /* Red for warnings/accents */
+    --text-color: #333;
+    --background-color: #f8f8f8;
+    --card-background: #ffffff;
+    --border-color: #ddd;
+    --shadow-light: rgba(0, 0, 0, 0.1);
+    --spacing-unit: 15px;
+    --border-radius: 8px;
+    --transition-speed: 0.3s ease;
+
+    /* Dark Mode Variables */
+    --dark-mode-text-color: #f0f0f0;
+    --dark-mode-background-color: #2c3e50;
+    --dark-mode-card-background: #34495e;
+    --dark-mode-border-color: #555;
+    --dark-mode-shadow-light: rgba(255, 255, 255, 0.1);
+}
+
+/* Base Styles */
+body {
+    font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    transition: background-color var(--transition-speed), color var(--transition-speed);
+    overflow: hidden; /* Prevent body scroll */
+}
+
+/* Dark Mode */
+body.dark-mode {
+    background-color: var(--dark-mode-background-color);
+    color: var(--dark-mode-text-color);
+}
+
+body.dark-mode .sidebar {
+    background-color: var(--dark-mode-card-background);
+    box-shadow: 2px 0 10px var(--dark-mode-shadow-light);
+}
+
+body.dark-mode .top-navbar {
+    background-color: var(--dark-mode-card-background);
+    box-shadow: 0 2px 10px var(--dark-mode-shadow-light);
+    border-bottom: 1px solid var(--dark-mode-border-color);
+}
+
+body.dark-mode .main-content {
+    background-color: var(--dark-mode-background-color);
+}
+
+body.dark-mode .content-section {
+    background-color: var(--dark-mode-card-background);
+    box-shadow: 0 4px 15px var(--dark-mode-shadow-light);
+    border: 1px solid var(--dark-mode-border-color);
+}
+
+body.dark-mode input,
+body.dark-mode select,
+body.dark-mode button {
+    background-color: var(--dark-mode-background-color);
+    color: var(--dark-mode-text-color);
+    border: 1px solid var(--dark-mode-border-color);
+}
+
+body.dark-mode button:hover {
+    background-color: var(--secondary-color); /* Slightly lighter in dark mode hover */
+}
+
+body.dark-mode table,
+body.dark-mode th,
+body.dark-mode td {
+    border-color: var(--dark-mode-border-color);
+}
+
+body.dark-mode table thead th {
+    background-color: var(--secondary-color);
+}
+
+body.dark-mode table tbody tr:nth-child(even) {
+    background-color: var(--dark-mode-background-color);
+}
+
+/* App Container (CSS Grid) */
+.app-container {
+    display: grid;
+    grid-template-columns: var(--sidebar-width) 1fr;
+    grid-template-rows: var(--navbar-height) 1fr;
+    height: 100vh; /* Full viewport height */
+    width: 100vw;  /* Full viewport width */
+    overflow: hidden; /* Ensure no scroll */
+    position: relative; /* For small screen message overlay */
+}
+
+/* Sidebar */
+.sidebar {
+    grid-area: 1 / 1 / 3 / 2; /* Spans rows 1 and 2, column 1 */
+    background-color: var(--card-background);
+    box-shadow: 2px 0 10px var(--shadow-light);
+    padding: var(--spacing-unit);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Pushes toggle to bottom */
+    border-right: 1px solid var(--border-color);
+}
+
+.sidebar nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar nav ul li {
+    margin-bottom: 10px;
+}
+
+.sidebar nav ul li a {
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+    text-decoration: none;
+    color: var(--text-color);
+    border-radius: var(--border-radius);
+    transition: background-color var(--transition-speed), color var(--transition-speed);
+}
+
+.sidebar nav ul li a span {
+    margin-right: 10px;
+    font-size: 1.2em;
+}
+
+.sidebar nav ul li a:hover,
+.sidebar nav ul li a.active {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+/* Dark Mode Toggle (Sidebar & Settings) */
+.dark-mode-toggle-container {
+    margin-top: auto; /* Pushes to the bottom */
+    padding-top: var(--spacing-unit);
+    border-top: 1px solid var(--border-color);
+    text-align: center;
+}
+
+#dark-mode-toggle, #dark-mode-toggle-settings {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 8px 15px;
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color var(--transition-speed);
+}
+
+#dark-mode-toggle:hover, #dark-mode-toggle-settings:hover {
+    background-color: var(--secondary-color);
+}
+
+/* Top Navbar */
+.top-navbar {
+    grid-area: 1 / 2 / 2 / 3; /* Spans row 1, column 2 */
+    background-color: var(--card-background);
+    box-shadow: 0 2px 10px var(--shadow-light);
+    display: flex;
+    align-items: center;
+    padding: 0 var(--spacing-unit);
+    justify-content: space-between;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.top-navbar .app-name {
+    margin: 0;
+    font-size: 1.5em;
+    color: var(--primary-color);
+}
+
+.top-navbar .quick-summary span {
+    margin-left: var(--spacing-unit);
+    font-weight: bold;
+}
+
+/* Main Content Area */
+.main-content {
+    grid-area: 2 / 2 / 3 / 3; /* Spans row 2, column 2 */
+    background-color: var(--background-color);
+    padding: var(--spacing-unit);
+    overflow: hidden; /* To handle internal section overflow if any, but aiming for no scroll */
+    display: flex;
+    flex-direction: column; /* Allows sections to stack */
+}
+
+.content-section {
+    display: none; /* Hidden by default, shown by JS */
+    background-color: var(--card-background);
+    padding: calc(var(--spacing-unit) * 1.5);
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 15px var(--shadow-light);
+    height: 100%; /* Fill remaining space */
+    box-sizing: border-box; /* Include padding in height calculation */
+    overflow-y: auto; /* Allow section-specific scrolling if content exceeds height */
+}
+
+.content-section.active {
+    display: block; /* Show active section */
+}
+
+/* Forms and Inputs */
+.form-group {
+    margin-bottom: var(--spacing-unit);
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input[type="date"],
+input[type="number"],
+input[type="text"],
+select {
+    width: calc(100% - 20px); /* Adjust for padding */
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    font-size: 1em;
+    box-sizing: border-box; /* Include padding and border in width */
+    background-color: var(--background-color);
+    color: var(--text-color);
+    transition: border-color var(--transition-speed), background-color var(--transition-speed);
+}
+
+input:focus, select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+}
+
+button {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color var(--transition-speed);
+}
+
+button:hover {
+    background-color: var(--secondary-color);
+}
+
+.danger-button {
+    background-color: var(--accent-color);
+}
+
+.danger-button:hover {
+    background-color: #c0392b;
+}
+
+/* Expense List Table */
+.expense-list-container {
+    margin-top: var(--spacing-unit);
+    overflow-x: auto; /* For very wide tables */
+}
+
+#expense-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: var(--spacing-unit);
+}
+
+#expense-table th,
+#expense-table td {
+    border: 1px solid var(--border-color);
+    padding: 10px;
+    text-align: left;
+}
+
+#expense-table thead th {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+#expense-table tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+body.dark-mode #expense-table tbody tr:nth-child(even) {
+    background-color: var(--dark-mode-background-color);
+}
+
+#expense-table tbody tr:hover {
+    background-color: #e9e9e9;
+}
+body.dark-mode #expense-table tbody tr:hover {
+    background-color: #444; /* Darker hover for dark mode */
+}
+
+
+#expense-table .action-buttons button {
+    padding: 5px 10px;
+    font-size: 0.9em;
+    margin-right: 5px;
+}
+
+.daily-totals, .monthly-summary-details {
+    margin-top: var(--spacing-unit);
+    padding: var(--spacing-unit);
+    background-color: #f0f8ff; /* Light blue background */
+    border-left: 5px solid var(--primary-color);
+    border-radius: var(--border-radius);
+}
+
+body.dark-mode .daily-totals,
+body.dark-mode .monthly-summary-details {
+    background-color: var(--dark-mode-background-color);
+    border-left-color: var(--primary-color);
+}
+
+.budget-warning {
+    color: var(--accent-color);
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+/* Category Breakdown (Chart.js or custom bars) */
+.category-breakdown {
+    margin-top: calc(var(--spacing-unit) * 2);
+    text-align: center;
+}
+
+#category-chart {
+    max-width: 500px; /* Limit chart size */
+    margin: 0 auto;
+    background-color: var(--card-background); /* Ensure chart background matches card */
+    border-radius: var(--border-radius);
+    padding: 10px; /* Some padding around the chart */
+}
+body.dark-mode #category-chart {
+    background-color: var(--dark-mode-background-color);
+}
+
+#category-bars {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: var(--spacing-unit);
+}
+
+.category-bar {
+    height: 25px;
+    border-radius: 5px;
+    text-align: right;
+    color: white;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 10px;
+    background-color: #ccc; /* Default background */
+}
+
+.category-bar span {
+    margin-left: 5px;
+}
+
+/* Category Management */
+#add-category-form {
+    display: flex;
+    gap: 10px;
+    margin-bottom: var(--spacing-unit);
+}
+
+#add-category-form input {
+    flex-grow: 1;
+    width: auto; /* Override default width */
+}
+
+#category-list {
+    list-style: none;
+    padding: 0;
+    margin-top: var(--spacing-unit);
+}
+
+#category-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px dashed var(--border-color);
+}
+
+#category-list li:last-child {
+    border-bottom: none;
+}
+
+#category-list li button {
+    padding: 5px 10px;
+    font-size: 0.8em;
+    background-color: var(--accent-color);
+}
+
+/* Utility classes for filtering/sorting */
+.filter-sort-controls {
+    display: flex;
+    gap: var(--spacing-unit);
+    align-items: center;
+    margin-bottom: var(--spacing-unit);
+    flex-wrap: wrap; /* Allow wrapping on slightly smaller desktop screens */
+}
+
+.filter-sort-controls label,
+.filter-sort-controls select {
+    white-space: nowrap; /* Prevent text wrapping */
+}
+
+.summary-actions {
+    margin-top: var(--spacing-unit);
+    display: flex;
+    gap: var(--spacing-unit);
+    justify-content: center; /* Center print/export buttons */
+}
+.summary-actions button {
+    flex: 1; /* Make buttons take equal width if space allows */
+    max-width: 200px;
+}
+
+/* Small Screen Message */
+.small-screen-message {
+    display: none; /* Hidden by default */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9); /* Dark overlay */
+    color: white;
+    font-size: 1.5em;
+    text-align: center;
+    padding: 20px;
+    box-sizing: border-box;
+    z-index: 1000; /* Ensure it's on top */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.small-screen-message p {
+    max-width: 600px;
+    padding: 20px;
+    border: 2px solid white;
+    border-radius: 10px;
+}
+
+/* Media Query for Small Screens */
+@media (max-width: 1024px) { /* Adjust breakpoint as needed */
+    .app-container {
+        display: none; /* Hide the main app layout */
+    }
+
+    .small-screen-message {
+        display: flex; /* Show the message */
+    }
+}
+
+
+/* Print Styles (for monthly report) */
+@media print {
+    body {
+        background-color: white;
+        color: black;
+        -webkit-print-color-adjust: exact; /* For better color printing */
+    }
+
+    .app-container {
+        display: block; /* Remove grid for printing */
+    }
+
+    .sidebar, .top-navbar, #expense-form, .filter-sort-controls,
+    #add-category-form, #category-list button, #settings-section button,
+    #export-report-btn, #print-report-btn, .dark-mode-toggle-container,
+    .small-screen-message, .summary-actions button {
+        display: none; /* Hide UI elements not relevant for print */
+    }
+
+    .main-content {
+        padding: 0;
+        margin: 0;
+        box-shadow: none;
+        background-color: white;
+    }
+
+    .content-section {
+        display: block !important; /* Force display for print */
+        box-shadow: none;
+        padding: 0;
+        margin-bottom: 20px;
+        page-break-inside: avoid; /* Avoid breaking sections across pages */
+        border: none;
+    }
+
+    #monthly-summary-section {
+        margin-top: 20px;
+    }
+
+    #expense-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+
+    #expense-table th,
+    #expense-table td {
+        border: 1px solid black;
+        padding: 8px;
+        font-size: 0.9em;
+    }
+
+    #expense-table thead th {
+        background-color: #eee;
+        color: black;
+    }
+
+    .category-breakdown {
+        margin-top: 20px;
+    }
+
+    #category-chart {
+        display: none; /* Hide Chart.js chart for print, use text or simple bars */
+    }
+
+    #category-bars {
+        display: flex; /* Ensure custom bars are visible */
+    }
+
+    h1, h2, h3, h4 {
+        color: black;
+        margin-top: 15px;
+        margin-bottom: 10px;
+    }
+}

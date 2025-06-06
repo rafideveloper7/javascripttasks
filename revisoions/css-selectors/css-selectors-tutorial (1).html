@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Master CSS Selectors</title>
+    <link rel="stylesheet" href="style.css">
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+    />
+  </head>
+  <body>
+    <header id="main-header">
+      <div class="container">
+        <h1 class="title">Master CSS Selectors</h1>
+        <p class="subtitle">
+          Interactive playground to learn and practice all CSS selectors
+        </p>
+      </div>
+    </header>
+
+    <main class="container">
+      <div class="selector-grid">
+        <!-- Universal Selector Card -->
+        <div class="selector-card">
+          <h3>Universal Selector</h3>
+          <p>
+            Selects <span class="highlight">all elements</span> in the document.
+          </p>
+          <div class="code">* { margin: 0; padding: 0; }</div>
+          <div class="descendant-example">
+            This entire page uses the universal selector for basic reset styles.
+          </div>
+        </div>
+
+        <!-- Type Selector Card -->
+        <div class="selector-card">
+          <h3>Type Selector</h3>
+          <p>
+            Selects <span class="highlight">all elements</span> of the given
+            type.
+          </p>
+          <div class="code">h1 { color: blue; }</div>
+          <div>
+            <p>This paragraph is styled with a type selector.</p>
+          </div>
+        </div>
+
+        <!-- Class Selector Card -->
+        <div class="selector-card">
+          <h3>Class Selector</h3>
+          <p>
+            Selects elements with the
+            <span class="highlight">specified class</span>.
+          </p>
+          <div class="code">.selector-card { background: white; }</div>
+          <div class="descendant-example">
+            These cards are all selected using their class.
+          </div>
+        </div>
+
+        <!-- ID Selector Card -->
+        <div class="selector-card">
+          <h3>ID Selector</h3>
+          <p>
+            Selects the element with the
+            <span class="highlight">specified ID</span>.
+          </p>
+          <div class="code">#main-header { background: blue; }</div>
+          <div class="descendant-example">
+            The page header is styled using its ID.
+          </div>
+        </div>
+
+        <!-- Descendant Selector Card -->
+        <div class="selector-card">
+          <h3>Descendant Selector</h3>
+          <p>
+            Selects elements that are
+            <span class="highlight">descendants</span> of another element.
+          </p>
+          <div class="code">.card p { color: gray; }</div>
+          <div class="descendant-example">
+            <p>
+              This paragraph is selected because it's inside a div with class
+              "descendant-example".
+            </p>
+          </div>
+        </div>
+
+        <!-- Child Selector Card -->
+        <div class="selector-card child-selector">
+          <h3>Child Selector</h3>
+          <p>
+            Selects elements that are
+            <span class="highlight">direct children</span> of another element.
+          </p>
+          <div class="code">ul > li { list-style: none; }</div>
+          <div>
+            <p class="direct-child">I'm a direct child (styled)</p>
+            <div>
+              <p>I'm a grandchild (not styled)</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Adjacent Sibling Card -->
+        <div class="selector-card">
+          <h3>Adjacent Sibling</h3>
+          <p>
+            Selects the element that is
+            <span class="highlight">immediately after</span> another element.
+          </p>
+          <div class="code">h2 + p { margin-top: 0; }</div>
+          <div>
+            <p class="adjacent-target">Target element</p>
+            <p>Immediately after (styled)</p>
+            <p>Not immediately after (not styled)</p>
+          </div>
+        </div>
+
+        <!-- General Sibling Card -->
+        <div class="selector-card">
+          <h3>General Sibling</h3>
+          <p>
+            Selects <span class="highlight">all siblings</span> that follow
+            another element.
+          </p>
+          <div class="code">h2 ~ p { color: gray; }</div>
+          <div>
+            <p class="general-target">Target element</p>
+            <p>Sibling after (styled)</p>
+            <div>Div in between</div>
+            <p>Another sibling after (styled)</p>
+          </div>
+        </div>
+
+        <!-- Attribute Selector Card -->
+        <div class="selector-card">
+          <h3>Attribute Selector</h3>
+          <p>
+            Selects elements with the
+            <span class="highlight">specified attribute</span>.
+          </p>
+          <div class="code">[data-example] { border: 1px solid; }</div>
+          <div data-attribute-example="true">
+            This div has a data-attribute-example attribute.
+          </div>
+        </div>
+
+        <!-- Pseudo-classes Card -->
+        <div class="selector-card">
+          <h3>Pseudo-classes</h3>
+          <p>
+            Selects elements in a <span class="highlight">specific state</span>.
+          </p>
+          <div class="code">a:hover { color: red; }</div>
+          <ul class="pseudo-list">
+            <li>:hover - Hover over me</li>
+            <li>:first-child - I'm first</li>
+            <li>:nth-child(2n) - I'm even</li>
+            <li>:last-child - I'm last</li>
+          </ul>
+        </div>
+
+        <!-- Pseudo-elements Card -->
+        <div class="selector-card">
+          <h3>Pseudo-elements</h3>
+          <p>
+            Selects <span class="highlight">specific parts</span> of an element.
+          </p>
+          <div class="code">p::first-line { font-weight: bold; }</div>
+          <p class="pseudo-element">
+            This text has pseudo-elements before and after it.
+          </p>
+        </div>
+
+        <!-- :not Selector Card -->
+        <div class="selector-card not-selector">
+          <h3>:not Selector</h3>
+          <p>
+            Selects elements that <span class="highlight">don't match</span> the
+            selector.
+          </p>
+          <div class="code">p:not(.exclude) { color: blue; }</div>
+          <p>I'm selected by :not</p>
+          <p class="exclude-me">I'm excluded</p>
+          <p>I'm also selected</p>
+        </div>
+
+        <!-- :is Selector Card -->
+        <div class="selector-card">
+          <h3>:is Selector</h3>
+          <p>
+            Selects any element that
+            <span class="highlight">matches any</span> of the selectors.
+          </p>
+          <div class="code">:is(header, footer) { background: black; }</div>
+          <div class="is-selector-header">Header-like element</div>
+          <div>Regular content</div>
+          <div class="is-selector-footer">Footer-like element</div>
+        </div>
+
+        <!-- :has Selector Card -->
+        <div class="selector-card">
+          <h3>:has Selector</h3>
+          <p>
+            Selects elements that <span class="highlight">contain</span> the
+            specified selector.
+          </p>
+          <div class="code">div:has(p) { border: 1px solid; }</div>
+          <div class="has-container">
+            <p class="special-child">
+              I'm a special child that styles my parent
+            </p>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <div class="container">
+        <p>🚀 Master CSS Selectors - Interactive Learning Tool</p>
+      </div>
+    </footer>
+  </body>
+</html>

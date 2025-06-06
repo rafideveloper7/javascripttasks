@@ -1,0 +1,266 @@
+/* Modern CSS Reset with Universal Selector */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Root Variables */
+:root {
+  --primary: #4361ee;
+  --primary-light: #3a86ff;
+  --secondary: #3f37c9;
+  --dark: #1b263b;
+  --darker: #0d1b2a;
+  --light: #f8f9fa;
+  --gray: #adb5bd;
+  --success: #4cc9f0;
+  --warning: #f8961e;
+  --danger: #ef233c;
+  --radius: 8px;
+  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --transition: all 0.3s ease;
+}
+
+/* Base Styles */
+body {
+  font-family: "Inter", sans-serif;
+  line-height: 1.6;
+  background-color: #f1f5f9;
+  color: var(--darker);
+}
+
+/* Layout */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Header Styles with ID Selector */
+#main-header {
+  background: linear-gradient(135deg, var(--secondary), var(--primary));
+  color: white;
+  padding: 2rem 0;
+  text-align: center;
+  margin-bottom: 2rem;
+  box-shadow: var(--shadow);
+}
+
+/* Class Selectors */
+.title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.subtitle {
+  font-size: 1.2rem;
+  font-weight: 300;
+  opacity: 0.9;
+}
+
+/* Card Layout for Selector Sections */
+.selector-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+/* Type Selectors */
+h2 {
+  font-size: 1.4rem;
+  color: var(--secondary);
+  margin-bottom: 1rem;
+  position: relative;
+  padding-left: 1rem;
+}
+
+h2::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 4px;
+  background: var(--primary);
+  border-radius: var(--radius);
+}
+
+/* Selector Card Styles */
+.selector-card {
+  background: white;
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+}
+
+.selector-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.selector-card h3 {
+  font-size: 1.1rem;
+  color: var(--primary);
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.selector-card h3::before {
+  content: "🎯";
+}
+
+/* Descendant Selector Example */
+.selector-card .descendant-example {
+  background-color: #e9ecef;
+  padding: 0.75rem;
+  border-radius: var(--radius);
+  margin: 0.5rem 0;
+}
+
+/* Child Selector Example */
+.child-selector > .direct-child {
+  background-color: #d8f3dc;
+  padding: 0.75rem;
+  border-radius: var(--radius);
+  margin: 0.5rem 0;
+  border-left: 3px solid #2dc653;
+}
+
+/* Adjacent Sibling Example */
+.adjacent-target + p {
+  background-color: #ffd6ff;
+  padding: 0.75rem;
+  border-radius: var(--radius);
+  margin: 0.5rem 0;
+  font-weight: 500;
+}
+
+/* General Sibling Example */
+.general-target ~ p {
+  background-color: #c8b6ff;
+  padding: 0.75rem;
+  border-radius: var(--radius);
+  margin: 0.5rem 0;
+  font-style: italic;
+}
+
+/* Attribute Selector Example */
+[data-attribute-example] {
+  background-color: #ffddd2;
+  padding: 0.75rem;
+  border-radius: var(--radius);
+  margin: 0.5rem 0;
+  border: 2px dashed var(--warning);
+}
+
+/* Pseudo-classes Example */
+.pseudo-list {
+  list-style: none;
+}
+
+.pseudo-list li {
+  padding: 0.5rem;
+  border-radius: var(--radius);
+  margin: 0.25rem 0;
+  transition: var(--transition);
+}
+
+.pseudo-list li:hover {
+  background-color: var(--primary-light);
+  color: white;
+  cursor: pointer;
+}
+
+.pseudo-list li:first-child {
+  background-color: #f8edeb;
+}
+
+.pseudo-list li:nth-child(2n) {
+  background-color: #f1faee;
+}
+
+.pseudo-list li:last-child {
+  background-color: #a8dadc;
+}
+
+/* Pseudo-elements Example */
+.pseudo-element::before {
+  content: "👉 ";
+  color: var(--primary);
+}
+
+.pseudo-element::after {
+  content: " 👈";
+  color: var(--primary);
+}
+
+/* :not Selector Example */
+.not-selector p:not(.exclude-me) {
+  background-color: #e2afff;
+  padding: 0.75rem;
+  border-radius: var(--radius);
+}
+
+/* :is Selector Example */
+:is(.is-selector-header, .is-selector-footer) {
+  background-color: var(--dark);
+  color: white;
+  padding: 1rem;
+  border-radius: var(--radius);
+  margin: 0.5rem 0;
+}
+
+/* :has Selector Example (Modern browsers only) */
+.has-container:has(.special-child) {
+  background-color: #d0f4de;
+  padding: 1rem;
+  border-radius: var(--radius);
+  border: 2px solid #4cc9f0;
+}
+
+/* Footer Styles */
+footer {
+  background: linear-gradient(135deg, var(--dark), var(--darker));
+  color: white;
+  text-align: center;
+  padding: 2rem 0;
+  margin-top: 3rem;
+}
+
+/* Utility Classes */
+.code {
+  font-family: monospace;
+  background-color: #2b2d42;
+  color: #f8f9fa;
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  margin: 10px;
+}
+
+.highlight {
+  background-color: #fff3bf;
+  padding: 0.1rem 0.3rem;
+  border-radius: 3px;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .selector-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .title {
+    font-size: 2rem;
+  }
+}

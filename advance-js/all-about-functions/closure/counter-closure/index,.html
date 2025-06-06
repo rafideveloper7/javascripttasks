@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Couter</title>
+</head>
+
+<body>
+    // counter html
+    <h1>Counter</h1>
+    <button id="increment">Increment</button>
+    <button id="decrement">Decrement</button>
+    <button id="reset">Reset</button>
+    <p id="count">0</p>
+
+    <!-- counter scrip  -->
+    <script>
+        function createCounter() {
+            let count = 0;
+
+            return {
+                increment: function () {
+                    count++;
+                    return count;
+                },
+                decrement: function () {
+                    count--;
+                    return count;
+                },
+                reset: function () {
+                    count = 0;
+                    return count;
+                }
+            };
+        }
+
+        const counter = createCounter();
+
+        document.getElementById('increment').addEventListener('click', () => {
+            document.getElementById('count').textContent = counter.increment();
+        });
+
+        document.getElementById('decrement').addEventListener('click', () => {
+            document.getElementById('count').textContent = counter.decrement();
+        });
+
+        document.getElementById('reset').addEventListener('click', () => {
+            document.getElementById('count').textContent = counter.reset();
+        });
+    </script>
+
+
+</body>
+
+</html>
