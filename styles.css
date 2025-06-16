@@ -123,6 +123,10 @@ body {
     margin-top: 15px;
 }
 
+.btn-add-new {
+    background-color: aqua;
+}
+
 .btn-add-new:hover {
     background: #c0392b;
     color: white;

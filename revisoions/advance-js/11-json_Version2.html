@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript: JSON (In-Depth)</title>
+  <style>
+    body { background: #131e2b; color: #f1f5f9; font-family: Arial, sans-serif; margin: 0; padding: 0; }
+    .container { max-width: 780px; margin: 40px auto; background: #202c3a; border-radius: 12px; box-shadow: 0 2px 18px #0005; padding: 40px 32px; }
+    h1 { color: #38bdf8; }
+    h2 { color: #7dd3fc; margin-top: 34px; }
+    h3 { color: #38bdf8; margin-top: 28px; }
+    p, ul { font-size: 1.13em; line-height: 1.85; }
+    pre { background: #0f172a; color: #e0f2fe; padding: 15px 18px; border-radius: 7px; font-size: 1.06em; margin: 15px 0; border-left: 4px solid #38bdf8; }
+    .output { background: #11213a; color: #a7f3d0; border-radius: 7px; padding: 11px 18px; margin: 9px 0 20px 0; border-left: 4px solid #38bdf8; font-size: 1.06em; }
+    .note { background: #334155; color: #fbbf24; border-left: 4px solid #fbbf24; padding: 12px 16px; border-radius: 7px; margin: 20px 0 0 0; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>JavaScript: JSON (In-Depth)</h1>
+    <p>
+      <b>JSON</b> (JavaScript Object Notation) is a lightweight data-interchange format. It is easy for humans to read and write, and easy for machines to parse and generate.
+      JSON is widely used for data exchange between browsers and servers, especially with APIs.
+    </p>
+
+    <h2>JSON Structure</h2>
+    <ul>
+      <li>Data is in name/value pairs (like JS objects)</li>
+      <li>Keys are always double-quoted strings</li>
+      <li>Values can be strings, numbers, objects, arrays, <code>true</code>, <code>false</code>, or <code>null</code></li>
+    </ul>
+    <pre>
+{
+  "name": "Rafi",
+  "age": 25,
+  "skills": ["JS", "HTML", "CSS"],
+  "isActive": true
+}
+    </pre>
+
+    <h2>Converting JS to JSON</h2>
+    <pre>
+let obj = { a: 1, b: 2 };
+let str = JSON.stringify(obj); // '{"a":1,"b":2}'
+    </pre>
+
+    <h2>Converting JSON to JS</h2>
+    <pre>
+let s = '{"a":1,"b":2}';
+let o = JSON.parse(s); // { a: 1, b: 2 }
+    </pre>
+
+    <h2>JSON and APIs</h2>
+    <p>
+      Most web APIs send and receive JSON. Use <code>JSON.stringify()</code> to send, and <code>response.json()</code> or <code>JSON.parse()</code> to receive.
+    </p>
+    <pre>
+fetch("https://api.example.com/user")
+  .then(res => res.json())
+  .then(data => console.log(data));
+    </pre>
+
+    <h2>Limitations of JSON</h2>
+    <ul>
+      <li>Cannot encode functions, <code>undefined</code>, or special JS types (like Date, Map, Set, etc.)</li>
+      <li>All object keys must be strings (no symbols, etc.)</li>
+    </ul>
+    <pre>
+let obj = { a: undefined, b: () => {}, c: 123 };
+let s = JSON.stringify(obj); // '{"c":123}'
+    </pre>
+
+    <div class="note">
+      <b>Practice:</b> Send, receive, and parse JSON data in your own projects. Try converting JS objects with dates and functions to see what happens!
+    </div>
+  </div>
+</body>
+</html>

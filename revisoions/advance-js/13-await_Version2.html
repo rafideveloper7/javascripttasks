@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript: await (In-Depth)</title>
+  <style>
+    body { background: #131e2b; color: #f1f5f9; font-family: Arial, sans-serif; margin: 0; padding: 0; }
+    .container { max-width: 780px; margin: 40px auto; background: #202c3a; border-radius: 12px; box-shadow: 0 2px 18px #0005; padding: 40px 32px; }
+    h1 { color: #38bdf8; }
+    h2 { color: #7dd3fc; margin-top: 34px; }
+    h3 { color: #38bdf8; margin-top: 28px; }
+    p, ul { font-size: 1.13em; line-height: 1.85; }
+    pre { background: #0f172a; color: #e0f2fe; padding: 15px 18px; border-radius: 7px; font-size: 1.06em; margin: 15px 0; border-left: 4px solid #38bdf8; }
+    .output { background: #11213a; color: #a7f3d0; border-radius: 7px; padding: 11px 18px; margin: 9px 0 20px 0; border-left: 4px solid #38bdf8; font-size: 1.06em; }
+    .note { background: #334155; color: #fbbf24; border-left: 4px solid #fbbf24; padding: 12px 16px; border-radius: 7px; margin: 20px 0 0 0; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>JavaScript: await (In-Depth)</h1>
+    <p>
+      The <b>await</b> keyword is used inside async functions to pause execution until a Promise is resolved. It gives asynchronous code a synchronous look.
+    </p>
+
+    <h2>Basic Usage</h2>
+    <pre>
+async function example() {
+  let result = await Promise.resolve(123);
+  console.log(result); // 123
+}
+example();
+    </pre>
+
+    <h2>How await Works</h2>
+    <ul>
+      <li>Pauses the function until the Promise resolves or rejects.</li>
+      <li>If the Promise resolves, returns the value.</li>
+      <li>If the Promise rejects, throws that error (use try/catch).</li>
+    </ul>
+
+    <h2>Awaiting fetch()</h2>
+    <pre>
+async function fetchPost() {
+  let res = await fetch('https://jsonplaceholder.typicode.com/posts/1');
+  let post = await res.json();
+  console.log(post.title);
+}
+fetchPost();
+    </pre>
+
+    <h2>Chaining Awaits</h2>
+    <pre>
+async function chain() {
+  let a = await Promise.resolve(1);
+  let b = await Promise.resolve(a + 1);
+  return b;
+}
+chain().then(console.log); // 2
+    </pre>
+
+    <h2>Error Handling with await</h2>
+    <pre>
+async function errorDemo() {
+  try {
+    let v = await Promise.reject("Fail!");
+  } catch (e) {
+    console.log("Error:", e);
+  }
+}
+errorDemo();
+    </pre>
+
+    <h2>Common Mistakes</h2>
+    <ul>
+      <li><code>await</code> can only be used inside <code>async</code> functions (in modules, top-level await is allowed in modern environments).</li>
+      <li>For parallel awaits, use <code>Promise.all()</code>.</li>
+    </ul>
+    <pre>
+async function parallel() {
+  let [a, b] = await Promise.all([
+    fetch(url1),
+    fetch(url2)
+  ]);
+}
+    </pre>
+
+    <div class="note">
+      <b>Practice:</b> Try writing async functions that use multiple awaits, handle errors, and work with real API calls.
+    </div>
+  </div>
+</body>
+</html>

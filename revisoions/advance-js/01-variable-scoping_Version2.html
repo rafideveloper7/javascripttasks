@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript: Variable Scoping (In-Depth)</title>
+  <style>
+    body { background: #131e2b; color: #f1f5f9; font-family: Arial, sans-serif; margin: 0; padding: 0; }
+    .container { max-width: 780px; margin: 40px auto; background: #202c3a; border-radius: 12px; box-shadow: 0 2px 18px #0005; padding: 40px 32px; }
+    h1 { color: #38bdf8; }
+    h2 { color: #7dd3fc; margin-top: 34px; }
+    h3 { color: #38bdf8; margin-top: 28px; }
+    p, ul { font-size: 1.13em; line-height: 1.9; }
+    pre { background: #0f172a; color: #e0f2fe; padding: 15px 18px; border-radius: 7px; font-size: 1.06em; margin: 15px 0; border-left: 4px solid #38bdf8; }
+    .output { background: #11213a; color: #a7f3d0; border-radius: 7px; padding: 11px 18px; margin: 9px 0 20px 0; border-left: 4px solid #38bdf8; font-size: 1.06em; }
+    .note { background: #334155; color: #fbbf24; border-left: 4px solid #fbbf24; padding: 12px 16px; border-radius: 7px; margin: 20px 0 0 0; }
+    .sect { color: #7dd3fc; font-size: 1.14em; margin-top: 20px; font-weight: bold; }
+    .table-container { overflow-x:auto; margin: 24px 0; }
+    table { border-collapse: collapse; width: 100%; background: #182232; color: #f1f5f9; }
+    th, td { border: 1px solid #334155; padding: 10px 14px; text-align: left; }
+    th { background: #22304a; color: #7dd3fc; }
+    tr:nth-child(even) { background: #212f43; }
+    @media (max-width: 700px) {.container{padding:13px} .table-container{font-size:.97em}}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>JavaScript: Variable Scoping (In-Depth)</h1>
+    <p>
+      In JavaScript, <b>scoping</b> determines where variables and functions are accessible. Understanding how variables are scoped is essential to writing reliable, bug-free code. This guide covers all aspects of variable scoping in detail.
+    </p>
+
+    <h2>What is Scope?</h2>
+    <p>
+      <b>Scope</b> is the region in your code where a variable is defined and can be referenced. Outside this region, the variable is invisible or inaccessible.
+    </p>
+
+    <div class="table-container">
+      <table>
+        <tr>
+          <th>Scope Type</th>
+          <th>Keyword(s)</th>
+          <th>Description</th>
+        </tr>
+        <tr>
+          <td>Global Scope</td>
+          <td>var, let, const</td>
+          <td>Declared outside all functions/blocks. Accessible anywhere in the file.</td>
+        </tr>
+        <tr>
+          <td>Function Scope</td>
+          <td>var</td>
+          <td>Declared inside a function with <code>var</code>. Accessible anywhere in that function.</td>
+        </tr>
+        <tr>
+          <td>Block Scope</td>
+          <td>let, const</td>
+          <td>Declared inside a block (<code>{ ... }</code>), such as if/for/while. Only accessible within that block.</td>
+        </tr>
+      </table>
+    </div>
+
+    <h3>Global Scope</h3>
+    <p>
+      A variable declared outside any function or block becomes global. Global variables are attached to the <code>window</code> object in browsers.
+    </p>
+    <pre>
+var ocean = "Pacific";
+
+function printOcean() {
+  console.log(ocean); // Accessible: prints "Pacific"
+}
+printOcean();
+    </pre>
+
+    <h3>Function Scope (<code>var</code>)</h3>
+    <p>
+      <code>var</code> is function-scoped, meaning it's visible throughout the entire function in which it is declared, even before its declaration due to <b>hoisting</b>:
+    </p>
+    <pre>
+function demoVar() {
+  if (true) {
+    var fish = "tuna";
+  }
+  console.log(fish); // "tuna" (still accessible outside the if block)
+}
+demoVar();
+    </pre>
+    <div class="output">// Output:<br>tuna</div>
+
+    <h3>Block Scope (<code>let</code> and <code>const</code>)</h3>
+    <p>
+      <code>let</code> and <code>const</code> are block-scoped. They are only available within the block <code>{ ... }</code> where they are defined:
+    </p>
+    <pre>
+function demoLetConst() {
+  if (true) {
+    let crab = "blue";
+    const shell = "hard";
+    console.log(crab); // blue
+  }
+  // console.log(crab); // ReferenceError: crab is not defined
+}
+demoLetConst();
+    </pre>
+    <div class="output">// Output:<br>blue</div>
+    <div class="note"><b>Block-scoped variables</b> help prevent accidental leaks and bugs.</div>
+
+    <h3>Hoisting</h3>
+    <p>
+      <b>Hoisting</b> is JavaScript's behavior of moving variable and function declarations to the top of their scope before executing code. Only <code>var</code> declarations are hoisted and initialized with <code>undefined</code>. <code>let</code> and <code>const</code> are hoisted but not initialized, leading to a "Temporal Dead Zone".
+    </p>
+    <pre>
+console.log(a); // undefined (hoisted)
+var a = 5;
+
+// console.log(b); // ReferenceError: Cannot access 'b' before initialization
+let b = 10;
+    </pre>
+    <div class="output">// Output:<br>undefined</div>
+    <div class="note">
+      <b>Best Practice:</b> Always declare variables at the top of their scope and use <code>let</code> or <code>const</code> for block scoping.
+    </div>
+
+    <h3>Shadowing</h3>
+    <p>
+      A variable declared within a certain scope "shadows" (overrides) a variable with the same name in an outer scope.
+    </p>
+    <pre>
+let animal = "dolphin";
+function zoo() {
+  let animal = "shark";
+  console.log(animal); // shark
+}
+zoo();
+console.log(animal); // dolphin
+    </pre>
+    <div class="output">// Output:<br>shark<br>dolphin</div>
+
+    <h3>Lexical Scope</h3>
+    <p>
+      JavaScript uses <b>lexical scoping</b>: a function’s scope is determined by where it’s defined, not where it’s called.
+    </p>
+    <pre>
+let fish = "goldfish";
+function outer() {
+  let fish = "salmon";
+  function inner() {
+    console.log(fish);
+  }
+  inner();
+}
+outer(); // "salmon"
+    </pre>
+
+    <h3>Summary Table</h3>
+    <div class="table-container">
+      <table>
+        <tr><th>Keyword</th><th>Scope</th><th>Hoisted</th><th>Re-declarable</th><th>Re-assignable</th></tr>
+        <tr><td>var</td><td>Function</td><td>Yes (initialized with undefined)</td><td>Yes</td><td>Yes</td></tr>
+        <tr><td>let</td><td>Block</td><td>Yes (not initialized)</td><td>No</td><td>Yes</td></tr>
+        <tr><td>const</td><td>Block</td><td>Yes (not initialized)</td><td>No</td><td>No</td></tr>
+      </table>
+    </div>
+
+    <h3>Why Does Scoping Matter?</h3>
+    <ul>
+      <li>Reduces bugs from accidental variable overwrites and leaks.</li>
+      <li>Helps manage memory by controlling variable lifetime.</li>
+      <li>Makes code easier to reason about and maintain.</li>
+    </ul>
+    <div class="note">
+      <b>Pro Tip:</b> Use <code>const</code> by default, <code>let</code> if the variable changes, and avoid <code>var</code> in modern code.
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript: APIs (In-Depth)</title>
+  <style>
+    body { background: #131e2b; color: #f1f5f9; font-family: Arial, sans-serif; margin: 0; padding: 0; }
+    .container { max-width: 780px; margin: 40px auto; background: #202c3a; border-radius: 12px; box-shadow: 0 2px 18px #0005; padding: 40px 32px; }
+    h1 { color: #38bdf8; }
+    h2 { color: #7dd3fc; margin-top: 34px; }
+    h3 { color: #38bdf8; margin-top: 28px; }
+    p, ul { font-size: 1.13em; line-height: 1.85; }
+    pre { background: #0f172a; color: #e0f2fe; padding: 15px 18px; border-radius: 7px; font-size: 1.06em; margin: 15px 0; border-left: 4px solid #38bdf8; }
+    .output { background: #11213a; color: #a7f3d0; border-radius: 7px; padding: 11px 18px; margin: 9px 0 20px 0; border-left: 4px solid #38bdf8; font-size: 1.06em; }
+    .note { background: #334155; color: #fbbf24; border-left: 4px solid #fbbf24; padding: 12px 16px; border-radius: 7px; margin: 20px 0 0 0; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>JavaScript: APIs (In-Depth)</h1>
+    <p>
+      An <b>API</b> (Application Programming Interface) is a set of rules and endpoints that lets programs or scripts communicate with each other. In web development, APIs usually mean "web APIs"—services you can call over the network to send or receive data.
+    </p>
+
+    <h2>Calling APIs from JavaScript</h2>
+    <p>
+      Use <b>fetch()</b> (modern) or <b>XMLHttpRequest</b> (legacy) to make HTTP requests from JS.
+    </p>
+    <pre>
+fetch('https://jsonplaceholder.typicode.com/todos/1')
+  .then(response => response.json())
+  .then(data => console.log(data));
+    </pre>
+    <div class="output">// Output:<br>{ userId: 1, id: 1, title: 'delectus aut autem', completed: false }</div>
+
+    <h2>How fetch() Works</h2>
+    <ul>
+      <li>Returns a <b>Promise</b></li>
+      <li>First <b>then()</b> gives you a Response object</li>
+      <li>Call <code>.json()</code>, <code>.text()</code>, etc. to get the data out</li>
+    </ul>
+    <pre>
+fetch("https://api.example.com/data")
+  .then(res => res.json())
+  .then(data => {/* use data */});
+    </pre>
+
+    <h2>Common API Request Types</h2>
+    <ul>
+      <li>GET: Retrieve data</li>
+      <li>POST: Send new data</li>
+      <li>PUT/PATCH: Update existing data</li>
+      <li>DELETE: Remove data</li>
+    </ul>
+
+    <h2>Sending Data to an API</h2>
+    <pre>
+fetch('https://jsonplaceholder.typicode.com/posts', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({ title: 'Hello', body: 'World', userId: 1 })
+})
+  .then(res => res.json())
+  .then(data => console.log(data));
+    </pre>
+
+    <h2>Best Practices</h2>
+    <ul>
+      <li>Always handle errors (<code>.catch()</code> or try/catch with async/await)</li>
+      <li>Be aware of CORS (Cross-Origin Resource Sharing) restrictions</li>
+      <li>Use HTTPS endpoints when possible</li>
+    </ul>
+
+    <div class="note">
+      <b>Practice:</b> Try calling a public API and displaying the result in your HTML page using fetch and DOM manipulation.
+    </div>
+  </div>
+</body>
+</html>

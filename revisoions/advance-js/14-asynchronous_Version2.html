@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript: Asynchronous Programming (In-Depth)</title>
+  <style>
+    body { background: #131e2b; color: #f1f5f9; font-family: Arial, sans-serif; margin: 0; padding: 0; }
+    .container { max-width: 780px; margin: 40px auto; background: #202c3a; border-radius: 12px; box-shadow: 0 2px 18px #0005; padding: 40px 32px; }
+    h1 { color: #38bdf8; }
+    h2 { color: #7dd3fc; margin-top: 34px; }
+    h3 { color: #38bdf8; margin-top: 28px; }
+    p, ul { font-size: 1.13em; line-height: 1.85; }
+    pre { background: #0f172a; color: #e0f2fe; padding: 15px 18px; border-radius: 7px; font-size: 1.06em; margin: 15px 0; border-left: 4px solid #38bdf8; }
+    .output { background: #11213a; color: #a7f3d0; border-radius: 7px; padding: 11px 18px; margin: 9px 0 20px 0; border-left: 4px solid #38bdf8; font-size: 1.06em; }
+    .note { background: #334155; color: #fbbf24; border-left: 4px solid #fbbf24; padding: 12px 16px; border-radius: 7px; margin: 20px 0 0 0; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>JavaScript: Asynchronous Programming (In-Depth)</h1>
+    <p>
+      <b>Asynchronous programming</b> lets you perform tasks (like fetching data or waiting for user input) without blocking the rest of your code. This is crucial for building fast, responsive web apps.
+    </p>
+
+    <h2>Synchronous vs Asynchronous</h2>
+    <ul>
+      <li><b>Synchronous:</b> Each operation waits for the previous one to finish.</li>
+      <li><b>Asynchronous:</b> Operations can start and finish out of order; JS can do other work while waiting.</li>
+    </ul>
+    <pre>
+// Synchronous
+console.log("A");
+console.log("B");
+// Output: A B
+
+// Asynchronous
+console.log("A");
+setTimeout(() => { console.log("B"); }, 1000);
+console.log("C");
+// Output: A C B
+    </pre>
+
+    <h2>Main Async Patterns</h2>
+    <ul>
+      <li>Callbacks (<code>setTimeout</code>, event handlers)</li>
+      <li>Promises</li>
+      <li>async/await (syntactic sugar over Promises)</li>
+    </ul>
+
+    <h2>Example: setTimeout</h2>
+    <pre>
+console.log("Start");
+setTimeout(() => { console.log("Done"); }, 1500);
+console.log("End");
+// Output: Start End Done
+    </pre>
+
+    <h2>Example: Promises</h2>
+    <pre>
+function wait(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+wait(1000).then(() => console.log("1 second passed"));
+    </pre>
+
+    <h2>Example: async/await</h2>
+    <pre>
+async function main() {
+  await wait(500);
+  console.log("Half a second later!");
+}
+main();
+    </pre>
+
+    <h2>Why Asynchronous Matters</h2>
+    <ul>
+      <li>Keeps your UI responsive</li>
+      <li>Handles slow tasks (API, files, timers) efficiently</li>
+      <li>Allows multiple things to happen together (non-blocking)</li>
+    </ul>
+
+    <div class="note">
+      <b>Practice:</b> Use <code>setTimeout</code>, Promises, and <code>async/await</code> to schedule and coordinate tasks in your own scripts!
+    </div>
+  </div>
+</body>
+</html>

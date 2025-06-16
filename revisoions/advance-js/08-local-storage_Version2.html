@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript: localStorage (In-Depth)</title>
+  <style>
+    body { background: #131e2b; color: #f1f5f9; font-family: Arial, sans-serif; margin: 0; padding: 0; }
+    .container { max-width: 780px; margin: 40px auto; background: #202c3a; border-radius: 12px; box-shadow: 0 2px 18px #0005; padding: 40px 32px; }
+    h1 { color: #38bdf8; }
+    h2 { color: #7dd3fc; margin-top: 34px; }
+    h3 { color: #38bdf8; margin-top: 28px; }
+    p, ul { font-size: 1.13em; line-height: 1.85; }
+    pre { background: #0f172a; color: #e0f2fe; padding: 15px 18px; border-radius: 7px; font-size: 1.06em; margin: 15px 0; border-left: 4px solid #38bdf8; }
+    .output { background: #11213a; color: #a7f3d0; border-radius: 7px; padding: 11px 18px; margin: 9px 0 20px 0; border-left: 4px solid #38bdf8; font-size: 1.06em; }
+    .note { background: #334155; color: #fbbf24; border-left: 4px solid #fbbf24; padding: 12px 16px; border-radius: 7px; margin: 20px 0 0 0; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>JavaScript: localStorage (In-Depth)</h1>
+    <p>
+      <b>localStorage</b> is a Web Storage API that allows JavaScript to store key-value pairs in a user's browser. Data in localStorage persists even after the page is closed or reloaded, until it is explicitly cleared.
+    </p>
+
+    <h2>Basic Usage</h2>
+    <pre>
+localStorage.setItem("name", "Alice");
+let name = localStorage.getItem("name"); // "Alice"
+localStorage.removeItem("name");
+localStorage.clear(); // Removes all keys
+    </pre>
+
+    <h2>All Data is Stored as Strings</h2>
+    <pre>
+localStorage.setItem("age", 25);
+typeof localStorage.getItem("age"); // "string"
+    </pre>
+    <div class="note">
+      <b>Tip:</b> Use <code>JSON.stringify()</code> and <code>JSON.parse()</code> to store/retrieve objects or arrays.
+    </div>
+    <pre>
+const user = { name: "Rafi", age: 30 };
+localStorage.setItem("user", JSON.stringify(user));
+// ...
+const data = JSON.parse(localStorage.getItem("user"));
+// { name: "Rafi", age: 30 }
+    </pre>
+
+    <h2>When to Use localStorage</h2>
+    <ul>
+      <li>Persisting user preferences (theme, language, etc.)</li>
+      <li>Saving lightweight data between sessions</li>
+      <li>Storing tokens for authentication (with caution!)</li>
+    </ul>
+
+    <h2>Limitations and Security</h2>
+    <ul>
+      <li>5-10MB storage limit per domain (varies by browser)</li>
+      <li>Accessible by any JavaScript running on the same domain</li>
+      <li>Do NOT store sensitive data (passwords, credit cards)</li>
+    </ul>
+
+    <div class="note">
+      <b>Practice:</b> Try saving and retrieving objects and arrays, and clear the storage from the browser console to see the effect.
+    </div>
+  </div>
+</body>
+</html>

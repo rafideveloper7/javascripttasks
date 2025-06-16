@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript: Higher-Order Functions (In-Depth)</title>
+  <style>
+    body { background: #131e2b; color: #f1f5f9; font-family: Arial, sans-serif; margin: 0; padding: 0; }
+    .container { max-width: 780px; margin: 40px auto; background: #202c3a; border-radius: 12px; box-shadow: 0 2px 18px #0005; padding: 40px 32px; }
+    h1 { color: #38bdf8; }
+    h2 { color: #7dd3fc; margin-top: 34px; }
+    h3 { color: #38bdf8; margin-top: 28px; }
+    p, ul { font-size: 1.13em; line-height: 1.85; }
+    pre { background: #0f172a; color: #e0f2fe; padding: 15px 18px; border-radius: 7px; font-size: 1.06em; margin: 15px 0; border-left: 4px solid #38bdf8; }
+    .output { background: #11213a; color: #a7f3d0; border-radius: 7px; padding: 11px 18px; margin: 9px 0 20px 0; border-left: 4px solid #38bdf8; font-size: 1.06em; }
+    .note { background: #334155; color: #fbbf24; border-left: 4px solid #fbbf24; padding: 12px 16px; border-radius: 7px; margin: 20px 0 0 0; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>JavaScript: Higher-Order Functions (In-Depth)</h1>
+    <p>
+      A <strong>higher-order function</strong> is a function that either receives another function as an argument, returns a function, or both. They are foundational in JavaScript's functional programming style.
+    </p>
+    <h2>What is a Higher-Order Function?</h2>
+    <ul>
+      <li>Takes one or more functions as arguments (callbacks)</li>
+      <li>Returns a new function</li>
+      <li>Enables composition, abstraction, and code reuse</li>
+    </ul>
+
+    <h3>Example: Passing Functions as Arguments</h3>
+    <pre>
+function repeat(n, action) {
+  for (let i = 0; i < n; i++) {
+    action(i);
+  }
+}
+repeat(3, console.log);
+    </pre>
+    <div class="output">// Output:<br>0<br>1<br>2</div>
+
+    <h3>Example: Returning Functions</h3>
+    <pre>
+function multiplier(x) {
+  return function(y) {
+    return x * y;
+  }
+}
+const double = multiplier(2);
+double(5); // 10
+    </pre>
+    <div class="output">// Output:<br>10</div>
+
+    <h3>Common Built-In Higher-Order Functions</h3>
+    <ul>
+      <li><code>map</code> - Array transformation</li>
+      <li><code>filter</code> - Select items from an array</li>
+      <li><code>reduce</code> - Accumulate values in an array</li>
+      <li><code>forEach</code> - Execute a function for each array item</li>
+      <li><code>setTimeout</code>, <code>setInterval</code> - Delay or repeat actions</li>
+    </ul>
+
+    <h3>Why Use Higher-Order Functions?</h3>
+    <ul>
+      <li>Encourage code reuse and abstraction</li>
+      <li>Enable functional programming paradigms</li>
+      <li>Promote composability and cleaner code</li>
+    </ul>
+    <div class="note">
+      <b>Practice:</b> Try writing a custom <code>filter</code> or <code>map</code> higher-order function to solidify your understanding!
+    </div>
+  </div>
+</body>
+</html>

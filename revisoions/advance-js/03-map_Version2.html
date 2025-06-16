@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript: Map (Array .map & Map Object)</title>
+  <style>
+    body { background: #131e2b; color: #f1f5f9; font-family: Arial, sans-serif; margin: 0; padding: 0; }
+    .container { max-width: 780px; margin: 40px auto; background: #202c3a; border-radius: 12px; box-shadow: 0 2px 18px #0005; padding: 40px 32px; }
+    h1 { color: #38bdf8; }
+    h2 { color: #7dd3fc; margin-top: 34px; }
+    h3 { color: #38bdf8; margin-top: 28px; }
+    p, ul { font-size: 1.13em; line-height: 1.85; }
+    pre { background: #0f172a; color: #e0f2fe; padding: 15px 18px; border-radius: 7px; font-size: 1.06em; margin: 15px 0; border-left: 4px solid #38bdf8; }
+    .output { background: #11213a; color: #a7f3d0; border-radius: 7px; padding: 11px 18px; margin: 9px 0 20px 0; border-left: 4px solid #38bdf8; font-size: 1.06em; }
+    .note { background: #334155; color: #fbbf24; border-left: 4px solid #fbbf24; padding: 12px 16px; border-radius: 7px; margin: 20px 0 0 0; }
+    .sect { color: #7dd3fc; font-size: 1.14em; margin-top: 20px; font-weight: bold; }
+    .table-container { overflow-x:auto; margin: 24px 0; }
+    table { border-collapse: collapse; width: 100%; background: #182232; color: #f1f5f9; }
+    th, td { border: 1px solid #334155; padding: 10px 14px; text-align: left; }
+    th { background: #22304a; color: #7dd3fc; }
+    tr:nth-child(even) { background: #212f43; }
+    @media (max-width: 700px) {.container{padding:13px} .table-container{font-size:.97em}}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>JavaScript: Map (Array .map & Map Object)</h1>
+    <p>
+      JavaScript has two major concepts called "Map": the <b>Array.prototype.map()</b> method and the <b>Map</b> object. Both are essential for modern JS development, but they serve different purposes.
+    </p>
+
+    <h2>1. Array <code>.map()</code> Method</h2>
+    <p>
+      <b>map()</b> is an array method that creates a new array by applying a function to each element of the original array. It does <b>not</b> mutate the original array.
+    </p>
+    <pre>
+const numbers = [1, 2, 3, 4];
+const doubled = numbers.map(n => n * 2); // [2, 4, 6, 8]
+    </pre>
+    <div class="output">// Output:<br>[2, 4, 6, 8]</div>
+    <ul>
+      <li><b>map()</b> always returns a new array of the same length.</li>
+      <li>The callback function receives: current value, index, and the whole array.</li>
+    </ul>
+    <pre>
+const arr = [3, 7, 9];
+const result = arr.map((value, idx, array) => value + idx);
+// result: [3, 8, 11]
+    </pre>
+
+    <h3>Use Cases for Array <code>map()</code></h3>
+    <ul>
+      <li>Transforming arrays (e.g., numbers to strings, objects to new objects)</li>
+      <li>Extracting properties from arrays of objects</li>
+      <li>Chaining with <code>filter()</code> and <code>reduce()</code> for advanced data manipulation</li>
+    </ul>
+
+    <h2>2. <code>Map</code> Object (ES6)</h2>
+    <p>
+      The <b>Map</b> object is a collection of key-value pairs, where keys can be any type (not just strings or symbols, unlike objects). Maps remember the original insertion order of the keys.
+    </p>
+    <pre>
+const map = new Map();
+map.set('name', 'Alice');
+map.set(123, true);
+map.set({ x: 1 }, [10, 20]);
+
+console.log(map.get('name')); // 'Alice'
+console.log(map.get(123));    // true
+    </pre>
+    <div class="output">// Output:<br>Alice<br>true</div>
+    <ul>
+      <li>Map keys can be objects, arrays, functions, numbers, etc.</li>
+      <li>Fast lookups, insertion order preserved, easy iteration.</li>
+    </ul>
+    <pre>
+for (const [key, value] of map) {
+  console.log(key, value);
+}
+    </pre>
+
+    <h3>When to Use <code>Map</code> vs Object</h3>
+    <div class="table-container">
+      <table>
+        <tr>
+          <th>Feature</th>
+          <th>Map</th>
+          <th>Object</th>
+        </tr>
+        <tr>
+          <td>Key Types</td>
+          <td>Any (object, function, etc)</td>
+          <td>String or Symbol</td>
+        </tr>
+        <tr>
+          <td>Order</td>
+          <td>Preserves insertion order</td>
+          <td>Not guaranteed</td>
+        </tr>
+        <tr>
+          <td>Iteration</td>
+          <td>Directly iterable</td>
+          <td>Not directly iterable</td>
+        </tr>
+        <tr>
+          <td>Performance</td>
+          <td>Faster for frequent additions/removals</td>
+          <td>Good for static keys</td>
+        </tr>
+      </table>
+    </div>
+
+    <h2>Summary</h2>
+    <ul>
+      <li>Use <b>Array.map()</b> to transform values in an array and produce a new array.</li>
+      <li>Use the <b>Map</b> object for key-value pairs when your keys aren't just strings, or you need insertion order.</li>
+    </ul>
+    <div class="note">
+      <b>Practice:</b> Try converting an array of user objects into an array of names with <code>map()</code>, and use <code>Map</code> to store and retrieve information about unique objects.
+    </div>
+  </div>
+</body>
+</html>

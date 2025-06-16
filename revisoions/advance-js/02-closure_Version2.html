@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript: Closures (In-Depth)</title>
+  <style>
+    body { background: #131e2b; color: #f1f5f9; font-family: Arial, sans-serif; margin: 0; padding: 0; }
+    .container { max-width: 780px; margin: 40px auto; background: #202c3a; border-radius: 12px; box-shadow: 0 2px 18px #0005; padding: 40px 32px; }
+    h1 { color: #38bdf8; }
+    h2 { color: #7dd3fc; margin-top: 34px; }
+    h3 { color: #38bdf8; margin-top: 28px; }
+    p, ul { font-size: 1.13em; line-height: 1.85; }
+    pre { background: #0f172a; color: #e0f2fe; padding: 15px 18px; border-radius: 7px; font-size: 1.06em; margin: 15px 0; border-left: 4px solid #38bdf8; }
+    .output { background: #11213a; color: #a7f3d0; border-radius: 7px; padding: 11px 18px; margin: 9px 0 20px 0; border-left: 4px solid #38bdf8; font-size: 1.06em; }
+    .note { background: #334155; color: #fbbf24; border-left: 4px solid #fbbf24; padding: 12px 16px; border-radius: 7px; margin: 20px 0 0 0; }
+    .sect { color: #7dd3fc; font-size: 1.14em; margin-top: 20px; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>JavaScript: Closures (In-Depth)</h1>
+    <p>
+      A <b>closure</b> is a feature of JavaScript where an inner function has access to the variables and parameters of its outer function, even after the outer function has finished executing.
+      Closures are essential for maintaining private state, creating function factories, and asynchronous programming.
+    </p>
+
+    <h2>What is a Closure?</h2>
+    <p>
+      When a function is declared inside another function, the inner function forms a closure. This means it "remembers" the environment in which it was created.
+    </p>
+
+    <h3>Closure Example</h3>
+    <pre>
+function makeCounter() {
+  let count = 0;
+  return function() {
+    count++;
+    return count;
+  };
+}
+const counter = makeCounter();
+counter(); // 1
+counter(); // 2
+    </pre>
+    <div class="output">// Output:<br>1<br>2</div>
+
+    <h3>How Closures Work</h3>
+    <ul>
+      <li>The inner function keeps a reference to the <code>count</code> variable even after <code>makeCounter()</code> has finished.</li>
+      <li>This allows each <code>counter</code> to have its own private <code>count</code> state.</li>
+    </ul>
+    <pre>
+const anotherCounter = makeCounter();
+anotherCounter(); // 1 (separate count!)
+    </pre>
+
+    <h3>Closures and Private Data</h3>
+    <p>
+      Closures enable data privacy by keeping variables hidden from the outside world.
+    </p>
+    <pre>
+function secretHolder(secret) {
+  return {
+    getSecret: function() { return secret; },
+    setSecret: function(val) { secret = val; }
+  };
+}
+const holder = secretHolder("hidden");
+holder.getSecret(); // "hidden"
+holder.setSecret("new secret");
+holder.getSecret(); // "new secret"
+    </pre>
+
+    <h3>Closures in Loops</h3>
+    <p>
+      Be careful with closures inside loops! Each closure captures the variable, not its value at the time.
+    </p>
+    <pre>
+var funcs = [];
+for (var i = 0; i < 3; i++) {
+  funcs.push(function() { return i; });
+}
+funcs[0](); // 3, not 0!
+    </pre>
+    <div class="note">
+      <b>Solution:</b> Use <code>let</code> in ES6, or an IIFE to capture values correctly.
+    </div>
+    <pre>
+let funcs = [];
+for (let i = 0; i < 3; i++) {
+  funcs.push(function() { return i; });
+}
+funcs[0](); // 0
+    </pre>
+
+    <h3>Use Cases for Closures</h3>
+    <ul>
+      <li>Data encapsulation and privacy</li>
+      <li>Function factories (functions that create functions)</li>
+      <li>Event handlers and callbacks</li>
+      <li>Partial application and currying</li>
+      <li>Maintaining state in asynchronous code</li>
+    </ul>
+
+    <h3>Summary</h3>
+    <ul>
+      <li>Closures give functions access to their outer scope, even after the outer function has returned.</li>
+      <li>They are the foundation for private variables, callbacks, and much more in JavaScript.</li>
+    </ul>
+    <div class="note">
+      <b>Practice:</b> Try creating counters, private data holders, and custom event handlers with closures to master this concept.
+    </div>
+  </div>
+</body>
+</html>

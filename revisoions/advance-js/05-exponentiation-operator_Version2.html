@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript: Exponentiation Operator (In-Depth)</title>
+  <style>
+    body { background: #131e2b; color: #f1f5f9; font-family: Arial, sans-serif; margin: 0; padding: 0; }
+    .container { max-width: 780px; margin: 40px auto; background: #202c3a; border-radius: 12px; box-shadow: 0 2px 18px #0005; padding: 40px 32px; }
+    h1 { color: #38bdf8; }
+    h2 { color: #7dd3fc; margin-top: 34px; }
+    h3 { color: #38bdf8; margin-top: 28px; }
+    p, ul { font-size: 1.13em; line-height: 1.85; }
+    pre { background: #0f172a; color: #e0f2fe; padding: 15px 18px; border-radius: 7px; font-size: 1.06em; margin: 15px 0; border-left: 4px solid #38bdf8; }
+    .output { background: #11213a; color: #a7f3d0; border-radius: 7px; padding: 11px 18px; margin: 9px 0 20px 0; border-left: 4px solid #38bdf8; font-size: 1.06em; }
+    .note { background: #334155; color: #fbbf24; border-left: 4px solid #fbbf24; padding: 12px 16px; border-radius: 7px; margin: 20px 0 0 0; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>JavaScript: Exponentiation Operator (In-Depth)</h1>
+    <p>
+      The <b>exponentiation operator</b> (<code>**</code>) is a mathematical operator that raises the left operand to the power of the right operand. Introduced in ES2016 (ES7), it is the standard way to perform exponentiation in modern JavaScript.
+    </p>
+
+    <h2>Basic Usage</h2>
+    <pre>
+let squared = 5 ** 2;    // 25
+let cubed = 2 ** 3;      // 8
+let root = 16 ** 0.5;    // 4 (square root)
+    </pre>
+    <div class="output">// Output:<br>25<br>8<br>4</div>
+
+    <h2>Equivalent to <code>Math.pow()</code></h2>
+    <p>
+      The <code>**</code> operator is functionally identical to <code>Math.pow()</code>:
+    </p>
+    <pre>
+let value1 = 3 ** 4;            // 81
+let value2 = Math.pow(3, 4);    // 81
+    </pre>
+
+    <h2>Operator Precedence and Associativity</h2>
+    <ul>
+      <li>The <code>**</code> operator is <b>right-associative</b>: evaluated from right to left.</li>
+      <li>This means <code>a ** b ** c</code> is <code>a ** (b ** c)</code>.</li>
+    </ul>
+    <pre>
+let result = 2 ** 3 ** 2; // 2 ** (3 ** 2) => 2 ** 9 = 512
+    </pre>
+    <div class="output">// Output:<br>512</div>
+
+    <h2>Negative Numbers</h2>
+    <p>
+      Use parentheses with negative bases to avoid confusion:
+    </p>
+    <pre>
+let a = (-2) ** 3; // -8
+let b = -2 ** 3;   // - (2 ** 3) = -8
+    </pre>
+
+    <h2>Assignment Operator <code>**=</code></h2>
+    <p>
+      JavaScript also supports the exponentiation assignment operator (<code>**=</code>):
+    </p>
+    <pre>
+let x = 10;
+x **= 2; // x = x ** 2 = 100
+    </pre>
+    <div class="output">// Output:<br>100</div>
+
+    <h2>Practical Examples</h2>
+    <ul>
+      <li>Calculate powers, roots, or exponential growth.</li>
+      <li>Quickly square/cube numbers or arrays of numbers with <code>map()</code>.</li>
+    </ul>
+    <pre>
+let arr = [1, 2, 3, 4];
+let squares = arr.map(n => n ** 2); // [1, 4, 9, 16]
+    </pre>
+
+    <h2>Summary</h2>
+    <ul>
+      <li>Use <code>**</code> for powers, roots, and exponents.</li>
+      <li>It's clear, concise, and now the standard in JavaScript.</li>
+      <li>Remember the right-associativity and use parentheses for clarity with negatives or multiple exponents.</li>
+    </ul>
+    <div class="note">
+      <b>Practice:</b> Try using <code>**</code> in math-heavy code, array transformations, and interactive calculators.
+    </div>
+  </div>
+</body>
+</html>

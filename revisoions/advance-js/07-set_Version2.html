@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript: Set (In-Depth)</title>
+  <style>
+    body { background: #131e2b; color: #f1f5f9; font-family: Arial, sans-serif; margin: 0; padding: 0; }
+    .container { max-width: 780px; margin: 40px auto; background: #202c3a; border-radius: 12px; box-shadow: 0 2px 18px #0005; padding: 40px 32px; }
+    h1 { color: #38bdf8; }
+    h2 { color: #7dd3fc; margin-top: 34px; }
+    h3 { color: #38bdf8; margin-top: 28px; }
+    p, ul { font-size: 1.13em; line-height: 1.85; }
+    pre { background: #0f172a; color: #e0f2fe; padding: 15px 18px; border-radius: 7px; font-size: 1.06em; margin: 15px 0; border-left: 4px solid #38bdf8; }
+    .output { background: #11213a; color: #a7f3d0; border-radius: 7px; padding: 11px 18px; margin: 9px 0 20px 0; border-left: 4px solid #38bdf8; font-size: 1.06em; }
+    .note { background: #334155; color: #fbbf24; border-left: 4px solid #fbbf24; padding: 12px 16px; border-radius: 7px; margin: 20px 0 0 0; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>JavaScript: Set (In-Depth)</h1>
+    <p>
+      <b>Set</b> is a built-in JavaScript object that stores unique values of any type. Sets are useful for removing duplicates and fast membership checks.
+    </p>
+
+    <h2>Creating a Set</h2>
+    <pre>
+const set = new Set();
+set.add(1);
+set.add(2);
+set.add(1); // Duplicate, ignored
+    </pre>
+    <div class="output">// Output:<br>Set { 1, 2 }</div>
+
+    <h2>Initializing from an Array</h2>
+    <pre>
+let arr = [1, 2, 2, 3, 4, 4];
+let unique = new Set(arr);
+[...unique]; // [1, 2, 3, 4]
+    </pre>
+
+    <h2>Common Set Methods</h2>
+    <ul>
+      <li><code>add(value)</code>: Adds a value.</li>
+      <li><code>delete(value)</code>: Removes a value.</li>
+      <li><code>has(value)</code>: Checks if a value exists.</li>
+      <li><code>clear()</code>: Removes all values.</li>
+      <li><code>size</code>: Returns the number of unique values.</li>
+    </ul>
+    <pre>
+const s = new Set([10, 20]);
+s.has(10); // true
+s.delete(20); // true
+s.size; // 1
+s.clear();
+    </pre>
+
+    <h2>Iterating Over a Set</h2>
+    <pre>
+for (let item of unique) {
+  console.log(item);
+}
+    </pre>
+
+    <h2>Use Cases for Sets</h2>
+    <ul>
+      <li>Removing duplicates from arrays</li>
+      <li>Checking for unique values</li>
+      <li>Efficient membership testing</li>
+      <li>Set operations: union, intersection, difference (with spread and array methods)</li>
+    </ul>
+
+    <div class="note">
+      <b>Practice:</b> Try using Set to filter duplicates, check for presence of elements, and perform set operations!
+    </div>
+  </div>
+</body>
+</html>
