@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>JavaScript Arrays: Ultimate Guide with Detailed Info...</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+    <link rel="stylesheet" href="styles.css" type="text/css">
+
+    <script>
+      function goTop() {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    </script>
+
+  </head>
+  <body>
+    <div class="container-main">
+      <h1>
+        JavaScript Arrays: Ultimate Guide<br /><span
+          style="font-size: 0.89em; color: #64748b"
+          >All 52+ Topics, Examples, Output & Details</span
+        >
+      </h1>
+      <div class="section-index" id="top">
+        <strong>Jump to Topic:</strong>
+        <ul>
+          <li><a href="#t01">01. What is an Array?</a></li>
+          <li><a href="#t02">02. How to Create Arrays?</a></li>
+          <li><a href="#t03">03. Accessing Elements</a></li>
+          <li><a href="#t04">04. Adding Elements (push, unshift)</a></li>
+          <li><a href="#t05">05. Removing Elements (pop, shift)</a></li>
+          <li><a href="#t06">06. Clone/Copy Arrays (slice)</a></li>
+          <li><a href="#t07">07. Determine Array</a></li>
+          <li><a href="#t08">08. Array Destructuring</a></li>
+          <li><a href="#t09">09. Assign Default Value</a></li>
+          <li><a href="#t10">10. Skipping a Value</a></li>
+          <li><a href="#t11">11. Nested Array</a></li>
+          <li><a href="#t12">12. Nested Array Destructuring</a></li>
+          <li><a href="#t13">13. Rest & Spread Operator</a></li>
+          <li><a href="#t14">14. Destructuring Swap</a></li>
+          <li><a href="#t15">15. Destructuring Merge</a></li>
+          <li><a href="#t16">16. Array Length</a></li>
+          <li><a href="#t17">17. concat()</a></li>
+          <li><a href="#t18">18. join()</a></li>
+          <li><a href="#t19">19. fill()</a></li>
+          <li><a href="#t20">20. includes()</a></li>
+          <li><a href="#t21">21. indexOf()</a></li>
+          <li><a href="#t22">22. lastIndexOf()</a></li>
+          <li><a href="#t23">23. reverse()</a></li>
+          <li><a href="#t24">24. sort()</a></li>
+          <li><a href="#t25">25. splice()</a></li>
+          <li><a href="#t26">26. at()</a></li>
+          <li><a href="#t27">27. copyWithin()</a></li>
+          <li><a href="#t28">28. flat()</a></li>
+          <li><a href="#t29">29. Grouping Data</a></li>
+          <li><a href="#t30">30. Immutability</a></li>
+          <li><a href="#t31">31. toReversed()</a></li>
+          <li><a href="#t32">32. toSorted()</a></li>
+          <li><a href="#t33">33. toSpliced()</a></li>
+          <li><a href="#t34">34. with()</a></li>
+          <li><a href="#t35">35. Array-like</a></li>
+          <li><a href="#t36">36. Array.from()</a></li>
+          <li><a href="#t37">37. Array.fromAsync()</a></li>
+          <li><a href="#t38">38. Array.of()</a></li>
+          <li><a href="#t39">39. filter()</a></li>
+          <li><a href="#t40">40. map()</a></li>
+          <li><a href="#t41">41. reduce()</a></li>
+          <li><a href="#t42">42. reduceRight()</a></li>
+          <li><a href="#t43">43. some()</a></li>
+          <li><a href="#t44">44. every()</a></li>
+          <li><a href="#t45">45. find()</a></li>
+          <li>
+            <a href="#t46">46. findIndex() / findLastIndex() / findLast()</a>
+          </li>
+          <li><a href="#t47">47. Chaining Methods</a></li>
+          <li><a href="#t48">48. forEach()</a></li>
+          <li><a href="#t49">49. entries()</a></li>
+          <li><a href="#t50">50. values()</a></li>
+          <li><a href="#t51">51. flatMap()</a></li>
+        </ul>
+      </div>
+
+      <!-- 01 -->
+      <div class="topic-box" id="t01">
+        <div class="topic-title">
+          <span class="topic-index">01</span>What is an Array?
+        </div>
+        <button class="btn-top" onclick="goTop()">↑ Top</button>
+        <p>
+          An <b>array</b> in JavaScript is a list-like, ordered collection of
+          values. Each value (called an "element") is identified by a numeric
+          index. Arrays can grow or shrink dynamically, and you can store
+          <b>any data type</b> (numbers, strings, objects, functions, etc) in an
+          array—even mixed types!
+        </p>
+        <pre>let fruits = ["apple", "banana", "cherry"];</pre>
+        <div class="output">// Output:<br />["apple", "banana", "cherry"]</div>
+        <div class="note">
+          Arrays are <b>objects</b> under the hood, but with special behaviors
+          and methods for handling collections.
+        </div>
+      </div>
+
+      <!-- 02 -->
+      <div class="topic-box" id="t02">
+        <div class="topic-title">
+          <span class="topic-index">02</span>How to Create Arrays?
+        </div>
+        <button class="btn-top" onclick="goTop()">↑ Top</button>
+        <ul>
+          <li><b>Literal syntax</b> (recommended for clarity and speed):</li>
+        </ul>
+        <pre>let arr = [1, 2, 3];</pre>
+        <ul>
+          <li><b>Array constructor</b> (rarely used directly):</li>
+        </ul>
+        <pre>let arr2 = new Array(1, 2, 3);</pre>
+        <ul>
+          <li><b>Empty array</b>:</li>
+        </ul>
+        <pre>let empty = [];</pre>
+        <div class="output">// Output:<br />[1,2,3]<br />[1,2,3]<br />[]</div>
+        <div class="note">
+          <b>Warning:</b> <code>new Array(3)</code> creates an empty array of
+          length 3, not [3].
+        </div>
+      </div>
+
+      <!-- 03 -->
+      <div class="topic-box" id="t03">
+        <div class="topic-title">
+          <span class="topic-index">03</span>Accessing Elements
+        </div>
+        <button class="btn-top" onclick="goTop()">↑ Top</button>
+        <p>
+          Access array elements by index, starting from 0. Negative indexing is
+          available via <code>at()</code> (see topic 26).
+        </p>
+        <pre>
+let colors = ["red", "green", "blue"];
+console.log(colors[0]); // first item
+console.log(colors[2]); // third item
+      </pre
+        >
+        <div class="output">// Output:<br />red<br />blue</div>
+        <div class="note">
+          Accessing an invalid index returns <code>undefined</code>. Use
+          <code>arr.length</code> for bounds checking.
+        </div>
+      </div>
+
+      <!-- 04 -->
+      <div class="topic-box" id="t04">
+        <div class="topic-title">
+          <span class="topic-index">04</span>Adding Elements (push, unshift)
+        </div>
+        <button class="btn-top" onclick="goTop()">↑ Top</button>
+        <p>
+          <b>push()</b> adds one or more elements to the <b>end</b>.
+          <b>unshift()</b> adds to the <b>start</b>.
+        </p>
+        <pre>
+let arr = [1,2];
+arr.push(3);      // [1,2,3]
+arr.unshift(0);   // [0,1,2,3]
+      </pre
+        >
+        <div class="output">// Output:<br />[1,2,3]<br />[0,1,2,3]</div>
+        <div class="note">Both methods return the new length of the array.</div>
+      </div>
+
+      <!-- 05 -->
+      <div class="topic-box" id="t05">
+        <div class="topic-title">
+          <span class="topic-index">05</span>Removing Elements (pop, shift)
+        </div>
+        <button class="btn-top" onclick="goTop()">↑ Top</button>
+        <p>
+          <b>pop()</b> removes the last element, <b>shift()</b> removes the
+          first.
+        </p>
+        <pre>
+let arr = [0,1,2,3];
+arr.pop();    // [0,1,2]
+arr.shift();  // [1,2]
+      </pre
+        >
+        <div class="output">// Output:<br />[0,1,2]<br />[1,2]</div>
+        <div class="note">
+          The returned value is the element that was removed.
+        </div>
+      </div>
+
+      <!-- 06 -->
+      <div class="topic-box" id="t06">
+        <div class="topic-title">
+          <span class="topic-index">06</span>Clone/Copy Arrays (slice)
+        </div>
+        <button class="btn-top" onclick="goTop()">↑ Top</button>
+        <p>
+          <code>slice()</code> returns a shallow copy. Also use
+          <code>[...arr]</code> for a quick clone.
+        </p>
+        <pre>
+let arr = [1,2,3];
+let copy = arr.slice();
+let copy2 = [...arr];
+      </pre
+        >
+        <div class="output">// Output:<br />[1,2,3]<br />[1,2,3]</div>
+        <div class="note">
+          Both methods only make a <b>shallow copy</b> (nested objects are not
+          cloned).
+        </div>
+      </div>
+
+      <!-- 07 -->
+      <div class="topic-box" id="t07">
+        <div class="topic-title">
+          <span class="topic-index">07</span>Determine Array
+        </div>
+        <button class="btn-top" onclick="goTop()">↑ Top</button>
+        <p>
+          Use <code>Array.isArray()</code> to check if something is really an
+          array.
+        </p>
+        <pre>Array.isArray([1,2,3]); // true</pre>
+        <div class="output">// Output:<br />true</div>
+        <div class="note">
+          typeof [] is <b>"object"</b>, so don't use <code>typeof</code> for
+          arrays!
+        </div>
+      </div>
+
+      <!-- 08 -->
+      <div class="topic-box" id="t08">
+        <div class="topic-title">
+          <span class="topic-index">08</span>Array Destructuring
+        </div>
+        <button class="btn-top" onclick="goTop()">↑ Top</button>
+        <p>Assign array values to variables in one line.</p>
+        <pre>let [a, b, c] = [1, 2, 3];</pre>
+        <div class="output">// Output:<br />a = 1, b = 2, c = 3</div>
+        <div class="note">
+          Destructuring also works with function returns that are arrays.
+        </div>
+      </div>
+
+      <!-- 09 -->
+      <div class="topic-box" id="t09">
+        <div class="topic-title">
+          <span class="topic-index">09</span>Assign Default Value
+        </div>
+        <button class="btn-top" onclick="goTop()">↑ Top</button>
+        <p>
+          Provide a fallback value if the element is <code>undefined</code>.
+        </p>
+        <pre>let [x, y = 10] = [5];</pre>
+        <div class="output">// Output:<br />x = 5, y = 10</div>
+        <div class="note">
+          Default only applies for <b>undefined</b> (not null or other values).
+        </div>
+      </div>
+
+      <!-- 10 -->
+      <div class="topic-box" id="t10">
+        <div class="topic-title">
+          <span class="topic-index">10</span>Skipping a Value
+        </div>
+        <button class="btn-top" onclick="goTop()">↑ Top</button>
+        <p>Use extra commas to skip values during destructuring.</p>
+        <pre>let [first, , third] = [1, 2, 3];</pre>
+        <div class="output">// Output:<br />first = 1, third = 3</div>
+      </div>
+
+      <!-- 11 -->
+      <div class="topic-box" id="t11">
+        <div class="topic-title">
+          <span class="topic-index">11</span>Nested Array
+        </div>
+        <button class="btn-top" onclick="goTop()">↑ Top</button>
+        <p>
+          Arrays can contain other arrays, allowing you to create 2D, 3D, or
+          more complex structures.
+        </p>
+        <pre>let matrix = [[1,2],[3,4]];</pre>
+        <div class="output">// Output:<br />[[1,2],[3,4]]</div>
+        <div class="note">
+          Useful for representing grids, matrices, or tables of data.
+        </div>
+      </div>
+
+      <!-- 12 -->
+      <div class="topic-box" id="t12">
+        <div class="topic-title">
+          <span class="topic-index">12</span>Nested Array Destructuring
+        </div>
+        <button class="btn-top" onclick="goTop()">↑ Top</button>
+        <pre>
+let [[a, b], [c, d]] = [[1,2],[3,4]];
+      </pre
+        >
+        <div class="output">// Output:<br />a=1, b=2, c=3, d=4</div>
+        <div class="note">
+          You can destructure as deeply as your array is nested.
+        </div>
+      </div>
+
+      <!-- 13 -->
+      <div class="topic-box" id="t13">
+        <div class="topic-title">
+          <span class="topic-index">13</span>Rest & Spread Operator
+        </div>
+        <button class="btn-top" onclick="goTop()">↑ Top</button>
+        <ul>
+          <li><b>Rest:</b> Gathers remaining values as an array.</li>
+          <li><b>Spread:</b> Expands array elements in place.</li>
+        </ul>
+        <pre>
+// Rest
+let [first, ...rest] = [1,2,3,4];
+// Spread
+let arr1 = [1,2];
+let arr2 = [...arr1,3,4];
+      </pre
+        >
+        <div class="output">
+          // Output:<br />first=1, rest=[2,3,4]<br />arr2=[1,2,3,4]
+        </div>
+        <div class="note">
+          Spread is used to copy, merge, or pass arrays to functions as
+          arguments.
+        </div>
+      </div>
+
+      <!-- 14 -->
+      <div class="topic-box" id="t14">
+        <div class="topic-title">
+          <span class="topic-index">14</span>Destructuring Swap
+        </div>
+        <button class="btn-top" onclick="goTop()">↑ Top</button>
+        <p>Swap two variables with no temp variable!</p>
+        <pre>
+let a = 1, b = 2;
+[a, b] = [b, a];
+      </pre
+        >
+        <div class="output">// Output:<br />a=2, b=1</div>
+      </div>
+
+      <!-- 15 -->
+      <div class="topic-box" id="t15">
+        <div class="topic-title">
+          <span class="topic-index">15</span>Destructuring Merge
+        </div>
+        <button class="btn-top" onclick="goTop()">↑ Top</button>
+        <pre>
+let arr1 = [1,2];
+let arr2 = [3,4];
+let merged = [...arr1, ...arr2];
+      </pre
+        >
+        <div class="output">// Output:<br />[1,2,3,4]</div>
+        <div class="note">Spread is a modern, clean way to merge arrays!</div>
+      </div>
+
+      <!-- 16 -->
+      <div class="topic-box" id="t16">
+        <div class="topic-title">
+          <span class="topic-index">16</span>Array Length
+        </div>
+        <button class="btn-top" onclick="goTop()">↑ Top</button>
+        <p>
+          <code>.length</code> is the total number of elements. It’s mutable:
+          setting <code>arr.length = n</code> can truncate/expand the array.
+        </p>
+        <pre>
+let arr = [1,2,3];
+arr.length;
+      </pre
+        >
+        <div class="output">// Output:<br />3</div>
+        <div class="note">
+          <b>Tip:</b> <code>arr.length = 0</code> clears the array instantly!
+        </div>
+      </div>
+
+      <!-- 17 -->
+      <div class="topic-box" id="t17">
+        <div class="topic-title">
+          <span class="topic-index">17</span>concat()
+        </div>
+        <button class="btn-top" onclick="goTop()">↑ Top</button>
+        <p>
+          Combines arrays or values into a new array. Does not modify the
+          originals.
+        </p>
+        <pre>
+let arr1 = [1,2];
+let arr2 = [3,4];
+let result = arr1.concat(arr2);
+      </pre
+        >
+        <div class="output">// Output:<br />[1,2,3,4]</div>
+      </div>
+
+      <!-- 18 -->
+      <div class="topic-box" id="t18">
+        <div class="topic-title"><span class="topic-index">18</span>join()</div>
+        <button class="btn-top" onclick="goTop()">↑ Top</button>
+        <p>
+          Joins all elements into a string, separated by your chosen character.
+        </p>
+        <pre>
+let arr = [1,2,3];
+arr.join("-");
+      </pre
+        >
+        <div class="output">// Output:<br />"1-2-3"</div>
+        <div class="note">
+          <b>Tip:</b> <code>join("")</code> combines all elements without any
+          separator.
+        </div>
+      </div>
+
+      <!-- 19 -->
+      <div class="topic-box" id="t19">
+        <div class="topic-title"><span class="topic-index">19</span>fill()</div>
+        <button class="btn-top" onclick="goTop()">↑ Top</button>
+        <p>Fills an array (or part of it) with a static value.</p>
+        <pre>
+let arr = [1,2,3];
+arr.fill(0);
+      </pre
+        >
+        <div class="output">// Output:<br />[0,0,0]</div>
+        <div class="note">
+          Can be used to initialize arrays: <code>Array(5).fill(1)</code> →
+          [1,1,1,1,1]
+        </div>
+      </div>
+
+      <!-- 20 -->
+      <div class="topic-box" id="t20">
+        <div class="topic-title">
+          <span class="topic-index">20</span>includes()
+        </div>
+        <button class="btn-top" onclick="goTop()">↑ Top</button>
+        <p>Checks if the array contains a given value (strict comparison).</p>
+        <pre>[1,2,3].includes(2);</pre>
+        <div class="output">// Output:<br />true</div>
+      </div>
+
+      <!-- 21 -->
+      <div class="topic-box" id="t21">
+        <div class="topic-title">
+          <span class="topic-index">21</span>indexOf()
+        </div>
+        <button class="btn-top" onclick="goTop()">↑ Top</button>
+        <p>Returns the first index of a value, or -1 if not found.</p>
+        <pre>[1,2,3,2].indexOf(2);</pre>
+        <div class="output">// Output:<br />1</div>
+      </div>
+
+      <!-- 22 -->
+      <div class="topic-box" id="t22">
+        <div class="topic-title">
+          <span class="topic-index">22</span>lastIndexOf()
+        </div>
+        <button class="btn-top" onclick="goTop()">↑ Top</button>
+        <p>Returns the last index of a value, or -1 if not found.</p>
+        <pre>[1,2,3,2].lastIndexOf(2);</pre>
+        <div class="output">// Output:<br />3</div>
+      </div>
+
+      <!-- 23 -->
+      <div class="topic-box" id="t23">
+        <div class="topic-title">
+          <span class="topic-index">23</span>reverse()
+        </div>
+        <button class="btn-top" onclick="goTop()">↑ Top</button>
+        <p>Reverses the array <b>in place</b>.</p>
+        <pre>
+let arr = [1,2,3];
+arr.reverse();
+      </pre
+        >
+        <div class="output">// Output:<br />[3,2,1]</div>
+        <div class="note">
+          <code>toReversed()</code> returns a reversed copy (see topic 31).
+        </div>
+      </div>
+
+      <!-- 24 -->
+      <div class="topic-box" id="t24">
+        <div class="topic-title"><span class="topic-index">24</span>sort()</div>
+        <button class="btn-top" onclick="goTop()">↑ Top</button>
+        <p>
+          Sorts elements in place. By default, sorts as strings
+          (alphabetically).
+        </p>
+        <pre>
+let arr = [3,1,10,2];
+arr.sort();              // ["1","10","2","3"]
+arr.sort((a, b) => b-a); // [10,3,2,1]
+      </pre
+        >
+        <div class="output">// Output:<br />[1,10,2,3]<br />[10,3,2,1]</div>
+        <div class="note">Always use a compare function for numbers!</div>
+      </div>
+
+      <!-- 25 -->
+      <div class="topic-box" id="t25">
+        <div class="topic-title">
+          <span class="topic-index">25</span>splice()
+        </div>
+        <button class="btn-top" onclick="goTop()">↑ Top</button>
+        <p>Add, remove, or replace elements at a specific index.</p>
+        <pre>
+let arr = [1,2,3,4];
+arr.splice(1,2,"x","y");
+      </pre
+        >
+        <div class="output">// Output:<br />[1,"x","y",4]</div>
+        <div class="note">
+          <code>splice(start, deleteCount, ...items)</code>. Always returns the
+          removed elements.
+        </div>
+      </div>
+
+      <!-- 26 -->
+      <div class="topic-box" id="t26">
+        <div class="topic-title"><span class="topic-index">26</span>at()</div>
+        <button class="btn-top" onclick="goTop()">↑ Top</button>
+        <p>Accesses array elements using positive or negative indices.</p>
+        <pre>
+let arr = [1,2,3];
+arr.at(-1); // last element
+      </pre
+        >
+        <div class="output">// Output:<br />3</div>
+      </div>
+
+      <!-- 27 -->
+      <div class="topic-box" id="t27">
+        <div class="topic-title">
+          <span class="topic-index">27</span>copyWithin()
+        </div>
+        <button class="btn-top" onclick="goTop()">↑ Top</button>
+        <p>
+          Copies part of the array to another location, overwriting existing
+          elements.
+        </p>
+        <pre>
+let arr = [1,2,3,4];
+arr.copyWithin(1,2);
+      </pre
+        >
+        <div class="output">// Output:<br />[1,3,4,4]</div>
+      </div>
+
+      <!-- 28 -->
+      <div class="topic-box" id="t28">
+        <div class="topic-title"><span class="topic-index">28</span>flat()</div>
+        <button class="btn-top" onclick="goTop()">↑ Top</button>
+        <p>Flattens nested arrays to the chosen depth (default is 1).</p>
+        <pre>
+[1,[2,[3]]].flat(2);
+      </pre
+        >
+        <div class="output">// Output:<br />[1,2,3]</div>
+      </div>
+
+      <!-- 29 -->
+      <div class="topic-box" id="t29">
+        <div class="topic-title">
+          <span class="topic-index">29</span>Grouping Data
+        </div>
+        <button class="btn-top" onclick="goTop()">↑ Top</button>
+        <p>
+          Arrays are the foundation for lists, tables, queues, stacks, and more.
+        </p>
+        <pre>
+let users = [
+  {name: "A", age: 20},
+  {name: "B", age: 25}
+];
+      </pre
+        >
+        <div class="output">
+          // Output:<br />[{name:"A",age:20},{name:"B",age:25}]
+        </div>
+        <div class="note">
+          Arrays can store objects, functions, arrays, or any combination.
+        </div>
+      </div>
+
+      <!-- 30 -->
+      <div class="topic-box" id="t30">
+        <div class="topic-title">
+          <span class="topic-index">30</span>Immutability
+        </div>
+        <button class="btn-top" onclick="goTop()">↑ Top</button>
+        <table>
+          <tr>
+            <th>Immutable Methods</th>
+            <th>Mutable Methods</th>
+          </tr>
+          <tr>
+            <td>
+              slice, concat, map, filter, toReversed, toSorted, toSpliced, with,
+              flatMap
+            </td>
+            <td>
+              push, pop, shift, unshift, splice, sort, reverse, fill, copyWithin
+            </td>
+          </tr>
+        </table>
+        <div class="note">
+          Immutable methods return a new array, leaving the original
+          unchanged.<br />
+          Mutable methods modify the original array.
+        </div>
+      </div>
+
+      <!-- 31 -->
+      <div class="topic-box" id="t31">
+        <div class="topic-title">
+          <span class="topic-index">31</span>toReversed()
+        </div>
+        <button class="btn-top" onclick="goTop()">↑ Top</button>
+        <pre>
+let arr = [1,2,3];
+let rev = arr.toReversed();
+      </pre
+        >
+        <div class="output">// Output:<br />rev=[3,2,1], arr=[1,2,3]</div>
+      </div>
+
+      <!-- 32 -->
+      <div class="topic-box" id="t32">
+        <div class="topic-title">
+          <span class="topic-index">32</span>toSorted()
+        </div>
+        <button class="btn-top" onclick="goTop()">↑ Top</button>
+        <pre>
+let arr = [3,2,1];
+let sorted = arr.toSorted();
+      </pre
+        >
+        <div class="output">// Output:<br />sorted=[1,2,3], arr=[3,2,1]</div>
+        <div class="note">
+          <b>Tip:</b> Use <code>toSorted((a,b)=>b-a)</code> for descending
+          order.
+        </div>
+      </div>
+
+      <!-- 33 -->
+      <div class="topic-box" id="t33">
+        <div class="topic-title">
+          <span class="topic-index">33</span>toSpliced()
+        </div>
+        <button class="btn-top" onclick="goTop()">↑ Top</button>
+        <pre>
+let arr = [1,2,3];
+let newArr = arr.toSpliced(1,1,9);
+      </pre
+        >
+        <div class="output">// Output:<br />newArr=[1,9,3], arr=[1,2,3]</div>
+      </div>
+
+      <!-- 34 -->
+      <div class="topic-box" id="t34">
+        <div class="topic-title"><span class="topic-index">34</span>with()</div>
+        <button class="btn-top" onclick="goTop()">↑ Top</button>
+        <p>
+          Returns a copy of the array with a value changed at the specified
+          index.
+        </p>
+        <pre>
+let arr = [1,2,3];
+let newArr = arr.with(1, 99);
+      </pre
+        >
+        <div class="output">// Output:<br />[1,99,3]</div>
+      </div>
+
+      <!-- 35 -->
+      <div class="topic-box" id="t35">
+        <div class="topic-title">
+          <span class="topic-index">35</span>Array-like
+        </div>
+        <button class="btn-top" onclick="goTop()">↑ Top</button>
+        <div class="note">
+          "Array-like" objects have indexed values and a
+          <code>length</code> property (e.g. <code>arguments</code> object in
+          functions, NodeLists, strings).
+        </div>
+        <p>
+          They are not real arrays, but you can convert them to arrays with
+          <code>Array.from()</code>.
+        </p>
+      </div>
+
+      <!-- 36 -->
+      <div class="topic-box" id="t36">
+        <div class="topic-title">
+          <span class="topic-index">36</span>Array.from()
+        </div>
+        <button class="btn-top" onclick="goTop()">↑ Top</button>
+        <p>Converts array-like or iterable objects to real arrays.</p>
+        <pre>Array.from("hello");</pre>
+        <div class="output">// Output:<br />["h","e","l","l","o"]</div>
+      </div>
+
+      <!-- 37 -->
+      <div class="topic-box" id="t37">
+        <div class="topic-title">
+          <span class="topic-index">37</span>Array.fromAsync()
+        </div>
+        <button class="btn-top" onclick="goTop()">↑ Top</button>
+        <p>Converts async iterables to arrays asynchronously (ES2023+).</p>
+        <pre>
+async function* gen() { yield 1; yield 2; }
+let arr = await Array.fromAsync(gen());
+      </pre
+        >
+        <div class="output">// Output:<br />[1,2]</div>
+        <div class="note">
+          Requires <code>await</code> in an async function context.
+        </div>
+      </div>
+
+      <!-- 38 -->
+      <div class="topic-box" id="t38">
+        <div class="topic-title">
+          <span class="topic-index">38</span>Array.of()
+        </div>
+        <button class="btn-top" onclick="goTop()">↑ Top</button>
+        <p>
+          Creates a new array from its arguments (especially useful to avoid
+          <code>new Array()</code> confusion).
+        </p>
+        <pre>Array.of(1,2,3);</pre>
+        <div class="output">// Output:<br />[1,2,3]</div>
+      </div>
+
+      <!-- 39 -->
+      <div class="topic-box" id="t39">
+        <div class="topic-title">
+          <span class="topic-index">39</span>filter()
+        </div>
+        <button class="btn-top" onclick="goTop()">↑ Top</button>
+        <p>Returns a new array of elements that pass the test function.</p>
+        <pre>[1,2,3,4].filter(n => n > 2);</pre>
+        <div class="output">// Output:<br />[3,4]</div>
+      </div>
+
+      <!-- 40 -->
+      <div class="topic-box" id="t40">
+        <div class="topic-title"><span class="topic-index">40</span>map()</div>
+        <button class="btn-top" onclick="goTop()">↑ Top</button>
+        <p>
+          Returns a new array with the results of calling a function for every
+          element.
+        </p>
+        <pre>[1,2,3].map(n => n * 2);</pre>
+        <div class="output">// Output:<br />[2,4,6]</div>
+      </div>
+
+      <!-- 41 -->
+      <div class="topic-box" id="t41">
+        <div class="topic-title">
+          <span class="topic-index">41</span>reduce()
+        </div>
+        <button class="btn-top" onclick="goTop()">↑ Top</button>
+        <p>"Reduces" array to a single value by accumulating results.</p>
+        <pre>[1,2,3].reduce((acc, cur) => acc + cur, 0);</pre>
+        <div class="output">// Output:<br />6</div>
+        <div class="note">
+          <b>Tip:</b> Often used for sums, products, or more complex
+          aggregations.
+        </div>
+      </div>
+
+      <!-- 42 -->
+      <div class="topic-box" id="t42">
+        <div class="topic-title">
+          <span class="topic-index">42</span>reduceRight()
+        </div>
+        <button class="btn-top" onclick="goTop()">↑ Top</button>
+        <p>
+          Same as <code>reduce()</code> but processes the array from
+          right-to-left.
+        </p>
+        <pre>[1,2,3].reduceRight((acc, cur) => acc + cur, 0);</pre>
+        <div class="output">// Output:<br />6</div>
+      </div>
+
+      <!-- 43 -->
+      <div class="topic-box" id="t43">
+        <div class="topic-title"><span class="topic-index">43</span>some()</div>
+        <button class="btn-top" onclick="goTop()">↑ Top</button>
+        <p>Checks if <b>at least one</b> element passes the test.</p>
+        <pre>[1,2,3].some(n => n > 2);</pre>
+        <div class="output">// Output:<br />true</div>
+      </div>
+
+      <!-- 44 -->
+      <div class="topic-box" id="t44">
+        <div class="topic-title">
+          <span class="topic-index">44</span>every()
+        </div>
+        <button class="btn-top" onclick="goTop()">↑ Top</button>
+        <p>Checks if <b>every</b> element passes the test.</p>
+        <pre>[1,2,3].every(n => n > 0);</pre>
+        <div class="output">// Output:<br />true</div>
+      </div>
+
+      <!-- 45 -->
+      <div class="topic-box" id="t45">
+        <div class="topic-title"><span class="topic-index">45</span>find()</div>
+        <button class="btn-top" onclick="goTop()">↑ Top</button>
+        <p>
+          Returns the first element that passes the test, or
+          <code>undefined</code> if none found.
+        </p>
+        <pre>[1,2,3].find(n => n > 1);</pre>
+        <div class="output">// Output:<br />2</div>
+      </div>
+
+      <!-- 46 -->
+      <div class="topic-box" id="t46">
+        <div class="topic-title">
+          <span class="topic-index">46</span>findIndex() / findLastIndex() /
+          findLast()
+        </div>
+        <button class="btn-top" onclick="goTop()">↑ Top</button>
+        <pre>
+[1,2,3].findIndex(n => n > 1);           // 1
+[1,2,3,2].findLastIndex(n => n === 2);   // 3
+[1,2,3,2].findLast(n => n === 2);        // 2
+      </pre
+        >
+        <div class="output">// Output:<br />1<br />3<br />2</div>
+        <div class="note">
+          Useful for searching from the end or finding the index, not just
+          value.
+        </div>
+      </div>
+
+      <!-- 47 -->
+      <div class="topic-box" id="t47">
+        <div class="topic-title">
+          <span class="topic-index">47</span>Chaining Methods
+        </div>
+        <button class="btn-top" onclick="goTop()">↑ Top</button>
+        <pre>
+let result = [1,2,3,4]
+  .filter(n => n % 2 === 0)
+  .map(n => n * 10);
+      </pre
+        >
+        <div class="output">// Output:<br />[20,40]</div>
+        <div class="note">
+          Chaining lets you process data in steps for clear, concise code.
+        </div>
+      </div>
+
+      <!-- 48 -->
+      <div class="topic-box" id="t48">
+        <div class="topic-title">
+          <span class="topic-index">48</span>forEach()
+        </div>
+        <button class="btn-top" onclick="goTop()">↑ Top</button>
+        <p>
+          Executes a function for each array element (does not return a value).
+        </p>
+        <pre>[1,2,3].forEach(n => console.log(n));</pre>
+        <div class="output">// Output:<br />1<br />2<br />3</div>
+        <div class="note">
+          <code>forEach()</code> is for side effects, not for transformation.
+        </div>
+      </div>
+
+      <!-- 49 -->
+      <div class="topic-box" id="t49">
+        <div class="topic-title">
+          <span class="topic-index">49</span>entries()
+        </div>
+        <button class="btn-top" onclick="goTop()">↑ Top</button>
+        <p>Returns an iterator of <code>[index, value]</code> pairs.</p>
+        <pre>
+for (let [i, v] of [10,20].entries()) {
+  console.log(i, v);
+}
+      </pre
+        >
+        <div class="output">// Output:<br />0 10<br />1 20</div>
+      </div>
+
+      <!-- 50 -->
+      <div class="topic-box" id="t50">
+        <div class="topic-title">
+          <span class="topic-index">50</span>values()
+        </div>
+        <button class="btn-top" onclick="goTop()">↑ Top</button>
+        <p>
+          Returns an iterator of array values. Useful in
+          <code>for...of</code> loops.
+        </p>
+        <pre>
+for (let v of [1,2,3].values()) {
+  console.log(v);
+}
+      </pre
+        >
+        <div class="output">// Output:<br />1<br />2<br />3</div>
+      </div>
+
+      <!-- 51 -->
+      <div class="topic-box" id="t51">
+        <div class="topic-title">
+          <span class="topic-index">51</span>flatMap()
+        </div>
+        <button class="btn-top" onclick="goTop()">↑ Top</button>
+        <p>Maps each element, then flattens the result by one level.</p>
+        <pre>[1,2,3].flatMap(n => [n, n*2]);</pre>
+        <div class="output">// Output:<br />[1,2,2,4,3,6]</div>
+        <div class="note">
+          <b>Tip:</b> Use for mapping and flattening in one step, especially
+          with arrays of arrays.
+        </div>
+      </div>
+
+      <div class="tip">
+        <b>Tip:</b> Practice these code snippets in your browser's console to
+        see real output and deepen your understanding!<br />
+        Arrays are one of the most important JavaScript data
+        structures—mastering them is key to writing modern, efficient code.
+      </div>
+      <p id="bottom">Rafi Ullah 2025 - All rights resereved</p>
+    </div>
+  </body>
+</html>

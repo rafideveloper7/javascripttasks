@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS Core Basics</title>
+  <style>
+    /* ==================== */
+    /* CSS SYNTAX STRUCTURE */
+    /* ==================== */
+    /* selector { property: value; } */
+    
+    /* Root variables for consistent theming */
+    :root {
+      --primary: #3a86ff;
+      --secondary: #8338ec;
+      --dark: #212529;
+      --light: #f8f9fa;
+      --success: #52b788;
+      --warning: #ffbe0b;
+      --danger: #ff006e;
+      --radius: 8px;
+      --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      --transition: all 0.3s ease;
+    }
+    
+    /* ==================== */
+    /* UNIVERSAL RESET */
+    /* ==================== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    /* ==================== */
+    /* BODY STYLES */
+    /* ==================== */
+    body {
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      line-height: 1.6;
+      background-color: var(--light);
+      color: var(--dark);
+      padding: 2rem;
+    }
+    
+    /* ==================== */
+    /* TYPOGRAPHY */
+    /* ==================== */
+    h1 {
+      color: var(--primary);
+      margin-bottom: 1.5rem;
+      font-size: 2.5rem;
+      text-align: center;
+    }
+    
+    h2 {
+      color: var(--secondary);
+      margin: 1.5rem 0 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--primary);
+    }
+    
+    /* ==================== */
+    /* CONTAINER */
+    /* ==================== */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    /* ==================== */
+    /* CARD COMPONENT */
+    /* ==================== */
+    .card {
+      background: white;
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+    }
+    
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+    }
+    
+    /* ==================== */
+    /* SYNTAX DEMO SECTION */
+    /* ==================== */
+    .syntax-demo {
+      background-color: #f1f3f5;
+      padding: 1rem;
+      border-radius: var(--radius);
+      margin: 1rem 0;
+      font-family: 'Courier New', monospace;
+      position: relative;
+    }
+    
+    .syntax-demo::before {
+      content: 'CSS Syntax Example';
+      position: absolute;
+      top: -10px;
+      left: 10px;
+      background: var(--primary);
+      color: white;
+      padding: 0 0.5rem;
+      border-radius: 4px;
+      font-size: 0.8rem;
+    }
+    
+    /* ==================== */
+    /* SELECTOR EXAMPLES */
+    /* ==================== */
+    /* Type selector */
+    p {
+      margin-bottom: 1rem;
+    }
+    
+    /* Class selector */
+    .highlight {
+      background-color: rgba(255, 213, 0, 0.3);
+      padding: 0.2rem 0.4rem;
+      border-radius: 4px;
+    }
+    
+    /* ID selector */
+    #special-paragraph {
+      border-left: 4px solid var(--danger);
+      padding-left: 1rem;
+      font-style: italic;
+    }
+    
+    /* Attribute selector */
+    [data-example] {
+      background-color: rgba(131, 56, 236, 0.1);
+      padding: 0.5rem;
+      border-radius: var(--radius);
+    }
+    
+    /* ==================== */
+    /* PROPERTIES & VALUES */
+    /* ==================== */
+    .properties-demo {
+      width: 100%;
+      height: 200px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: var(--radius);
+      margin: 1rem 0;
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+    
+    /* ==================== */
+    /* !IMPORTANT DEMO */
+    /* ==================== */
+    .important-demo {
+      color: var(--success) !important;
+      font-weight: bold;
+    }
+    
+    /* This should be overridden by !important */
+    .important-demo {
+      color: var(--danger);
+      font-weight: normal;
+    }
+    
+    /* ==================== */
+    /* COMMENTS DEMO */
+    /* ==================== */
+    /* This is a CSS comment that won't be rendered */
+    /*
+      Multi-line comments
+      are also supported
+    */
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🔥 CSS Core Basics</h1>
+    
+    <!-- CSS Syntax Section -->
+    <div class="card">
+      <h2>1. CSS Syntax</h2>
+      <p>CSS rules consist of a <span class="highlight">selector</span> and a <span class="highlight">declaration block</span>:</p>
+      
+      <div class="syntax-demo">
+        selector {<br>
+        &nbsp;&nbsp;property: value;<br>
+        }
+      </div>
+      
+      <p>Example:</p>
+      
+      <div class="syntax-demo">
+        h1 {<br>
+        &nbsp;&nbsp;color: blue;<br>
+        &nbsp;&nbsp;font-size: 2rem;<br>
+        }
+      </div>
+    </div>
+    
+    <!-- Selectors Section -->
+    <div class="card">
+      <h2>2. Selectors</h2>
+      <p>Selectors target HTML elements to style them:</p>
+      
+      <div class="syntax-demo">
+        /* Type selector */<br>
+        p { color: black; }<br><br>
+        
+        /* Class selector */<br>
+        .highlight { background: yellow; }<br><br>
+        
+        /* ID selector */<br>
+        #header { height: 100px; }<br><br>
+        
+        /* Attribute selector */<br>
+        [data-example] { border: 1px solid; }
+      </div>
+      
+      <p data-example="true">This paragraph has a data-example attribute.</p>
+      <p id="special-paragraph">This paragraph has an ID selector applied.</p>
+    </div>
+    
+    <!-- Properties & Values Section -->
+    <div class="card">
+      <h2>3. Properties & Values</h2>
+      <p>Properties specify what to style, values specify how to style it:</p>
+      
+      <div class="properties-demo">
+        background: linear-gradient(135deg, #3a86ff, #8338ec);
+      </div>
+      
+      <div class="syntax-demo">
+        .element {<br>
+        &nbsp;&nbsp;width: 100%; /* property: value; */<br>
+        &nbsp;&nbsp;height: 200px;<br>
+        &nbsp;&nbsp;background: linear-gradient(...);<br>
+        &nbsp;&nbsp;color: white;<br>
+        &nbsp;&nbsp;display: flex;<br>
+        &nbsp;&nbsp;justify-content: center;<br>
+        &nbsp;&nbsp;align-items: center;<br>
+        }
+      </div>
+    </div>
+    
+    <!-- Comments Section -->
+    <div class="card">
+      <h2>4. Comments (/* */)</h2>
+      <p>Comments are ignored by the browser and used for documentation:</p>
+      
+      <div class="syntax-demo">
+        /* This is a single-line comment */<br><br>
+        
+        /*<br>
+        &nbsp;* This is a<br>
+        &nbsp;* multi-line comment<br>
+        */<br><br>
+        
+        /* Specific section styling */<br>
+        .header {<br>
+        &nbsp;&nbsp;/* Temporary border for debugging */<br>
+        &nbsp;&nbsp;border: 1px solid red;<br>
+        }
+      </div>
+    </div>
+    
+    <!-- !important Section -->
+    <div class="card">
+      <h2>5. !important</h2>
+      <p>The <span class="highlight">!important</span> rule overrides all other declarations:</p>
+      
+      <div class="syntax-demo">
+        .normal-rule {<br>
+        &nbsp;&nbsp;color: red;<br>
+        }<br><br>
+        
+        .important-rule {<br>
+        &nbsp;&nbsp;color: green !important;<br>
+        }
+      </div>
+      
+      <p class="important-demo">This text is green due to !important, even though a later rule tries to make it red.</p>
+      
+      <p><strong>Note:</strong> !important should be used sparingly as it makes debugging difficult.</p>
+    </div>
+  </div>
+</body>
+</html>
