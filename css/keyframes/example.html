@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Curved Text Inside Circle</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: rgb(255, 247, 0);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .circle-container {
+      width: 300px;
+      height: 300px;
+      animation: spin 10s linear infinite;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    svg {
+      width: 100%;
+      height: 100%;
+    }
+    text {
+      fill: url(#gradient);
+      font-size: 14px;
+      font-family: 'Arial', sans-serif;
+      letter-spacing: 2px;
+    }
+
+    circle {
+      fill: none;
+      stroke-width: 10;
+       stroke: url(#gradient) ;
+    }
+  </style>
+</head>
+<body>
+  <div class="circle-container">
+    <svg viewBox="0 0 200 200">
+      <!-- Gradient Border -->
+      <defs>
+        <linearGradient id="gradient">
+          <stop offset="0%" stop-color="red"/>
+          <stop offset="25%" stop-color="magenta"/>
+          <stop offset="50%" stop-color="blue"/>
+          <stop offset="75%" stop-color="lime"/>
+          <stop offset="100%" stop-color="red"/>
+        </linearGradient>
+        <!-- Inner Path for Text -->
+        <path id="innerPath" d="M100,100 m-60,0 a60,60 0 1,1 120,0 a60,60 0 1,1 -120,0" />
+      </defs>
+
+      <!-- Circle Border -->
+      <circle cx="100" cy="100" r="80" />
+
+      <!-- Text Inside the Circle -->
+      <text text-anchor="middle">
+        <textPath href="#innerPath" startOffset="50%">
+          Rafi Ullah • Full-Stack • Web • Developer
+        </textPath>
+      </text>
+    </svg>
+  </div>
+  <script>
+    let a = 34;
+    console.log("🚀 ~ a:", a)
+  </script>
+</body>
+</html>

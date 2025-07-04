@@ -1,0 +1,88 @@
+Title: What Are CSS Animations?
+
+Description:
+CSS Animations allow web developers to create smooth, dynamic transitions between different states of HTML elements without needing JavaScript.
+
+----------------------------
+
+💡 Definition:
+CSS animations enable elements to change styles over time using keyframes and animation properties.
+
+----------------------------
+
+🧠 How CSS Animations Work:
+
+1. @keyframes:
+   - Defines the stages of the animation.
+   - Each stage describes how the element should look at a certain time.
+
+2. Animation Properties:
+   - These are applied to the element to control how the animation behaves.
+
+----------------------------
+
+🛠 Example:
+
+@keyframes slideIn {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.box {
+  animation: slideIn 1s ease-out forwards;
+}
+
+----------------------------
+
+⚙️ Common Animation Properties:
+
+- animation-name: Name of the keyframes to use
+- animation-duration: How long the animation runs
+- animation-timing-function: Type of easing (e.g., linear, ease-in, etc.)
+- animation-delay: Wait time before the animation starts
+- animation-iteration-count: Number of times to repeat
+- animation-direction: Normal, reverse, alternate
+- animation-fill-mode: Retain styles before/after animation
+
+----------------------------
+
+🔁 Full Example:
+
+.box {
+  animation-name: glow;
+  animation-duration: 2s;
+  animation-timing-function: ease-in-out;
+  animation-delay: 0s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-fill-mode: both;
+}
+
+@keyframes glow {
+  from {
+    box-shadow: 0 0 5px #0ff;
+  }
+  to {
+    box-shadow: 0 0 20px #0ff;
+  }
+}
+
+----------------------------
+
+🎯 Why Use CSS Animations?
+
+- Adds interactivity and polish to websites
+- Lightweight and fast
+- No JavaScript needed
+- Great for UI transitions, loaders, micro-interactions
+
+----------------------------
+
+Pro Tip:
+Mastering animations means knowing when NOT to overuse them. Keep it smooth, subtle, and performance-friendly 💻⚡
