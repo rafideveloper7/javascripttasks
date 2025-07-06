@@ -1,16 +1,33 @@
 :root {
-    --primary-color: #2c3e50;
-    --secondary-color: #3498db;
-    --accent-color: #e74c3c;
-    --light-bg: #f8f9fa;
+    --primary-color: #22223b;         /* Deep blue-gray */
+    --secondary-color: #4ea8de;       /* Soft blue */
+    --accent-color: #f3722c;          /* Vibrant orange */
+    --light-bg: #f8f9fa;              /* Very light gray */
+    --card-bg: #ffffff;               /* Card background */
+    --text-on-primary: #ffffff;       /* For text on dark backgrounds */
+    --text-on-light: #22223b;         /* For text on light backgrounds */
 }
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: var(--light-bg);
-    color: var(--primary-color);
+    color: var(--text-on-light);
+    transition: background 0.3s ease, color 0.3s ease;
 }
 
+body.dark-mode {
+    --primary-color: #f8f9fa;
+    --secondary-color: #4ea8de;
+    --accent-color: #f9c74f;          
+    --light-bg: #23272f;
+    --card-bg: #2d3142;
+    --text-on-primary: #23272f;
+    --text-on-light: #f8f9fa;
+    background-color: var(--light-bg);
+    color: var(--text-on-light);
+}
+
+/* Hero Title */
 .main-title {
     text-align: center;
     margin: 30px 0;
@@ -18,21 +35,30 @@ body {
     font-weight: 700;
 }
 
+/* Hero Section */
 .hero-section {
-    background: linear-gradient(135deg, var(--primary-color), #1a252f);
-    color: white;
+    background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+    color: var(--text-on-primary);
     padding: 60px 0 40px;
     margin-bottom: 40px;
 }
 
+/* Section Card */
 .section-card {
-    background: white;
+    background: var(--card-bg);
     border-radius: 15px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
     padding: 30px;
     margin-bottom: 30px;
+    color: var(--text-on-light);
+    transition: background 0.3s ease;
 }
 
+body.dark-mode .section-card {
+    color: var(--text-on-light);
+}
+
+/* Task Grid */
 .task-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
@@ -40,10 +66,11 @@ body {
     margin-top: 20px;
 }
 
+/* Task Button */
 .task-btn {
     padding: 12px 8px;
     border-radius: 8px;
-    background: var(--light-bg);
+    background: var(--card-bg);
     border: 1px solid rgba(0, 0, 0, 0.1);
     text-align: center;
     transition: all 0.2s ease;
@@ -57,30 +84,55 @@ body {
     min-height: 70px;
 }
 
-.task-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
-    background: var(--secondary-color);
-    color: white !important;
+body.dark-mode .task-btn {
+    color: var(--text-on-light) !important;
+    border: 1px solid rgba(255,255,255,0.08);
 }
 
+.task-btn:hover {
+    transform: scale(1.03);
+    box-shadow: 0 0 12px var(--secondary-color);
+    background: var(--secondary-color);
+    color: var(--text-on-primary) !important;
+}
+
+/* Task number */
 .task-btn .task-number {
     font-size: 0.7rem;
     opacity: 0.8;
     margin-top: 5px;
 }
 
+/* Disabled Button */
+.task-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background: #ccc;
+    color: #555 !important;
+    border: 1px dashed #999;
+}
+
+.task-btn:disabled:hover {
+    transform: none;
+    box-shadow: none;
+}
+
+/* Section Title */
 .section-title {
     border-left: 4px solid var(--secondary-color);
     padding-left: 15px;
     margin: 30px 0;
+    color: var(--primary-color);
 }
 
+/* Weekly Cards */
 .week-card {
     margin-bottom: 25px;
     border-radius: 10px;
     overflow: hidden;
     border: 1px solid rgba(0, 0, 0, 0.1);
+    background: var(--card-bg);
+    color: var(--text-on-light);
 }
 
 .week-header {
@@ -91,43 +143,104 @@ body {
     justify-content: space-between;
     align-items: center;
     transition: background 0.2s ease;
+    color: var(--primary-color);
+}
+
+body.dark-mode .week-header {
+    background: #23272f;
+    color: var(--text-on-light);
 }
 
 .week-header:hover {
     background: #e9ecef;
 }
 
+body.dark-mode .week-header:hover {
+    background: #34394a;
+}
+
+/* Toggle icon animation */
+.collapse-icon {
+    transition: transform 0.3s ease;
+}
 .week-header.collapsed .collapse-icon {
     transform: rotate(0deg);
 }
-
-.collapse-icon {
-    transition: transform 0.2s ease;
+.week-header:not(.collapsed) .collapse-icon {
     transform: rotate(180deg);
 }
 
+/* Custom Badges */
 .badge-custom {
     background: var(--accent-color); 
-    color: white;
+    color: var(--text-on-primary);
+}
+
+/* Custom Buttons */
+.btn-add-daily,
+.btn-add-random,
+.btn-add-new {
+    color: var(--text-on-primary);
+    margin-top: 15px;
+    border-radius: 5px;
+    padding: 6px 12px;
+    font-size: 0.9rem;
+    border: none;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: background 0.3s ease, transform 0.2s ease;
 }
 
 .btn-add-daily {
     background: var(--secondary-color);
-    color: white;
-    margin-top: 15px;
 }
 
 .btn-add-random {
-    background-color: #e95242;
-    color: white;
-    margin-top: 15px;
+    background-color: var(--accent-color);
 }
 
 .btn-add-new {
-    background-color: aqua;
+    background-color: #43aa8b;
 }
 
 .btn-add-new:hover {
-    background: #c0392b;
-    color: white;
+    background: #2d6a4f;
+    color: var(--text-on-primary);
+    transform: translateY(-1px);
+}
+
+/* Mode Toggle */
+.mode-toggler {
+    width: 10rem;
+    cursor: pointer;
+    font-size: 1.2rem;
+    font-weight: 600;
+    padding: 10px 15px;
+    background: transparent;
+    border: 2px solid var(--secondary-color);
+    color: var(--secondary-color);
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    text-align: center;
+    margin: 10px auto;
+}
+
+.mode-toggler:hover {
+    background-color: var(--secondary-color);
+    color: var(--text-on-primary);
+    transform: scale(1.05);
+}
+
+/* Footer */
+footer {
+    border-top: 3px solid var(--secondary-color);
+    box-shadow: 0 -3px 5px rgba(0, 0, 0, 0.05);
+    font-size: 0.9rem;
+}
+
+footer a {
+    transition: color 0.2s ease;
+}
+
+footer a:hover {
+    color: var(--accent-color);
 }

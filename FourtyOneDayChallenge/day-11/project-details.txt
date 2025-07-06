@@ -1,0 +1,24 @@
+🛍️ Rafi's Multi-Item Cart Tracker
+Day: 11 Project
+
+Overview:
+----------
+Fully dynamic and responsive cart web app using JavaScript OOP. Built with getter-style logic, image-based product cards, and modern UI. Users can interact with multiple items, and the cart updates live.
+
+Features:
+---------
+- Multiple products: MacBook, HP, Dell, Mobile phones
+- Quantity control per item
+- Total per product + grand total
+- Modern UI with glassmorphism
+- Scalable code using OOP
+- No frameworks, just raw JavaScript 💪
+
+Next Steps:
+-----------
+- Add localStorage support
+- Create item remove buttons
+- Apply discount coupons
+- Add checkout animation
+
+Built with ❤️ by Rafi Ullah
