@@ -1,0 +1,144 @@
+/* 🛍️ Reset & Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background-color: #f8f9fa;
+  color: #333;
+  padding: 20px;
+}
+
+/* 🔙 Brand Section */
+.brand {
+  display: flex;
+  align-items: center;
+  margin-bottom: 2rem;
+  gap: 10px;
+}
+
+.brand h1 {
+  font-size: 1.8rem;
+  color: #005eff;
+}
+
+#go-back-home a {
+  font-size: 1.5rem;
+  text-decoration: none;
+}
+
+/* 🛒 Cart Container */
+.cart-container {
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 25px;
+  max-width: 800px;
+  margin: auto;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+}
+
+.cart-container h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 2rem;
+  color: #444;
+}
+
+/* 🧾 Cart Item */
+.cart-item {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 15px 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.cart-item img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.cart-details {
+  flex: 1;
+}
+
+.cart-title {
+  font-size: 1.2rem;
+  color: #222;
+}
+
+.cart-price,
+.item-total {
+  color: #666;
+  margin: 5px 0;
+}
+
+.quantity-control {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 10px 0;
+}
+
+.quantity-control button {
+  background-color: #005eff;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  font-size: 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.quantity-control button:hover {
+  background-color: #0044cc;
+}
+
+.remove {
+  background-color: #ff4d4f;
+  color: #fff;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.remove:hover {
+  background-color: #cc0000;
+}
+
+/* 🧮 Total Section */
+.cart-footer {
+  text-align: right;
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+/* 📱 Responsive */
+@media (max-width: 600px) {
+  .cart-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .cart-item img {
+    width: 100%;
+    height: auto;
+  }
+
+  .quantity-control {
+    justify-content: flex-start;
+  }
+
+  .cart-footer {
+    text-align: center;
+  }
+}
