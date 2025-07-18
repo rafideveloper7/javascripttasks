@@ -109,7 +109,7 @@ document.addEventListener("click", (e) => {
   }
 });
 
-// 🧮 Update Cart Count in Nav
+// Update Cart Count in Nav
 function updateCartCount() {
   const cart = JSON.parse(localStorage.getItem("cart")) || [];
   const totalCount = cart.reduce((sum, item) => sum + item.quantity, 0);
@@ -131,7 +131,7 @@ function updateCartCount() {
   });
 }
 
-// 🎯 Category Filter
+// Category Filter
 document.getElementById("all").addEventListener("click", () => renderProducts(products));
 
 document.getElementById("boys").addEventListener("click", () =>
@@ -142,7 +142,7 @@ document.getElementById("girls").addEventListener("click", () =>
     renderProducts(products.filter((p) => p.category === "girls"))
   );
 
-// 🍔 Hamburger Menu Toggle
+// Hamburger Menu Toggle
 const hamburger = document.getElementById("hamburger");
 const navBar = document.getElementById("nav-bar");
 

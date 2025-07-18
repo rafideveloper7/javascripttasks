@@ -1,4 +1,3 @@
-
 /* RESET & BASE */
 * {
   margin: 0;
@@ -8,10 +7,10 @@
 
 :root {
   --blue: rgb(48, 48, 252);
-  --white: rgb(255, 255, 255);
-  --black: rgb(0, 0, 0);
-  --red: rgb(255, 0, 0);
-  font-family: 'Segoe UI' sans-serif;
+  --white: #fff;
+  --black: #000;
+  --red: red;
+  font-family: 'Segoe UI', sans-serif;
 }
 
 ::selection {
@@ -21,7 +20,6 @@
 html {
   scroll-behavior: smooth;
 }
-
 
 body {
   background-color: var(--white);
@@ -45,8 +43,6 @@ header nav {
   align-items: center;
   padding: 0 1rem;
   box-shadow: 0 0.5px 0.5px gray;
-  opacity: 0.9;
-  position: relative;
   background-color: var(--white);
   z-index: 1000;
 }
@@ -65,12 +61,10 @@ header nav {
 
 .nav-bar ul {
   display: flex;
-  justify-content: space-evenly;
   align-items: center;
-  flex-direction: row;
-  font-weight: 700;
   gap: 5rem;
   list-style: none;
+  font-weight: 700;
 }
 
 .nav-bar ul li {
@@ -88,7 +82,6 @@ header nav {
   color: var(--blue);
   font-weight: 700;
   font-size: 18px;
-  /* text-decoration: underline; */
   text-underline-offset: 0.2rem;
   text-decoration-color: var(--blue);
 }
@@ -97,17 +90,20 @@ header nav {
   border-bottom: 2px solid black;
   transition: 0.3s ease-in-out;
   cursor: pointer;
-  color: var(--blue);
 }
 
 /* CART */
+
+.cart-on-small {
+  visibility: hidden;
+}
+
+
 .cart {
   display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
-  transition: 0.3s ease-in-out;
-  color: var(--black);
   font-size: 20px;
   font-weight: 700;
   cursor: pointer;
@@ -117,14 +113,22 @@ header nav {
   box-shadow: 0 0.5px 0.5px gray;
 }
 
-.cart-on-small{
-    display: none;
-}
-
 .cart i:hover {
   scale: 1.5;
-  transition: 0.3s ease-in-out;
-  transition-duration: 0.5s;
+  transition: 0.5s ease-in-out;
+}
+
+.cart-badge {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background: var(--blue);
+  color: white;
+  font-size: 12px;
+  padding: 2px 6px;
+  border-radius: 50%;
+  font-weight: bold;
+  pointer-events: none;
 }
 
 /* HAMBURGER */
@@ -142,12 +146,10 @@ header nav {
   border-radius: 2px;
 }
 
-
-/* footer */
+/* FOOTER */
 footer {
   width: 100%;
   height: 10rem;
-  /* background-color: aquamarine; */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -156,49 +158,55 @@ footer {
 }
 
 .links {
-  width: 100%;
-  height: 20rem;
-  /* background-color: aquamarine; */
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 20rem;
 }
 
-.our-services ul, .socials ul {
+.our-services ul,
+.socials ul {
   list-style: none;
   opacity: 0.8;
 }
 
-.our-services ul li:hover, .socials ul li:hover {
-  opacity: 5;
-  color: blue;
+.our-services ul li:hover,
+.socials ul li:hover {
+  opacity: 1;
+  color: var(--blue);
 }
 
-/* MOBILE RESPONSIVE */
+/* RESPONSIVE */
 @media (max-width: 768px) {
+  header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 5rem;
+    padding: 0.5rem 1rem;
+  }
 
-header {
-    height: auto;
-    padding: 0.5rem 1rem;
-}
   header nav {
-    flex-wrap: wrap;
-    height: auto;
-    padding: 0.5rem 1rem;
+    width: 100%;
+    height: 4rem;
+    display: flex;
+    flex-wrap: wrap-reverse;
+    justify-content: space-between;
+    align-items: center;
   }
 
   .nav-bar {
     position: absolute;
     top: 5rem;
     left: 0;
-    background-color: var(--white);
     width: 100%;
+    display: flex;
     flex-direction: column;
+    justify-content: space-between;
     align-items: center;
-    justify-content: flex-start;
-    gap: 1rem;
+    background-color: var(--white);
     padding: 1rem 0;
+    gap: 1rem;
     display: none;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     z-index: 999;
@@ -213,15 +221,15 @@ header {
   }
 
   .hamburger {
-    display: flex;
+    display: none;
   }
 
   .cart {
-    order: 1;
+    order: 2;
   }
 
   .brand {
-    order: 2;
+    order: 1;
   }
 
   .hamburger {
@@ -229,17 +237,12 @@ header {
   }
 
   .links {
-    display: flex;
     flex-direction: row;
-    height: fit-content;
-    width: auto;
     gap: 2rem;
   }
 
   .copyright {
     font-size: 0.8rem;
     margin-top: 1rem;
-    position: relative;
-    bottom: 0;
   }
 }
