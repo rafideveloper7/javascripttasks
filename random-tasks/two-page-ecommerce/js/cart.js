@@ -12,7 +12,7 @@ function renderCart() {
   cartItemsContainer.innerHTML = "";
 
   if (cart.length === 0) {
-    cartItemsContainer.innerHTML = "<p>Your cart is empty 🚫</p>";
+    cartItemsContainer.innerHTML = "<p>Your cart is empty 🚫 \n select item and buy here!</p>";
     totalElement.textContent = "$0";
     if (totalPrice) {
       totalPrice.textContent = "0";

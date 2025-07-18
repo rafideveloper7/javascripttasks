@@ -1,4 +1,4 @@
-// 🚀 Product Data
+//  Products Data stored in array of objs
 const products = [
   {
     id: 1,
@@ -58,22 +58,24 @@ const products = [
   },
 ];
 
-// ✅ Init on DOM Ready
+// run funcs when web loads
 document.addEventListener("DOMContentLoaded", () => {
   renderProducts(products);
   updateCartCount();
 });
 
-// 💡 Render Products to Page
+//  add Products to Page
 function renderProducts(productsList) {
   const ul = document.querySelector("#products-ul");
-  ul.innerHTML = ""; // Clear previous
+  ul.innerHTML = ""; // Clear previous li in html
 
   productsList.forEach((product) => {
+    // ye har product (obj of array) per loop karega and os keleye li created
     const li = document.createElement("li");
-    li.classList.add("product-item", product.category);
+    li.classList.add("product-item", product.category); // yaha Filter ko use karenge & targeted li class by CSS
+    // now adding item data in li
     li.innerHTML = `
-      <img src="${product.image}" alt="${product.name}">
+      <img src="${product.image}" alt="${product.name}"> 
       <div class="bottom-card">
         <h3 class="title">${product.name}</h3>
         <p class="price">Price: $${product.price}</p>
@@ -81,14 +83,16 @@ function renderProducts(productsList) {
         <button class="add-to-cart" data-id="${product.id}">Add to Cart</button>
       </div>
     `;
-    ul.appendChild(li);
+    ul.appendChild(li); // yaha li ko ul mai put karta ha
   });
 }
 
-// 🧠 Handle Cart Logic
+//  Handle Cart Logic
+
 document.addEventListener("click", (e) => {
+  // yaha checking if add btn clicked or not
   if (e.target.classList.contains("add-to-cart")) {
-    const productId = +e.target.dataset.id;
+    const productId = +e.target.dataset.id; // + convert string to number
     const selectedProduct = products.find((p) => p.id === productId);
 
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
@@ -101,7 +105,7 @@ document.addEventListener("click", (e) => {
     }
 
     localStorage.setItem("cart", JSON.stringify(cart));
-    updateCartCount();
+    updateCartCount(); // it updates the ount on cart icon in menu
   }
 });
 
@@ -128,17 +132,13 @@ function updateCartCount() {
 }
 
 // 🎯 Category Filter
-document
-  .getElementById("all")
-  .addEventListener("click", () => renderProducts(products));
-document
-  .getElementById("boys")
-  .addEventListener("click", () =>
+document.getElementById("all").addEventListener("click", () => renderProducts(products));
+
+document.getElementById("boys").addEventListener("click", () =>
     renderProducts(products.filter((p) => p.category === "boys"))
   );
-document
-  .getElementById("girls")
-  .addEventListener("click", () =>
+  
+document.getElementById("girls").addEventListener("click", () =>
     renderProducts(products.filter((p) => p.category === "girls"))
   );
 
