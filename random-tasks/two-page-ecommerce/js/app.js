@@ -111,25 +111,36 @@ document.addEventListener("click", (e) => {
 
 // Update Cart Count in Nav
 function updateCartCount() {
+  // Step 1: get cart data form local , if not create empty [] array
   const cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+  // Step 2: calculate the items inside the cart 
   const totalCount = cart.reduce((sum, item) => sum + item.quantity, 0);
 
+  // Step 3: target karo i (cart icon) ko , class name kesath
   document.querySelectorAll(".cart i").forEach((icon) => {
+    // add custom attribute which will use for css and adding counts value icon 
     icon.setAttribute("data-count", totalCount);
-    icon.style.position = "relative";
-  });
 
-  // Optional: you can add a badge for visual count
-  document.querySelectorAll(".cart i").forEach((icon) => {
-    let badge = icon.querySelector(".cart-badge");
-    if (!badge) {
-      badge = document.createElement("span");
-      badge.classList.add("cart-badge");
-      icon.appendChild(badge);
-    }
+    // yaha icon ko relative possition apply keya 
+    icon.style.position = "relative";
+
+    // Step 4: Look for a span element inside the icon with class "cart-badge"
+    // If not found, create one and add it to the icon
+    let badge = icon.querySelector(".cart-badge") || // if badge exists, use it
+      (() => { // IIFE
+        const span = document.createElement("span"); // create new span
+        span.className = "cart-badge";               // give it class
+        icon.appendChild(span);                      // attach to icon
+        return span;                                  // return it for use
+      })();
+
+    // Step 5: Set the text of the badge to the total item count
     badge.textContent = totalCount;
   });
 }
+
+
 
 // Category Filter
 document.getElementById("all").addEventListener("click", () => renderProducts(products));

@@ -1,0 +1,99 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.app-container {
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+}
+
+.app-header h1 {
+    color: #2c3e50;
+    margin-bottom: 20px;
+}
+
+.search-box {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.search-box input[type="text"] {
+    flex-grow: 1;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px 0 0 6px;
+    font-size: 16px;
+}
+
+.search-box button {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 12px 18px;
+    border-radius: 0 6px 6px 0;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.search-box button:hover {
+    background-color: #2980b9;
+}
+
+.weather-box {
+    margin-top: 20px;
+}
+
+.weather-card {
+    background-color: #ecf0f1;
+    padding: 25px;
+    border-radius: 8px;
+}
+
+.weather-card h2 {
+    color: #2c3e50;
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 24px;
+}
+
+.weather-card p {
+    color: #555;
+    margin-bottom: 8px;
+    font-size: 16px;
+}
+
+.temp-humidity {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 15px;
+}
+
+.temp-humidity p {
+    background-color: #d4e6f1;
+    color: #3498db;
+    padding: 10px 15px;
+    border-radius: 6px;
+    font-weight: bold;
+}
+
+.error-msg {
+    color: #c0392b;
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+.hidden {
+    display: none !important;
+}
