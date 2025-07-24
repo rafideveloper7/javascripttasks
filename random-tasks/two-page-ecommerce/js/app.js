@@ -88,20 +88,20 @@ function renderProducts(productsList) {
 }
 
 //  Handle Cart Logic
-
 document.addEventListener("click", (e) => {
   // yaha checking if add btn clicked or not
   if (e.target.classList.contains("add-to-cart")) {
-    const productId = +e.target.dataset.id; // + convert string to number
-    const selectedProduct = products.find((p) => p.id === productId);
+    const productId = +e.target.dataset.id; // Gets the data-id from the button
+    const selectedProduct = products.find((p) => p.id === productId); // checking which product clicked | looking form array
 
-    let cart = JSON.parse(localStorage.getItem("cart")) || [];
-
+    let cart = JSON.parse(localStorage.getItem("cart")) || []; // gets old data from local storagee
+     // check if cart dta exist so we'll not duplicate just increse value
     const existing = cart.find((item) => item.id === productId);
+
     if (existing) {
-      existing.quantity += 1;
+      existing.quantity += 1; // if yes exist jsut increase value +1
     } else {
-      cart.push({ ...selectedProduct, quantity: 1 });
+      cart.push({ ...selectedProduct, quantity: 1 }); // if not exists jsut copy full obj and add
     }
 
     localStorage.setItem("cart", JSON.stringify(cart));
@@ -109,38 +109,24 @@ document.addEventListener("click", (e) => {
   }
 });
 
-// Update Cart Count in Nav
+// updates cart icon badge count 
 function updateCartCount() {
-  // Step 1: get cart data form local , if not create empty [] array
   const cart = JSON.parse(localStorage.getItem("cart")) || [];
-
-  // Step 2: calculate the items inside the cart 
+  // reduce > acc, curr | acc = computed value & curr = item number in array
   const totalCount = cart.reduce((sum, item) => sum + item.quantity, 0);
+  const icon = document.querySelector(".cart i");
+  icon.style.position = "relative";
 
-  // Step 3: target karo i (cart icon) ko , class name kesath
-  document.querySelectorAll(".cart i").forEach((icon) => {
-    // add custom attribute which will use for css and adding counts value icon 
-    icon.setAttribute("data-count", totalCount);
-
-    // yaha icon ko relative possition apply keya 
-    icon.style.position = "relative";
-
-    // Step 4: Look for a span element inside the icon with class "cart-badge"
-    // If not found, create one and add it to the icon
-    let badge = icon.querySelector(".cart-badge") || // if badge exists, use it
-      (() => { // IIFE
-        const span = document.createElement("span"); // create new span
-        span.className = "cart-badge";               // give it class
-        icon.appendChild(span);                      // attach to icon
-        return span;                                  // return it for use
-      })();
-
-    // Step 5: Set the text of the badge to the total item count
-    badge.textContent = totalCount;
-  });
+  // Check if badge exists, else create it
+  let badge = icon.querySelector(".cart-badge");
+  if (!badge) {
+    badge = document.createElement("span");
+    badge.className = "cart-badge";
+    icon.appendChild(badge);
+  }
+  // Set the count
+  badge.textContent = totalCount;
 }
-
-
 
 // Category Filter
 document.getElementById("all").addEventListener("click", () => renderProducts(products));
@@ -152,11 +138,3 @@ document.getElementById("boys").addEventListener("click", () =>
 document.getElementById("girls").addEventListener("click", () =>
     renderProducts(products.filter((p) => p.category === "girls"))
   );
-
-// Hamburger Menu Toggle
-const hamburger = document.getElementById("hamburger");
-const navBar = document.getElementById("nav-bar");
-
-hamburger.addEventListener("click", () => {
-  navBar.classList.toggle("show");
-});

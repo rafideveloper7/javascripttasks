@@ -32,6 +32,8 @@ body {
 }
 
 
+
+
 /* FOOTER */
 footer {
   width: 100%;
@@ -64,6 +66,7 @@ footer {
 
 /* RESPONSIVE */
 @media (max-width: 768px) {
+
   /* footer  */
   .links {
     flex-direction: row;

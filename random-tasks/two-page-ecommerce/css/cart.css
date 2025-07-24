@@ -7,6 +7,8 @@
 }
 
 body {
+  width: 100%;
+  height: 100vh;
   background-color: #f8f9fa;
   color: #333;
   padding: 20px;
@@ -49,14 +51,15 @@ body {
 
 /* Cart Item */
 .cart-item {
+  height: auto;
   display: flex;
   flex-direction: row-reverse;
   justify-content: right;
   align-items: center;
-  gap: 20px;
   margin-top: 3rem;
   padding: 15px;
-  border: 1px solid #ddd;
+  border: 2px solid #838383;
+  background-color: #c2d9ff;
 }
 
 .cart-item img {
