@@ -1,11 +1,3 @@
-:root {
-  --blue: rgb(48, 48, 252);
-  --white: rgb(255, 255, 255);
-  --black: rgb(0, 0, 0);
-  --red: rgb(255, 0, 0);
-  --orange: rgb(255, 204, 0);
-  font-family: 'Tektur', sans-serif;
-}
 
 .hero-sec {
   position: relative;
@@ -32,7 +24,7 @@
   background-position: center;
   background-repeat: no-repeat;
   filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.5));
-  filter: blur(5px) brightness(0.8); /* blur and darken slightly */
+  filter: blur(8px) brightness(0.8); /* blur and darken slightly */
   z-index: -1;
   /* opacity: 0.5; */
 }
@@ -59,16 +51,17 @@
 .hero-left .content h1 {
   width: fit-content;
   font-size: 3.5rem;
-  color: var(--orange);
+  color: rgb(255, 255, 255);
   margin: 2rem 0;
   line-height: 1.2;
   max-width: 100%;
   backdrop-filter: blur(4px);
   border: none;
+  text-shadow: #113fd6 0px 0px 10px;
 }
 
 .hero-left .content h1 span {
-  color: var(--blue);
+  color: rgb(212, 201, 201);
   font-weight: 700;
   font-size: 3.8rem;
   white-space: nowrap;
@@ -78,17 +71,17 @@
 .hero-left .content p {
   font-size: 2rem;
   /* font-weight: 600; */
-  color: orange;
+  color: rgb(212, 201, 201);
   margin: 1rem;
   max-width: 100%;
-  backdrop-filter: blur(0.5rem);
+  backdrop-filter: blur(0.2rem);
+  text-shadow: #113fd6 0px 0px 10px;
   /* -webkit-backface-visibility: var(--black); */
 }
 
 .hero-left .content p:hover {
     color: var(--white);
     transition: color 0.3s ease;
-    text-shadow: #ffa947 0px 0px 10px;
 }
 
 .hero-left .content a {

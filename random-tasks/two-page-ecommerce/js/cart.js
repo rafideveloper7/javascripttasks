@@ -64,28 +64,37 @@ function renderCart() {
 
 // global listner - good for all btns
 document.addEventListener("click", (e) => {
-  // here again we get fresh data with every click
-  let cart = JSON.parse(localStorage.getItem("cart")) || [];
-  const id = parseInt(e.target.dataset.id); // checks which product btn clicked , (dataset.id in html >  data-id="1")
+  let cart = JSON.parse(localStorage.getItem("cart")) || []; // geting live updates on every clicks
+  // checks which product btn clicked , (dataset.id -- in html  data-id="1" ) , + (stored in string to convert into number)
+  const clickedBtnId = +e.target.dataset.id;
 
+  // INCREASE quantity
   if (e.target.classList.contains("increase")) {
-    const item = cart.find((p) => p.id === id);
+    const item = cart.find((p) => p.id === clickedBtnId); // chsck if the cliecked btn id = with array product id
     if (item) {
       item.quantity += 1;
     }
   }
 
+  // DECREASE quantity and REMOVE if 0
   if (e.target.classList.contains("decrease")) {
-    const item = cart.find((p) => p.id === id);
-    if (item && item.quantity > 1) {
+    const item = cart.find((p) => p.id === clickedBtnId);
+    if (item) {
       item.quantity -= 1;
+
+      if (item.quantity <= 0 ) {
+        // remove item if quantity becomes 0 or negative
+        cart = cart.filter((p) => p.id !== clickedBtnId);
+      }
     }
   }
 
+  // REMOVE button clicked
   if (e.target.classList.contains("remove")) {
-    cart = cart.filter((p) => p.id !== id);
+    cart = cart.filter((p) => p.id !== clickedBtnId);
   }
 
+  // Save and refresh UI
   localStorage.setItem("cart", JSON.stringify(cart));
   renderCart();
 });

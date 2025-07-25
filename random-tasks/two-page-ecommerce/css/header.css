@@ -14,7 +14,7 @@ header nav {
   align-items: center;
   padding: 0 1rem;
   box-shadow: 0 0.5px 0.5px gray;
-  background-color: var(--white);
+  background-color: rgb(212, 201, 201);
   z-index: 1000;
   /* background-color: blueviolet; */
 }

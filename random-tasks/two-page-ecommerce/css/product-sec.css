@@ -11,7 +11,7 @@
 .product-sec {
   width: 100%;
   padding: 3rem 1rem;
-  background-color: #f58f8f;
+  background-color: #f1b9b9;
 }
 
 /* Category Filter */
@@ -62,7 +62,7 @@
 
 /* Card Item */
 .products-list li {
-  background-color: var(--white);
+  background-color: rgb(212, 201, 201);
   border-radius: 16px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
   overflow: hidden;

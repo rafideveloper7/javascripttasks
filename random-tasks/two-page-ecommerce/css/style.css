@@ -23,58 +23,11 @@
 
 html {
   scroll-behavior: smooth;
+  background-color: #000;
 }
 
 body {
   background-color: var(--white);
   overflow-x: hidden;
   font-family: var(--font-family);
-}
-
-
-
-
-/* FOOTER */
-footer {
-  width: 100%;
-  height: 10rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  border-top: 1px solid rgb(205, 205, 205);
-}
-
-.links {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 20rem;
-}
-
-.our-services ul,
-.socials ul {
-  list-style: none;
-  opacity: 0.8;
-}
-
-.our-services ul li:hover,
-.socials ul li:hover {
-  opacity: 1;
-  color: var(--blue);
-}
-
-/* RESPONSIVE */
-@media (max-width: 768px) {
-
-  /* footer  */
-  .links {
-    flex-direction: row;
-    gap: 2rem;
-  }
-
-  .copyright {
-    font-size: 0.8rem;
-    margin-top: 1rem;
-  }
 }
